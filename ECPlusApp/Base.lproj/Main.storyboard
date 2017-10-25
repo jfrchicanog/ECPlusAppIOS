@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IJe-Ff-N6J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IE9-xV-Lud">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,33 +9,77 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
-        <scene sceneID="BKx-uc-3HM">
+        <!--Sindrome View Controller-->
+        <scene sceneID="gae-Gi-ssN">
             <objects>
-                <tableViewController id="IJe-Ff-N6J" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sy5-Eg-12E">
+                <viewController id="IE9-xV-Lud" customClass="SindromeViewController" customModule="ECPlusApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PM8-kl-Vea"/>
+                        <viewControllerLayoutGuide type="bottom" id="1qK-qd-bjN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Pi-W8-xry">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gy6-70-3f1">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Síndromes" id="5Y2-49-fpi">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="9ex-Rp-Ze4">
+                                            <connections>
+                                                <action selector="pulsado:" destination="IE9-xV-Lud" id="4QI-eJ-9uf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RYd-Ea-J7C">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="603" id="l9e-9f-nFW"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="sindrome" textLabel="TvR-HL-eKE" style="IBUITableViewCellStyleDefault" id="rxB-Ww-mi2">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rxB-Ww-mi2" id="yvZ-U5-3NV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TvR-HL-eKE">
+                                                    <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="IE9-xV-Lud" id="Lzs-fq-cEy"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ffO-Vi-f7h">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ffO-Vi-f7h" id="NM0-rr-sHd">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="IJe-Ff-N6J" id="VL3-hp-mVQ"/>
-                            <outlet property="delegate" destination="IJe-Ff-N6J" id="htR-vv-dmt"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JRT-JZ-dBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <constraints>
+                            <constraint firstItem="RYd-Ea-J7C" firstAttribute="top" secondItem="Gy6-70-3f1" secondAttribute="bottom" id="CGf-aC-zcr"/>
+                            <constraint firstItem="RYd-Ea-J7C" firstAttribute="bottom" secondItem="1qK-qd-bjN" secondAttribute="top" id="OVm-50-tL7"/>
+                            <constraint firstItem="RYd-Ea-J7C" firstAttribute="trailing" secondItem="Gy6-70-3f1" secondAttribute="trailing" id="gEL-4w-23v"/>
+                            <constraint firstItem="RYd-Ea-J7C" firstAttribute="leading" secondItem="Gy6-70-3f1" secondAttribute="leading" id="iJt-TX-nhz"/>
+                            <constraint firstItem="RYd-Ea-J7C" firstAttribute="leading" secondItem="3Pi-W8-xry" secondAttribute="leading" id="jMW-5j-hma"/>
+                            <constraint firstAttribute="trailing" secondItem="RYd-Ea-J7C" secondAttribute="trailing" id="udQ-JW-NVl"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tabla" destination="RYd-Ea-J7C" id="PHr-3q-mKn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dje-5c-Tas" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="595" y="195"/>
+            <point key="canvasLocation" x="-295.19999999999999" y="184.85757121439281"/>
         </scene>
     </scenes>
 </document>
