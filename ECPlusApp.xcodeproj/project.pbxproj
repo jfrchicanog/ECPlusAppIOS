@@ -13,6 +13,8 @@
 		1507DBE01F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1507DBDE1F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld */; };
 		1507DBE21F2AB2AC0056A72F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1507DBE11F2AB2AC0056A72F /* Assets.xcassets */; };
 		1507DBE51F2AB2AC0056A72F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1507DBE31F2AB2AC0056A72F /* LaunchScreen.storyboard */; };
+		1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557FE2B1FA156E300B652E2 /* Sindrome.swift */; };
+		157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157EACEE1FA150A4000068C2 /* SindromeContentView.swift */; };
 		158081151F9FFED800AFEF3E /* SindromeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158081141F9FFED800AFEF3E /* SindromeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		1507DBE11F2AB2AC0056A72F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1507DBE41F2AB2AC0056A72F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1507DBE61F2AB2AC0056A72F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1557FE2B1FA156E300B652E2 /* Sindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sindrome.swift; sourceTree = "<group>"; };
+		157EACEE1FA150A4000068C2 /* SindromeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SindromeContentView.swift; sourceTree = "<group>"; };
 		158081141F9FFED800AFEF3E /* SindromeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SindromeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +70,8 @@
 				1507DBE61F2AB2AC0056A72F /* Info.plist */,
 				1507DBDE1F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld */,
 				158081141F9FFED800AFEF3E /* SindromeViewController.swift */,
+				157EACEE1FA150A4000068C2 /* SindromeContentView.swift */,
+				1557FE2B1FA156E300B652E2 /* Sindrome.swift */,
 			);
 			path = ECPlusApp;
 			sourceTree = "<group>";
@@ -146,7 +152,9 @@
 			files = (
 				1507DBDA1F2AB2AC0056A72F /* ViewController.swift in Sources */,
 				1507DBD81F2AB2AC0056A72F /* AppDelegate.swift in Sources */,
+				157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */,
 				1507DBE01F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld in Sources */,
+				1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */,
 				158081151F9FFED800AFEF3E /* SindromeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
