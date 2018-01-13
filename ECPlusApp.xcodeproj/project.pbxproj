@@ -18,6 +18,8 @@
 		158224EB2009861600DD12BA /* DAOSindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158224EA2009861600DD12BA /* DAOSindrome.swift */; };
 		158224ED2009897000DD12BA /* DAOSindromeNetworkImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158224EC2009897000DD12BA /* DAOSindromeNetworkImpl.swift */; };
 		15DF1FB7200999CC0091B530 /* MainPagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */; };
+		15DF1FDE200A14270091B530 /* WSSindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDD200A14270091B530 /* WSSindrome.swift */; };
+		15DF1FE0200A14680091B530 /* WSSindromeImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		158224EA2009861600DD12BA /* DAOSindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOSindrome.swift; sourceTree = "<group>"; };
 		158224EC2009897000DD12BA /* DAOSindromeNetworkImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOSindromeNetworkImpl.swift; sourceTree = "<group>"; };
 		15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagedViewController.swift; sourceTree = "<group>"; };
+		15DF1FDD200A14270091B530 /* WSSindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindrome.swift; sourceTree = "<group>"; };
+		15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindromeImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +88,8 @@
 				158224E920097E6300DD12BA /* Dominio */,
 				158224EA2009861600DD12BA /* DAOSindrome.swift */,
 				158224EC2009897000DD12BA /* DAOSindromeNetworkImpl.swift */,
+				15DF1FDD200A14270091B530 /* WSSindrome.swift */,
+				15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */,
 			);
 			path = Modelo;
 			sourceTree = "<group>";
@@ -184,8 +190,10 @@
 				158224ED2009897000DD12BA /* DAOSindromeNetworkImpl.swift in Sources */,
 				157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */,
 				158224EB2009861600DD12BA /* DAOSindrome.swift in Sources */,
+				15DF1FE0200A14680091B530 /* WSSindromeImpl.swift in Sources */,
 				1507DBE01F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld in Sources */,
 				1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */,
+				15DF1FDE200A14270091B530 /* WSSindrome.swift in Sources */,
 				15DF1FB7200999CC0091B530 /* MainPagedViewController.swift in Sources */,
 				158081151F9FFED800AFEF3E /* SindromeViewController.swift in Sources */,
 			);

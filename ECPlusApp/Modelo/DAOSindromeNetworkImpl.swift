@@ -10,45 +10,22 @@ import Foundation
 
 class DAOSindromeNetworkImpl: DAOSindrome {
 
-    let host = "https://ecplusproject.uma.es"
-    let apiEndPoint = "/academicPortal/ecplus/api/v1"
-    let sindromesPath = "/sindromes"
-    
+    let sindromeWS: WSSindrome = WSSindromeImpl();
     
     func createListOfSyndromes(language: String) {
         // TODO: no implementar
     }
     
     func getSyndromes(language: String, completion: @escaping ([Sindrome]) -> Void) {
-        var peticion = URLRequest(url: NSURL(string: host + apiEndPoint + sindromesPath + "/" + language)! as URL)
-        
-        peticion.addValue("application/json", forHTTPHeaderField: "Accept");
-        peticion.httpMethod="GET"
-        
-        let session = URLSession.shared;
-        var listaSindromes:[Sindrome] = [];
-        let dataTask = session.dataTask(with: peticion, completionHandler:
-        {(datos: Data?, respuesta: URLResponse?, error: Error?) in
-            
-            let object = try! JSONSerialization.jsonObject(with: datos!)
-            
-            let lista = object as! NSArray;
-            for elemento in lista {
-                let diccionario = elemento as! NSDictionary;
-                listaSindromes.append(Sindrome(jsonDictionary: diccionario));
-            }
-            completion(listaSindromes);
-        })
-        dataTask.resume();
+        sindromeWS.getSyndromes(language: language, completion: completion);
     }
     
     func removeSyndromeList(language: String) {
         // TODO: no implementar
     }
     
-    func getHashForListOfSyndromes(language: String) -> String? {
-        // TODO: no implementar por el momento
-        return nil;
+    func getHashForListOfSyndromes(language: String, completion: @escaping (String?) -> Void) {
+        sindromeWS.getHashForListOfSyndromes(language: language, completion: completion);
     }
     
     func setHashForListOfSyndromes(language: String, hash:String) {

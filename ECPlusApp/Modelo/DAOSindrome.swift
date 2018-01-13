@@ -12,7 +12,7 @@ protocol DAOSindrome {
     func createListOfSyndromes(language: String);
     func getSyndromes(language: String, completion: @escaping ([Sindrome]) -> Void);
     func removeSyndromeList(language: String);
-    func getHashForListOfSyndromes(language: String) -> String?;
+    func getHashForListOfSyndromes(language: String, completion: @escaping (String?) -> Void);
     func setHashForListOfSyndromes(language: String, hash:String);
     
     func removeSyndrome(syndrome: Sindrome);
