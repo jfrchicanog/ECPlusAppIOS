@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1507DBD81F2AB2AC0056A72F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507DBD71F2AB2AC0056A72F /* AppDelegate.swift */; };
-		1507DBDA1F2AB2AC0056A72F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1507DBD91F2AB2AC0056A72F /* ViewController.swift */; };
 		1507DBDD1F2AB2AC0056A72F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1507DBDB1F2AB2AC0056A72F /* Main.storyboard */; };
 		1507DBE01F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1507DBDE1F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld */; };
 		1507DBE21F2AB2AC0056A72F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1507DBE11F2AB2AC0056A72F /* Assets.xcassets */; };
@@ -16,12 +15,14 @@
 		1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557FE2B1FA156E300B652E2 /* Sindrome.swift */; };
 		157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157EACEE1FA150A4000068C2 /* SindromeContentView.swift */; };
 		158081151F9FFED800AFEF3E /* SindromeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158081141F9FFED800AFEF3E /* SindromeViewController.swift */; };
+		158224EB2009861600DD12BA /* DAOSindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158224EA2009861600DD12BA /* DAOSindrome.swift */; };
+		158224ED2009897000DD12BA /* DAOSindromeNetworkImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158224EC2009897000DD12BA /* DAOSindromeNetworkImpl.swift */; };
+		15DF1FB7200999CC0091B530 /* MainPagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1507DBD41F2AB2AC0056A72F /* ECPlusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ECPlusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1507DBD71F2AB2AC0056A72F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1507DBD91F2AB2AC0056A72F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1507DBDC1F2AB2AC0056A72F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1507DBDF1F2AB2AC0056A72F /* ECPlusApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ECPlusApp.xcdatamodel; sourceTree = "<group>"; };
 		1507DBE11F2AB2AC0056A72F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -30,6 +31,9 @@
 		1557FE2B1FA156E300B652E2 /* Sindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sindrome.swift; sourceTree = "<group>"; };
 		157EACEE1FA150A4000068C2 /* SindromeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SindromeContentView.swift; sourceTree = "<group>"; };
 		158081141F9FFED800AFEF3E /* SindromeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SindromeViewController.swift; sourceTree = "<group>"; };
+		158224EA2009861600DD12BA /* DAOSindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOSindrome.swift; sourceTree = "<group>"; };
+		158224EC2009897000DD12BA /* DAOSindromeNetworkImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOSindromeNetworkImpl.swift; sourceTree = "<group>"; };
+		15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,18 +66,44 @@
 		1507DBD61F2AB2AC0056A72F /* ECPlusApp */ = {
 			isa = PBXGroup;
 			children = (
+				15DF1FB82009FE640091B530 /* Controladores */,
+				158224E820097E5400DD12BA /* Modelo */,
 				1507DBD71F2AB2AC0056A72F /* AppDelegate.swift */,
-				1507DBD91F2AB2AC0056A72F /* ViewController.swift */,
 				1507DBDB1F2AB2AC0056A72F /* Main.storyboard */,
 				1507DBE11F2AB2AC0056A72F /* Assets.xcassets */,
 				1507DBE31F2AB2AC0056A72F /* LaunchScreen.storyboard */,
 				1507DBE61F2AB2AC0056A72F /* Info.plist */,
 				1507DBDE1F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld */,
-				158081141F9FFED800AFEF3E /* SindromeViewController.swift */,
-				157EACEE1FA150A4000068C2 /* SindromeContentView.swift */,
-				1557FE2B1FA156E300B652E2 /* Sindrome.swift */,
 			);
 			path = ECPlusApp;
+			sourceTree = "<group>";
+		};
+		158224E820097E5400DD12BA /* Modelo */ = {
+			isa = PBXGroup;
+			children = (
+				158224E920097E6300DD12BA /* Dominio */,
+				158224EA2009861600DD12BA /* DAOSindrome.swift */,
+				158224EC2009897000DD12BA /* DAOSindromeNetworkImpl.swift */,
+			);
+			path = Modelo;
+			sourceTree = "<group>";
+		};
+		158224E920097E6300DD12BA /* Dominio */ = {
+			isa = PBXGroup;
+			children = (
+				1557FE2B1FA156E300B652E2 /* Sindrome.swift */,
+			);
+			path = Dominio;
+			sourceTree = "<group>";
+		};
+		15DF1FB82009FE640091B530 /* Controladores */ = {
+			isa = PBXGroup;
+			children = (
+				158081141F9FFED800AFEF3E /* SindromeViewController.swift */,
+				157EACEE1FA150A4000068C2 /* SindromeContentView.swift */,
+				15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */,
+			);
+			path = Controladores;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,11 +180,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1507DBDA1F2AB2AC0056A72F /* ViewController.swift in Sources */,
 				1507DBD81F2AB2AC0056A72F /* AppDelegate.swift in Sources */,
+				158224ED2009897000DD12BA /* DAOSindromeNetworkImpl.swift in Sources */,
 				157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */,
+				158224EB2009861600DD12BA /* DAOSindrome.swift in Sources */,
 				1507DBE01F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld in Sources */,
 				1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */,
+				15DF1FB7200999CC0091B530 /* MainPagedViewController.swift in Sources */,
 				158081151F9FFED800AFEF3E /* SindromeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

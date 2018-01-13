@@ -11,8 +11,10 @@ import UIKit
 
 class SindromeViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tabla: UITableView!
+    let daoSindrome: DAOSindrome = DAOSindromeNetworkImpl();
     
-    var elementos: [Sindrome] = [];
+    var elementos: [Sindrome] = []
+    var tipoDocumento: TipoDocumento? = .GENERALIDAD
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1;
@@ -30,37 +32,29 @@ class SindromeViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func pulsado(_ sender: UIBarButtonItem) {
-        
-
     }
     
-    func descarga() {
-        var peticion = URLRequest(url: NSURL(string: "https://ecplusproject.uma.es/academicPortal/ecplus/api/v1/sindromes/es")! as URL)
-        
-        peticion.addValue("application/json", forHTTPHeaderField: "Accept");
-        peticion.httpMethod="GET"
-        
-        let session = URLSession.shared;
-        let dataTask = session.dataTask(with: peticion, completionHandler:
-        {(datos: Data?, respuesta: URLResponse?, error: Error?) in
-            
-            let object = try! JSONSerialization.jsonObject(with: datos!)
-            
-            let lista = object as! NSArray;
-            for elemento in lista {
-                let diccionario = elemento as! NSDictionary;
-                self.elementos.append(Sindrome(jsonDictionary: diccionario));
-            }
-            
+    func cargaDatos() {
+        daoSindrome.getSyndromes(language: "es", completion: { (listaSindromes:[Sindrome]) -> Void  in
+            self.elementos=listaSindromes.filter({$0.tipo == self.tipoDocumento
+            });
             OperationQueue.main.addOperation({
                 self.tabla.reloadData();
             })
         })
-        dataTask.resume();
+        
     }
     
     override func viewDidLoad() {
-        descarga();
+        if let tipo = self.tipoDocumento {
+            switch (tipo) {
+            case .GENERALIDAD:
+                self.navigationItem.title = "Comunicación"
+            case .SINDROME:
+                self.navigationItem.title = "Síndrome"
+            }
+        }
+        cargaDatos();
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

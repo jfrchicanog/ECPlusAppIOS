@@ -8,14 +8,19 @@
 
 import Foundation
 
+enum TipoDocumento {
+    case SINDROME
+    case GENERALIDAD
+}
+
 class Sindrome {
     var id: Int?
     var nombre: String?
     var contenido: String?
     var hash: String?
-    var tipo: String?
+    var tipo: TipoDocumento?
     
-    init(id: Int?, nombre: String?, contenido: String?, hash: String?, tipo: String?) {
+    init(id: Int?, nombre: String?, contenido: String?, hash: String?, tipo: TipoDocumento?) {
         self.id=id;
         self.nombre = nombre;
         self.contenido = contenido;
@@ -27,7 +32,19 @@ class Sindrome {
         nombre = jsonDictionary.object(forKey: "nombre") as! String?;
         id = jsonDictionary.object(forKey: "id") as! Int?;
         hash = jsonDictionary.object(forKey: "hash") as! String?;
-        tipo = jsonDictionary.object(forKey: "tipo") as! String?;
+        let stipo = jsonDictionary.object(forKey: "tipo") as! String?
+        
+        if (stipo != nil) {
+            switch stipo! {
+            case "SINDROME":
+                tipo = .SINDROME
+            case "GENERALIDAD":
+                tipo = .GENERALIDAD
+            default:
+                tipo=nil
+            }
+        }
+        
         let contenidoString = jsonDictionary.object (forKey: "contenido") as! String;
         let datos = NSData(base64Encoded: contenidoString);
         self.contenido = String(data: (datos as Data?)!, encoding: .utf8);
