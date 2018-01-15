@@ -1,7 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,12 +21,48 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EC+: Enhancing Communication" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="32" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v1c-7d-Qdv">
+                                <rect key="frame" x="16" y="20" width="343" height="103"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="103" id="qY4-1W-IP3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="43"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Dho-O6-KqA">
+                                <rect key="frame" x="16" y="131" width="343" height="434"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eulogo" translatesAutoresizingMaskIntoConstraints="NO" id="DK9-gV-AsA">
+                                <rect key="frame" x="16" y="573" width="343" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="b8X-ne-CK9"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="v1c-7d-Qdv" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="5Dh-5a-shz"/>
+                            <constraint firstItem="v1c-7d-Qdv" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="MG3-Te-XqQ"/>
+                            <constraint firstItem="v1c-7d-Qdv" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="Qa7-mw-GwE"/>
+                            <constraint firstItem="Dho-O6-KqA" firstAttribute="top" secondItem="v1c-7d-Qdv" secondAttribute="bottom" constant="8" symbolic="YES" id="SC2-bS-i90"/>
+                            <constraint firstItem="DK9-gV-AsA" firstAttribute="leading" secondItem="Dho-O6-KqA" secondAttribute="leading" id="VLC-wm-Js3"/>
+                            <constraint firstAttribute="bottom" secondItem="DK9-gV-AsA" secondAttribute="bottom" constant="20" symbolic="YES" id="Yvh-mG-Atl"/>
+                            <constraint firstItem="v1c-7d-Qdv" firstAttribute="leading" secondItem="Dho-O6-KqA" secondAttribute="leading" id="fKE-Sq-gQf"/>
+                            <constraint firstItem="v1c-7d-Qdv" firstAttribute="trailing" secondItem="Dho-O6-KqA" secondAttribute="trailing" id="kqh-Hg-oRx"/>
+                            <constraint firstItem="DK9-gV-AsA" firstAttribute="top" secondItem="Dho-O6-KqA" secondAttribute="bottom" constant="8" symbolic="YES" id="rc2-x0-XYa"/>
+                            <constraint firstItem="DK9-gV-AsA" firstAttribute="trailing" secondItem="Dho-O6-KqA" secondAttribute="trailing" id="zzs-kJ-eca"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="eulogo" width="573" height="125"/>
+        <image name="logo" width="512" height="512"/>
+    </resources>
 </document>

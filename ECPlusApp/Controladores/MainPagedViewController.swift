@@ -56,4 +56,16 @@ class MainPagedViewController: UIPageViewController, UIPageViewControllerDataSou
             return nil;
         }
     }
+    
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return paneles.count;
+    }
+    
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        guard let firstViewController = pageViewController.viewControllers?.first,
+            let firstViewControllerIndex = paneles.index(of: firstViewController) else {
+                return 0
+        }
+        return firstViewControllerIndex;
+    }
 }
