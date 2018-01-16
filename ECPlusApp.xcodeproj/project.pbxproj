@@ -17,6 +17,11 @@
 		158081151F9FFED800AFEF3E /* SindromeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158081141F9FFED800AFEF3E /* SindromeViewController.swift */; };
 		158224EB2009861600DD12BA /* DAOSindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158224EA2009861600DD12BA /* DAOSindrome.swift */; };
 		158224ED2009897000DD12BA /* DAOSindromeNetworkImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158224EC2009897000DD12BA /* DAOSindromeNetworkImpl.swift */; };
+		15AB8252200D79CF001ECC70 /* SindromeEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB824E200D79CF001ECC70 /* SindromeEntity+CoreDataClass.swift */; };
+		15AB8253200D79CF001ECC70 /* SindromeEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB824F200D79CF001ECC70 /* SindromeEntity+CoreDataProperties.swift */; };
+		15AB8254200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8250200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift */; };
+		15AB8255200D79CF001ECC70 /* ListaSindromes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8251200D79CF001ECC70 /* ListaSindromes+CoreDataProperties.swift */; };
+		15AB8257200D7C51001ECC70 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8256200D7C51001ECC70 /* DataController.swift */; };
 		15DF1FB7200999CC0091B530 /* MainPagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */; };
 		15DF1FDE200A14270091B530 /* WSSindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDD200A14270091B530 /* WSSindrome.swift */; };
 		15DF1FE0200A14680091B530 /* WSSindromeImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */; };
@@ -35,6 +40,12 @@
 		158081141F9FFED800AFEF3E /* SindromeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SindromeViewController.swift; sourceTree = "<group>"; };
 		158224EA2009861600DD12BA /* DAOSindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOSindrome.swift; sourceTree = "<group>"; };
 		158224EC2009897000DD12BA /* DAOSindromeNetworkImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOSindromeNetworkImpl.swift; sourceTree = "<group>"; };
+		15AB823C200D76BC001ECC70 /* ECPlusDataModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ECPlusDataModel1.xcdatamodel; sourceTree = "<group>"; };
+		15AB824E200D79CF001ECC70 /* SindromeEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SindromeEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		15AB824F200D79CF001ECC70 /* SindromeEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SindromeEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		15AB8250200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListaSindromes+CoreDataClass.swift"; sourceTree = "<group>"; };
+		15AB8251200D79CF001ECC70 /* ListaSindromes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListaSindromes+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		15AB8256200D7C51001ECC70 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagedViewController.swift; sourceTree = "<group>"; };
 		15DF1FDD200A14270091B530 /* WSSindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindrome.swift; sourceTree = "<group>"; };
 		15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindromeImpl.swift; sourceTree = "<group>"; };
@@ -85,11 +96,13 @@
 		158224E820097E5400DD12BA /* Modelo */ = {
 			isa = PBXGroup;
 			children = (
+				15AB8245200D774F001ECC70 /* Database */,
 				158224E920097E6300DD12BA /* Dominio */,
 				158224EA2009861600DD12BA /* DAOSindrome.swift */,
 				158224EC2009897000DD12BA /* DAOSindromeNetworkImpl.swift */,
 				15DF1FDD200A14270091B530 /* WSSindrome.swift */,
 				15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */,
+				15AB8256200D7C51001ECC70 /* DataController.swift */,
 			);
 			path = Modelo;
 			sourceTree = "<group>";
@@ -100,6 +113,17 @@
 				1557FE2B1FA156E300B652E2 /* Sindrome.swift */,
 			);
 			path = Dominio;
+			sourceTree = "<group>";
+		};
+		15AB8245200D774F001ECC70 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				15AB824E200D79CF001ECC70 /* SindromeEntity+CoreDataClass.swift */,
+				15AB824F200D79CF001ECC70 /* SindromeEntity+CoreDataProperties.swift */,
+				15AB8250200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift */,
+				15AB8251200D79CF001ECC70 /* ListaSindromes+CoreDataProperties.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		15DF1FB82009FE640091B530 /* Controladores */ = {
@@ -187,15 +211,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				1507DBD81F2AB2AC0056A72F /* AppDelegate.swift in Sources */,
+				15AB8252200D79CF001ECC70 /* SindromeEntity+CoreDataClass.swift in Sources */,
 				158224ED2009897000DD12BA /* DAOSindromeNetworkImpl.swift in Sources */,
 				157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */,
 				158224EB2009861600DD12BA /* DAOSindrome.swift in Sources */,
 				15DF1FE0200A14680091B530 /* WSSindromeImpl.swift in Sources */,
+				15AB8255200D79CF001ECC70 /* ListaSindromes+CoreDataProperties.swift in Sources */,
 				1507DBE01F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld in Sources */,
 				1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */,
+				15AB8254200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift in Sources */,
+				15AB8257200D7C51001ECC70 /* DataController.swift in Sources */,
 				15DF1FDE200A14270091B530 /* WSSindrome.swift in Sources */,
 				15DF1FB7200999CC0091B530 /* MainPagedViewController.swift in Sources */,
 				158081151F9FFED800AFEF3E /* SindromeViewController.swift in Sources */,
+				15AB8253200D79CF001ECC70 /* SindromeEntity+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,7 +364,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.uma.ecplusproject.ECPlusApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -349,7 +378,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = es.uma.ecplusproject.ECPlusApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -381,6 +410,7 @@
 		1507DBDE1F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				15AB823C200D76BC001ECC70 /* ECPlusDataModel1.xcdatamodel */,
 				1507DBDF1F2AB2AC0056A72F /* ECPlusApp.xcdatamodel */,
 			);
 			currentVersion = 1507DBDF1F2AB2AC0056A72F /* ECPlusApp.xcdatamodel */;

@@ -12,6 +12,7 @@ class WSSindromeImpl: WSSindrome {
     let host = "https://ecplusproject.uma.es"
     let apiEndPoint = "/academicPortal/ecplus/api/v1"
     let sindromesPath = "/sindromes"
+    let hashSuffix = "/hash"
     
     func getSyndromes(language: String, completion: @escaping ([Sindrome]) -> Void) {
         var peticion = URLRequest(url: NSURL(string: host + apiEndPoint + sindromesPath + "/" + language)! as URL)
@@ -37,6 +38,19 @@ class WSSindromeImpl: WSSindrome {
     }
     
     func getHashForListOfSyndromes(language: String, completion: @escaping (String?) -> Void) {
-        // TODO
+        var peticion = URLRequest(url: NSURL(string: host + apiEndPoint + sindromesPath + "/" + language + hashSuffix )! as URL)
+        
+        peticion.addValue("application/json", forHTTPHeaderField: "Accept");
+        peticion.httpMethod="GET"
+        
+        let session = URLSession.shared;
+        let dataTask = session.dataTask(with: peticion, completionHandler:
+        {(datos: Data?, respuesta: URLResponse?, error: Error?) in
+            
+            let object = try! JSONSerialization.jsonObject(with: datos!)
+            let hashContainer = object as! NSDictionary;
+            completion(hashContainer.object(forKey: "hash") as! String?);
+        })
+        dataTask.resume();
     }
 }

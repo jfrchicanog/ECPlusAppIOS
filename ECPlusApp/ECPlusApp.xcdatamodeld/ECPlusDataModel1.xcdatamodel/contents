@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1114" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ListaSindromes" representedClassName=".ListaSindromes" syncable="YES">
+    <entity name="ListaSindromes" representedClassName="ListaSindromes" syncable="YES" codeGenerationType="class">
         <attribute name="hashvalue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="idioma" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="sindromes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SindromeEntity" inverseName="lista" inverseEntity="SindromeEntity" syncable="YES"/>
     </entity>
-    <entity name="SindromeEntity" representedClassName=".SindromeEntity" syncable="YES">
+    <entity name="SindromeEntity" representedClassName="SindromeEntity" syncable="YES" codeGenerationType="class">
         <attribute name="contenido" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="hashvalue" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
