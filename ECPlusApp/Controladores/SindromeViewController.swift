@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SindromeViewController: UIViewController, UITableViewDataSource {
+class SindromeViewController: UIViewController, UITableViewDataSource, UpdateServiceListener {
     @IBOutlet weak var tabla: UITableView!
     let daoSindrome: DAOSindrome = DAOFactory.getDAOSindrome();
     
@@ -52,15 +52,6 @@ class SindromeViewController: UIViewController, UITableViewDataSource {
         let fm = FileManager.default;
         let url = fm.urls(for: .documentDirectory, in: .allDomainsMask)
         NSLog("URL: " + url.last!.description)
-        
-        let databaseUpdate = DatabaseUpdate.getDatabaseUpdate()
-        databaseUpdate.updateSindromes(language: "es", listener: {(update) in
-            NSLog(update.description())
-            if update.action! == UpdateEventAction.stopDatabase && update.somethingChanged! {
-                NSLog("Here I am")
-                OperationQueue.main.addOperation({self.refrescarDatos()})
-            }
-        })
     }
     
     override func viewDidLoad() {
@@ -72,7 +63,16 @@ class SindromeViewController: UIViewController, UITableViewDataSource {
                 self.navigationItem.title = "Síndrome"
             }
         }
-        cargaDatos();
+        UpdateCoordinator.coordinator.addListener(listener: self)
+        refrescarDatos();
+    }
+    
+    func onUpdateEvent(event update: UpdateEvent) {
+        NSLog(update.description())
+        if update.action! == UpdateEventAction.stopDatabase && update.somethingChanged! {
+            NSLog("Here I am")
+            OperationQueue.main.addOperation({self.refrescarDatos()})
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

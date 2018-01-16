@@ -29,6 +29,7 @@
 		15F1D657200DF2A400C7C041 /* DAOSindromeDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1D656200DF2A400C7C041 /* DAOSindromeDatabase.swift */; };
 		15F1D65A200DFF7700C7C041 /* DatabaseUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1D659200DFF7700C7C041 /* DatabaseUpdate.swift */; };
 		15F1D67D200E77BF00C7C041 /* UpdateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1D67C200E77BF00C7C041 /* UpdateEvent.swift */; };
+		15F1D67F200EB16E00C7C041 /* UpdateCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1D67E200EB16E00C7C041 /* UpdateCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		15F1D656200DF2A400C7C041 /* DAOSindromeDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOSindromeDatabase.swift; sourceTree = "<group>"; };
 		15F1D659200DFF7700C7C041 /* DatabaseUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdate.swift; sourceTree = "<group>"; };
 		15F1D67C200E77BF00C7C041 /* UpdateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEvent.swift; sourceTree = "<group>"; };
+		15F1D67E200EB16E00C7C041 /* UpdateCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 			children = (
 				15F1D659200DFF7700C7C041 /* DatabaseUpdate.swift */,
 				15F1D67C200E77BF00C7C041 /* UpdateEvent.swift */,
+				15F1D67E200EB16E00C7C041 /* UpdateCoordinator.swift */,
 			);
 			path = UpdateService;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				15DF1FE0200A14680091B530 /* WSSindromeImpl.swift in Sources */,
 				15AB8255200D79CF001ECC70 /* ListaSindromes+CoreDataProperties.swift in Sources */,
 				15F1D655200DF20A00C7C041 /* DAOFactory.swift in Sources */,
+				15F1D67F200EB16E00C7C041 /* UpdateCoordinator.swift in Sources */,
 				1507DBE01F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld in Sources */,
 				1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */,
 				15F1D657200DF2A400C7C041 /* DAOSindromeDatabase.swift in Sources */,

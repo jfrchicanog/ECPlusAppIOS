@@ -11,25 +11,36 @@ import Foundation
 class DatabaseUpdate {
     let daoSindrome = DAOSindromeDatabase()
     let wsSindrome = WSSindromeImpl()
+    let updateServiceCoordinator = UpdateCoordinator.coordinator;
     
     static var _databaseUpdate : DatabaseUpdate?
     
-    func updateSindromes(language: String, listener: @escaping (UpdateEvent) -> Void ) -> Void {
-        listener(UpdateEvent.startUpdateSyndromesEvent())
+    static func getDatabaseUpdate() -> DatabaseUpdate {
+        if _databaseUpdate == nil {
+            _databaseUpdate = DatabaseUpdate()
+        }
+        return _databaseUpdate!
+    }
+    
+    private init () {
+    }
+    
+    func updateSindromes(language: String) -> Void {
+        self.updateServiceCoordinator.fireEvent(event: UpdateEvent.startUpdateSyndromesEvent())
         let hashLocal = daoSindrome.getHashForListOfSyndromes(language: language)
         wsSindrome.getHashForListOfSyndromes(language: language, completion: {(hashRemote) in
             if hashRemote == nil {
                 self.daoSindrome.removeSyndromeList(language: language)
-                listener(UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: true))
+                self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: true))
             } else if hashLocal == nil || hashLocal!.caseInsensitiveCompare(hashRemote!) != ComparisonResult.orderedSame {
                 if hashLocal == nil {
                     self.daoSindrome.createListOfSyndromes(language: language)
                 }
                 self.updateLocalSyndromeList(language: language, hashRemote: hashRemote!,completion: {
-                    listener(UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: true))
+                    self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: true))
                 })
             } else {
-                listener(UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: false))
+                self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: false))
             }
         })
     }
@@ -83,10 +94,5 @@ class DatabaseUpdate {
         }
     }
     
-    static func getDatabaseUpdate() -> DatabaseUpdate {
-        if _databaseUpdate == nil {
-            _databaseUpdate = DatabaseUpdate()
-        }
-        return _databaseUpdate!
-    }
+    
 }
