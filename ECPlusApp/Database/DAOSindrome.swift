@@ -10,12 +10,12 @@ import Foundation
 
 protocol DAOSindrome {
     func createListOfSyndromes(language: String);
-    func getSyndromes(language: String, completion: @escaping ([Sindrome]) -> Void);
+    func getSyndromes(language: String) -> [SindromeEntity];
     func removeSyndromeList(language: String);
-    func getHashForListOfSyndromes(language: String, completion: @escaping (String?) -> Void);
+    func getHashForListOfSyndromes(language: String) -> String?;
     func setHashForListOfSyndromes(language: String, hash:String);
     
-    func removeSyndrome(syndrome: Sindrome);
+    func removeSyndrome(syndrome: SindromeEntity);
     func updateSyndrome(syndrome: Sindrome);
     func addSyndrome(sindrome: Sindrome, language: String);
 }

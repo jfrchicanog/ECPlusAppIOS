@@ -11,9 +11,9 @@ import UIKit
 
 class SindromeViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tabla: UITableView!
-    let daoSindrome: DAOSindrome = DAOSindromeNetworkImpl();
+    let daoSindrome: DAOSindrome = DAOFactory.getDAOSindrome();
     
-    var elementos: [Sindrome] = []
+    var elementos: [SindromeEntity] = []
     var tipoDocumento: TipoDocumento? = .GENERALIDAD
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -22,6 +22,7 @@ class SindromeViewController: UIViewController, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        NSLog("cuenta \(elementos.count)")
         return elementos.count;
     }
     
@@ -34,15 +35,32 @@ class SindromeViewController: UIViewController, UITableViewDataSource {
     @IBAction func pulsado(_ sender: UIBarButtonItem) {
     }
     
+    func refrescarDatos() {
+        let listaSindromes = daoSindrome.getSyndromes(language: "es")
+        elementos=listaSindromes.filter({$0.tipo == self.tipoDocumento!.rawValue});
+        tabla.reloadData();
+        NSLog("refresco")
+    }
+    
     func cargaDatos() {
-        daoSindrome.getSyndromes(language: "es", completion: { (listaSindromes:[Sindrome]) -> Void  in
-            self.elementos=listaSindromes.filter({$0.tipo == self.tipoDocumento
-            });
-            OperationQueue.main.addOperation({
-                self.tabla.reloadData();
-            })
-        })
+        self.refrescarDatos()
+
+        if let hash = daoSindrome.getHashForListOfSyndromes(language: "es") {
+            NSLog(hash);
+        }
+                
+        let fm = FileManager.default;
+        let url = fm.urls(for: .documentDirectory, in: .allDomainsMask)
+        NSLog("URL: " + url.last!.description)
         
+        let databaseUpdate = DatabaseUpdate.getDatabaseUpdate()
+        databaseUpdate.updateSindromes(language: "es", listener: {(update) in
+            NSLog(update.description())
+            if update.action! == UpdateEventAction.stopDatabase && update.somethingChanged! {
+                NSLog("Here I am")
+                OperationQueue.main.addOperation({self.refrescarDatos()})
+            }
+        })
     }
     
     override func viewDidLoad() {

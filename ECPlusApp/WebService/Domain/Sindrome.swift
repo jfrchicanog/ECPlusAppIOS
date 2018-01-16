@@ -8,9 +8,9 @@
 
 import Foundation
 
-enum TipoDocumento {
-    case SINDROME
-    case GENERALIDAD
+enum TipoDocumento: String {
+    case SINDROME = "SINDROME"
+    case GENERALIDAD = "GENERALIDAD"
 }
 
 class Sindrome {

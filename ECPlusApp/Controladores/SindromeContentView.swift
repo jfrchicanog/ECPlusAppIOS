@@ -11,7 +11,7 @@ import UIKit
 
 class SindromeContentView: UIViewController {
     @IBOutlet weak var webView: UIWebView!;
-    var sindrome: Sindrome?;
+    var sindrome: SindromeEntity?;
     
     override func viewDidLoad() {
         /*let url = NSURL (string: "https://www.uma.es");

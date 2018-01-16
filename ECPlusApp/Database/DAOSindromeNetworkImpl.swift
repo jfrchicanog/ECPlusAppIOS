@@ -16,23 +16,26 @@ class DAOSindromeNetworkImpl: DAOSindrome {
         // TODO: no implementar
     }
     
-    func getSyndromes(language: String, completion: @escaping ([Sindrome]) -> Void) {
-        sindromeWS.getSyndromes(language: language, completion: completion);
+    func getSyndromes(language: String) -> [SindromeEntity] {
+        // TODO
+        //sindromeWS.getSyndromes(language: language, completion: completion);
+        return []
     }
     
     func removeSyndromeList(language: String) {
         // TODO: no implementar
     }
     
-    func getHashForListOfSyndromes(language: String, completion: @escaping (String?) -> Void) {
-        sindromeWS.getHashForListOfSyndromes(language: language, completion: completion);
+    func getHashForListOfSyndromes(language: String) -> String? {
+        //sindromeWS.getHashForListOfSyndromes(language: language, completion: completion);
+        return nil;
     }
     
     func setHashForListOfSyndromes(language: String, hash:String) {
         // TODO: no implementar
     }
     
-    func removeSyndrome(syndrome: Sindrome) {
+    func removeSyndrome(syndrome: SindromeEntity) {
         // TODO: no implementar
     }
     
