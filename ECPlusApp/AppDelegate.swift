@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let databaseUpdate = DatabaseUpdate.getDatabaseUpdate()
         databaseUpdate.updateSindromes(language: "es")
+        databaseUpdate.updatePalabras(language: "es", resolution: Resolution.baja)
         return true
     }
 

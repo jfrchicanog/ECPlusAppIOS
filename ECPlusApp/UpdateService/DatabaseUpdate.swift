@@ -11,6 +11,7 @@ import Foundation
 class DatabaseUpdate {
     let daoSindrome = DAOSindromeDatabase()
     let wsSindrome = WSSindromeImpl()
+    let wsPalabra = WSPalabraImpl()
     let updateServiceCoordinator = UpdateCoordinator.coordinator;
     
     static var _databaseUpdate : DatabaseUpdate?
@@ -25,7 +26,20 @@ class DatabaseUpdate {
     private init () {
     }
     
-    func updateSindromes(language: String) -> Void {
+    func updatePalabras(language: String, resolution: Resolution) {
+        wsPalabra.getHashForListOfWords(language: language, resolution: Resolution.baja, completion: {(hash) in
+            NSLog("Hash words: \(hash!)")
+        })
+        
+        wsPalabra.getWords(language: language, resolution: Resolution.baja, completion: {(palabra) in
+            for pal in palabra {
+                NSLog("Word: \(pal.nombre)")
+            }
+            
+        })
+    }
+    
+    func updateSindromes(language: String) {
         self.updateServiceCoordinator.fireEvent(event: UpdateEvent.startUpdateSyndromesEvent())
         let hashLocal = daoSindrome.getHashForListOfSyndromes(language: language)
         wsSindrome.getHashForListOfSyndromes(language: language, completion: {(hashRemote) in
