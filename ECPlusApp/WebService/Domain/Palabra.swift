@@ -35,8 +35,8 @@ class RecursoAudioVisual : Hashable {
     
     init(jsonDictionary: NSDictionary) {
         id = jsonDictionary.object(forKey: "id") as! Int32;
-        hash = jsonDictionary.object(forKey: "hash") as! String?;
-        let stype = jsonDictionary.object(forKey: "type") as! String?;
+        hash = jsonDictionary.object(forKey: "hash") as? String;
+        let stype = jsonDictionary.object(forKey: "type") as? String;
         if let tipo = stype {
             switch (tipo) {
             case "Pictograma":
@@ -72,12 +72,12 @@ class Palabra {
     
     init (jsonDictionary: NSDictionary) {
         id = jsonDictionary.object(forKey: "id") as! Int32;
-        nombre = jsonDictionary.object(forKey: "nombre") as! String?;
-        iconoReemplazable = jsonDictionary.object(forKey: "iconoReemplazable") as! Bool?;
-        hash = jsonDictionary.object(forKey: "hash") as! String?;
-        //icono = jsonDictionary.object(forKey: "icono") as! Int32?
-        //iconoReemplazado = jsonDictionary.object(forKey: "iconoReemplazado") as! String?
-        avanzada = jsonDictionary.object(forKey: "avanzada") as! Bool?
+        nombre = jsonDictionary.object(forKey: "nombre") as? String;
+        iconoReemplazable = jsonDictionary.object(forKey: "iconoReemplazable") as? Bool;
+        hash = jsonDictionary.object(forKey: "hash") as? String;
+        icono = jsonDictionary.object(forKey: "icono") as? Int32
+        iconoReemplazado = jsonDictionary.object(forKey: "iconoReemplazado") as? String
+        avanzada = jsonDictionary.object(forKey: "avanzada") as? Bool
         
         let listaAV = jsonDictionary.object(forKey: "audiovisuales") as! NSArray
         audiovisuales = Set<RecursoAudioVisual>()

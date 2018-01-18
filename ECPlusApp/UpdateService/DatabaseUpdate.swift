@@ -33,7 +33,7 @@ class DatabaseUpdate {
         
         wsPalabra.getWords(language: language, resolution: Resolution.baja, completion: {(palabra) in
             for pal in palabra {
-                NSLog("Word: \(pal.nombre)")
+                NSLog("Word: \(pal.nombre!)")
             }
             
         })
