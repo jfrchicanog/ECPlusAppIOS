@@ -30,9 +30,9 @@ class Sindrome {
     
     init(jsonDictionary: NSDictionary){
         nombre = jsonDictionary.object(forKey: "nombre") as! String?;
-        id = jsonDictionary.object(forKey: "id") as! Int?;
-        hash = jsonDictionary.object(forKey: "hash") as! String?;
-        let stipo = jsonDictionary.object(forKey: "tipo") as! String?
+        id = jsonDictionary.object(forKey: "id") as? Int;
+        hash = jsonDictionary.object(forKey: "hash") as? String;
+        let stipo = jsonDictionary.object(forKey: "tipo") as? String;
         
         if (stipo != nil) {
             switch stipo! {
@@ -45,8 +45,9 @@ class Sindrome {
             }
         }
         
-        let contenidoString = jsonDictionary.object (forKey: "contenido") as! String;
-        let datos = NSData(base64Encoded: contenidoString);
-        self.contenido = String(data: (datos as Data?)!, encoding: .utf8);
+        if let contenidoString = jsonDictionary.object (forKey: "contenido") as? String {
+            let datos = NSData(base64Encoded: contenidoString);
+            self.contenido = String(data: (datos as Data?)!, encoding: .utf8);
+        }
     }
 }
