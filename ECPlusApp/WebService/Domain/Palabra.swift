@@ -15,10 +15,10 @@ enum TipoRecurso: String {
     case audio = "Audio"
 }
 
-class RecursoAudioVisual : Hashable {
+class RecursoAudioVisualWS : Hashable {
     var hashValue: Int
     
-    static func ==(lhs: RecursoAudioVisual, rhs: RecursoAudioVisual) -> Bool {
+    static func ==(lhs: RecursoAudioVisualWS, rhs: RecursoAudioVisualWS) -> Bool {
         return lhs.id == rhs.id
     }
     
@@ -60,14 +60,14 @@ class Palabra {
     var nombre : String?;
     var iconoReemplazable : Bool?;
     var hash : String?;
-    var audiovisuales : Set<RecursoAudioVisual>
+    var audiovisuales : Set<RecursoAudioVisualWS>
     var icono : Int32?
     var iconoReemplazado : String?
     var avanzada : Bool?
     
     init(id: Int32) {
         self.id = id;
-        audiovisuales = Set<RecursoAudioVisual>()
+        audiovisuales = Set<RecursoAudioVisualWS>()
     }
     
     init (jsonDictionary: NSDictionary) {
@@ -80,9 +80,9 @@ class Palabra {
         avanzada = jsonDictionary.object(forKey: "avanzada") as? Bool
         
         let listaAV = jsonDictionary.object(forKey: "audiovisuales") as! NSArray
-        audiovisuales = Set<RecursoAudioVisual>()
+        audiovisuales = Set<RecursoAudioVisualWS>()
         for av in listaAV {
-            audiovisuales.insert(RecursoAudioVisual(jsonDictionary: av as! NSDictionary))
+            audiovisuales.insert(RecursoAudioVisualWS(jsonDictionary: av as! NSDictionary))
         }
     }
     

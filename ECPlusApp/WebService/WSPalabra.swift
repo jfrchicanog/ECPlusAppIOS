@@ -8,10 +8,10 @@
 
 import Foundation
 
-enum Resolution {
-    case baja
-    case media
-    case alta
+enum Resolution: String {
+    case baja = "BAJA"
+    case media = "MEDIA"
+    case alta = "ALTA"
 }
 
 protocol WSPalabra {
