@@ -40,15 +40,14 @@ extension ListaPalabras {
     @objc(removeHashes:)
     @NSManaged public func removeFromHashes(_ values: NSSet)
     
-    func getHash(for resolution: Resolution) -> String? {
+    func getHash(for resolution: Resolution) -> HashListaPalabras? {
         if let hashSet = hashes {
             for h in hashSet {
                 let hh = h as? HashListaPalabras
                 if hh?.resolucion == resolution.rawValue {
-                    return hh?.hashvalue;
+                    return hh;
                 }
             }
-            
         }
         return nil;
     }

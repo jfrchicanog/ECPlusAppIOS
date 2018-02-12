@@ -11,6 +11,7 @@ import Foundation
 class WSPalabraImpl: WSPalabra {
     let host = "https://ecplusproject.uma.es"
     let apiEndPoint = "/academicPortal/ecplus/api/v1"
+    let resourcePath = "/resource"
     let palabrasPath = "/words"
     let hashSuffix = "/hash"
     
@@ -51,6 +52,23 @@ class WSPalabraImpl: WSPalabra {
                 listaPalabras.append(Palabra(jsonDictionary: diccionario));
             }
             completion(listaPalabras);
+        })
+        dataTask.resume();
+    }
+    
+    func getResource(hash: String, toFile: URL) {
+        var peticion = URLRequest(url: NSURL(string: host + apiEndPoint + resourcePath + "/" + hash)! as URL)
+        peticion.addValue("*/*", forHTTPHeaderField: "Accept");
+        peticion.httpMethod="GET"
+        
+        let session = URLSession.shared;
+        let dataTask = session.dataTask(with: peticion, completionHandler:
+        {(datos: Data?, respuesta: URLResponse?, error: Error?) in
+            do {
+                try datos?.write(to: toFile)
+            } catch {
+                NSLog("Error downloading file \(error)")
+            }
         })
         dataTask.resume();
     }

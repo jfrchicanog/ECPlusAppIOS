@@ -64,4 +64,16 @@ extension PalabraEntity {
     @objc(removeHashes:)
     @NSManaged public func removeFromHashes(_ values: NSSet)
 
+    func getHash(for resolution: Resolution) -> HashPalabra? {
+        if let hashSet = hashes {
+            for h in hashSet {
+                let hh = h as? HashPalabra
+                if hh?.resolucion == resolution.rawValue {
+                    return hh;
+                }
+            }
+        }
+        return nil;
+    }
+    
 }

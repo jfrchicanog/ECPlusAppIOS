@@ -24,9 +24,17 @@ class MainPagedViewController: UIPageViewController, UIPageViewControllerDataSou
             instantiateViewController(withIdentifier: "DocumentosViewController") as! UINavigationController;
         (comunicacion.topViewController as! SindromeViewController).tipoDocumento = .GENERALIDAD;
         
-        paneles = [sindromes, comunicacion];
+        let palabras = UIStoryboard(name: "Main", bundle: nil) .
+            instantiateViewController(withIdentifier: "PalabrasViewController") as! UINavigationController;
+        (palabras.topViewController as! PalabraViewController).avanzadas = false;
         
-        setViewControllers([sindromes],
+        let avanzadas = UIStoryboard(name: "Main", bundle: nil) .
+            instantiateViewController(withIdentifier: "PalabrasViewController") as! UINavigationController;
+        (avanzadas.topViewController as! PalabraViewController).avanzadas = true;
+        
+        paneles = [palabras, avanzadas, sindromes, comunicacion];
+        
+        setViewControllers([palabras],
                            direction: .forward,
                            animated: true,
                            completion: nil)

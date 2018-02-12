@@ -40,4 +40,15 @@ extension RecursoAudioVisual {
     @objc(removeFicheros:)
     @NSManaged public func removeFromFicheros(_ values: NSSet)
 
+    func getFichero(for resolution: Resolution) -> Fichero? {
+        if let ficheroSet = ficheros {
+            for h in ficheroSet {
+                let hh = h as? Fichero
+                if hh?.resolucion == resolution.rawValue {
+                    return hh;
+                }
+            }
+        }
+        return nil;
+    }
 }

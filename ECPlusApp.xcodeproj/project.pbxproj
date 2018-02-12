@@ -12,6 +12,7 @@
 		1507DBE01F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1507DBDE1F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld */; };
 		1507DBE21F2AB2AC0056A72F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1507DBE11F2AB2AC0056A72F /* Assets.xcassets */; };
 		1507DBE51F2AB2AC0056A72F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1507DBE31F2AB2AC0056A72F /* LaunchScreen.storyboard */; };
+		1526827920302E5F00CDEEA5 /* ResourceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526827820302E5F00CDEEA5 /* ResourceStore.swift */; };
 		1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557FE2B1FA156E300B652E2 /* Sindrome.swift */; };
 		157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157EACEE1FA150A4000068C2 /* SindromeContentView.swift */; };
 		158081151F9FFED800AFEF3E /* SindromeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158081141F9FFED800AFEF3E /* SindromeViewController.swift */; };
@@ -21,6 +22,8 @@
 		15AB8254200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8250200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift */; };
 		15AB8255200D79CF001ECC70 /* ListaSindromes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8251200D79CF001ECC70 /* ListaSindromes+CoreDataProperties.swift */; };
 		15AB8257200D7C51001ECC70 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8256200D7C51001ECC70 /* DataController.swift */; };
+		15C5CC2F2030FBCC000F689E /* PalabraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5CC2E2030FBCC000F689E /* PalabraViewController.swift */; };
+		15C5CC3120310497000F689E /* PalabraContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5CC3020310497000F689E /* PalabraContentView.swift */; };
 		15DF1FB7200999CC0091B530 /* MainPagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */; };
 		15DF1FDE200A14270091B530 /* WSSindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDD200A14270091B530 /* WSSindrome.swift */; };
 		15DF1FE0200A14680091B530 /* WSSindromeImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */; };
@@ -60,6 +63,7 @@
 		1507DBE11F2AB2AC0056A72F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1507DBE41F2AB2AC0056A72F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1507DBE61F2AB2AC0056A72F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1526827820302E5F00CDEEA5 /* ResourceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceStore.swift; sourceTree = "<group>"; };
 		1557FE2B1FA156E300B652E2 /* Sindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sindrome.swift; sourceTree = "<group>"; };
 		157EACEE1FA150A4000068C2 /* SindromeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SindromeContentView.swift; sourceTree = "<group>"; };
 		158081141F9FFED800AFEF3E /* SindromeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SindromeViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 		15AB8250200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListaSindromes+CoreDataClass.swift"; sourceTree = "<group>"; };
 		15AB8251200D79CF001ECC70 /* ListaSindromes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListaSindromes+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		15AB8256200D7C51001ECC70 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		15C5CC2E2030FBCC000F689E /* PalabraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalabraViewController.swift; sourceTree = "<group>"; };
+		15C5CC3020310497000F689E /* PalabraContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalabraContentView.swift; sourceTree = "<group>"; };
 		15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagedViewController.swift; sourceTree = "<group>"; };
 		15DF1FDD200A14270091B530 /* WSSindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindrome.swift; sourceTree = "<group>"; };
 		15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindromeImpl.swift; sourceTree = "<group>"; };
@@ -186,6 +192,8 @@
 				158081141F9FFED800AFEF3E /* SindromeViewController.swift */,
 				157EACEE1FA150A4000068C2 /* SindromeContentView.swift */,
 				15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */,
+				15C5CC2E2030FBCC000F689E /* PalabraViewController.swift */,
+				15C5CC3020310497000F689E /* PalabraContentView.swift */,
 			);
 			path = Controladores;
 			sourceTree = "<group>";
@@ -223,6 +231,7 @@
 				15F1D659200DFF7700C7C041 /* DatabaseUpdate.swift */,
 				15F1D67C200E77BF00C7C041 /* UpdateEvent.swift */,
 				15F1D67E200EB16E00C7C041 /* UpdateCoordinator.swift */,
+				1526827820302E5F00CDEEA5 /* ResourceStore.swift */,
 			);
 			path = UpdateService;
 			sourceTree = "<group>";
@@ -301,9 +310,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1526827920302E5F00CDEEA5 /* ResourceStore.swift in Sources */,
 				1507DBD81F2AB2AC0056A72F /* AppDelegate.swift in Sources */,
 				15AB8252200D79CF001ECC70 /* SindromeEntity+CoreDataClass.swift in Sources */,
 				157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */,
+				15C5CC3120310497000F689E /* PalabraContentView.swift in Sources */,
 				15F1D683200EC92C00C7C041 /* WSPalabra.swift in Sources */,
 				15F1D6DA20116B4100C7C041 /* Fichero+CoreDataClass.swift in Sources */,
 				15F1D6DE20116B4100C7C041 /* RecursoAudioVisual+CoreDataClass.swift in Sources */,
@@ -318,6 +329,7 @@
 				15F1D6DF20116B4100C7C041 /* RecursoAudioVisual+CoreDataProperties.swift in Sources */,
 				158224EB2009861600DD12BA /* DAOSindrome.swift in Sources */,
 				15F1D6D620116B4100C7C041 /* HashListaPalabras+CoreDataClass.swift in Sources */,
+				15C5CC2F2030FBCC000F689E /* PalabraViewController.swift in Sources */,
 				15DF1FE0200A14680091B530 /* WSSindromeImpl.swift in Sources */,
 				15F1D6E720116B6D00C7C041 /* DAOPalabra.swift in Sources */,
 				15F1D6DB20116B4100C7C041 /* Fichero+CoreDataProperties.swift in Sources */,
@@ -412,7 +424,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -462,7 +474,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

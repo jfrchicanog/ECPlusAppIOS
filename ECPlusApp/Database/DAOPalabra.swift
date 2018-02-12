@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DAOPalabra {
-    func getHashForListOfWords(language: String, resolucion: Resolution) -> String
+    func getHashForListOfWords(language: String, resolucion: Resolution) -> String?
     func removeAllResourcesForWordsList(language: String, resolution: Resolution)
     func createListOfWords(language: String)
     func getWords(language: String, resolution: Resolution) -> [PalabraEntity]
