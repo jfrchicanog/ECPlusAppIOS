@@ -19,4 +19,5 @@ protocol DAOPalabra {
     func setHashForListOfWords(language: String, resolution: Resolution, hash: String)
     func removeWord(word: PalabraEntity)
     func getAllHashes() -> [String]
+    func save()
 }

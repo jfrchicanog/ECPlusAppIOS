@@ -44,14 +44,6 @@ class SindromeViewController: UIViewController, UITableViewDataSource, UpdateSer
     
     func cargaDatos() {
         self.refrescarDatos()
-
-        if let hash = daoSindrome.getHashForListOfSyndromes(language: "es") {
-            NSLog(hash);
-        }
-                
-        let fm = FileManager.default;
-        let url = fm.urls(for: .documentDirectory, in: .allDomainsMask)
-        NSLog("URL: " + url.last!.description)
     }
     
     override func viewDidLoad() {
@@ -60,7 +52,7 @@ class SindromeViewController: UIViewController, UITableViewDataSource, UpdateSer
             case .GENERALIDAD:
                 self.navigationItem.title = "Comunicación"
             case .SINDROME:
-                self.navigationItem.title = "Síndrome"
+                self.navigationItem.title = "Síndromes"
             }
         }
         UpdateCoordinator.coordinator.addListener(listener: self)

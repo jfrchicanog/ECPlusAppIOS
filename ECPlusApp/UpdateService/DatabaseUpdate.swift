@@ -9,8 +9,8 @@
 import Foundation
 
 class DatabaseUpdate {
-    let daoSindrome : DAOSindrome = DAOSindromeDatabase()
-    let daoPalabra : DAOPalabra = DAOPalabraImpl()
+    let daoSindrome : DAOSindrome = DAOFactory.getDAOSindrome()
+    let daoPalabra : DAOPalabra = DAOFactory.getDAOPalabra()
     let wsSindrome : WSSindrome = WSSindromeImpl()
     let wsPalabra : WSPalabra = WSPalabraImpl()
     let updateServiceCoordinator = UpdateCoordinator.coordinator;

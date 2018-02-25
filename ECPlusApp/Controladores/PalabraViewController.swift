@@ -12,7 +12,7 @@ import UIKit
 class PalabraViewController : UIViewController, UITableViewDataSource, UpdateServiceListener {
     var elementos : [PalabraEntity] = []
     var avanzadas : Bool = false
-    let daoPalabra: DAOPalabra = DAOPalabraImpl();
+    let daoPalabra: DAOPalabra = DAOFactory.getDAOPalabra()
     @IBOutlet weak var tabla: UITableView!
     
     func onUpdateEvent(event: UpdateEvent) {
