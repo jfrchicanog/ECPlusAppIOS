@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import AVFoundation
+import SVGKit
 
 class PalabraContentView : UIViewController, UICollectionViewDataSource {
     var palabra : PalabraEntity?
@@ -33,6 +34,9 @@ class PalabraContentView : UIViewController, UICollectionViewDataSource {
             (cell?.viewWithTag(1) as! UIImageView).image = UIImage(contentsOfFile: url.path)
         } else if recurso.tipo == TipoRecurso.pictograma.rawValue {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "picture", for: indexPath)
+            let url = resourceStore.getFileResource(for: recurso.getFichero(for: Resolution.baja)!.hashvalue!)
+            let anSVGImage: SVGKImage = SVGKImage(contentsOf: url)
+            (cell?.viewWithTag(1) as! UIImageView).image = anSVGImage.uiImage
             /*let url = resourceStore.getFileResource(for: recurso.getFichero(for: Resolution.baja)!.hashvalue!)
             (cell?.viewWithTag(1) as! UIImageView).image = UIImage(contentsOfFile: url.path)*/
         } else {
