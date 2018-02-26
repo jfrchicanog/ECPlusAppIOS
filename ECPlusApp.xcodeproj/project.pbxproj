@@ -27,7 +27,6 @@
 		15DF1FB7200999CC0091B530 /* MainPagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */; };
 		15DF1FDE200A14270091B530 /* WSSindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDD200A14270091B530 /* WSSindrome.swift */; };
 		15DF1FE0200A14680091B530 /* WSSindromeImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */; };
-		15EB76152043EF67000DF187 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15EB76142043EF67000DF187 /* SVGKit.framework */; };
 		15F1D655200DF20A00C7C041 /* DAOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1D654200DF20A00C7C041 /* DAOFactory.swift */; };
 		15F1D657200DF2A400C7C041 /* DAOSindromeDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1D656200DF2A400C7C041 /* DAOSindromeDatabase.swift */; };
 		15F1D65A200DFF7700C7C041 /* DatabaseUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1D659200DFF7700C7C041 /* DatabaseUpdate.swift */; };
@@ -115,7 +114,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15EB76152043EF67000DF187 /* SVGKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
