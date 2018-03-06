@@ -12,19 +12,19 @@
 		1507DBE01F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1507DBDE1F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld */; };
 		1507DBE21F2AB2AC0056A72F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1507DBE11F2AB2AC0056A72F /* Assets.xcassets */; };
 		1507DBE51F2AB2AC0056A72F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1507DBE31F2AB2AC0056A72F /* LaunchScreen.storyboard */; };
-		151CCDB9204E1687007FAFE3 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDB8204E1687007FAFE3 /* SVGKit.framework */; };
 		151CCDBB204E17CF007FAFE3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDBA204E17CF007FAFE3 /* CoreText.framework */; };
 		151CCDBD204E17D4007FAFE3 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDBC204E17D4007FAFE3 /* CoreImage.framework */; };
 		151CCDBF204E17E4007FAFE3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDBE204E17E4007FAFE3 /* UIKit.framework */; };
 		151CCDC1204E17ED007FAFE3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDC0204E17EC007FAFE3 /* QuartzCore.framework */; };
 		151CCDC3204E17FE007FAFE3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDC2204E17FE007FAFE3 /* CoreGraphics.framework */; };
 		151CCDC5204E1810007FAFE3 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDC4204E1810007FAFE3 /* libxml2.tbd */; };
-		151CCDCF204E1905007FAFE3 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDCE204E1904007FAFE3 /* CocoaLumberjack.framework */; };
-		151CCDD0204E190D007FAFE3 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDCE204E1904007FAFE3 /* CocoaLumberjack.framework */; };
-		151CCDD1204E190D007FAFE3 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDCE204E1904007FAFE3 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		151CCDD3204E192F007FAFE3 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDB8204E1687007FAFE3 /* SVGKit.framework */; };
-		151CCDD4204E192F007FAFE3 /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDB8204E1687007FAFE3 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		151CCDF9204F1728007FAFE3 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151CCDF8204F1728007FAFE3 /* PlayerView.swift */; };
+		151CCE09204F2773007FAFE3 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE08204F2772007FAFE3 /* SVGKit.framework */; };
+		151CCE0A204F2780007FAFE3 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE08204F2772007FAFE3 /* SVGKit.framework */; };
+		151CCE0B204F2780007FAFE3 /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE08204F2772007FAFE3 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		151CCE0D204F40B8007FAFE3 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE0C204F40B8007FAFE3 /* CocoaLumberjack.framework */; };
+		151CCE0E204F5699007FAFE3 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE0C204F40B8007FAFE3 /* CocoaLumberjack.framework */; };
+		151CCE0F204F5699007FAFE3 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE0C204F40B8007FAFE3 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1526827920302E5F00CDEEA5 /* ResourceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526827820302E5F00CDEEA5 /* ResourceStore.swift */; };
 		1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557FE2B1FA156E300B652E2 /* Sindrome.swift */; };
 		157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157EACEE1FA150A4000068C2 /* SindromeContentView.swift */; };
@@ -75,8 +75,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				151CCDD4204E192F007FAFE3 /* SVGKit.framework in Embed Frameworks */,
-				151CCDD1204E190D007FAFE3 /* CocoaLumberjack.framework in Embed Frameworks */,
+				151CCE0F204F5699007FAFE3 /* CocoaLumberjack.framework in Embed Frameworks */,
+				151CCE0B204F2780007FAFE3 /* SVGKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,15 +91,15 @@
 		1507DBE11F2AB2AC0056A72F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1507DBE41F2AB2AC0056A72F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1507DBE61F2AB2AC0056A72F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		151CCDB8204E1687007FAFE3 /* SVGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVGKit.framework; sourceTree = "<group>"; };
 		151CCDBA204E17CF007FAFE3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		151CCDBC204E17D4007FAFE3 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		151CCDBE204E17E4007FAFE3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		151CCDC0204E17EC007FAFE3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		151CCDC2204E17FE007FAFE3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		151CCDC4204E1810007FAFE3 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
-		151CCDCE204E1904007FAFE3 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = "<group>"; };
 		151CCDF8204F1728007FAFE3 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		151CCE08204F2772007FAFE3 /* SVGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVGKit.framework; sourceTree = "<group>"; };
+		151CCE0C204F40B8007FAFE3 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/Lumberjack-cimpayxlkxdrulbfcpidmgseokwp/Build/Products/Debug-iphoneos/CocoaLumberjack.framework"; sourceTree = "<group>"; };
 		1526827820302E5F00CDEEA5 /* ResourceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceStore.swift; sourceTree = "<group>"; };
 		1557FE2B1FA156E300B652E2 /* Sindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sindrome.swift; sourceTree = "<group>"; };
 		157EACEE1FA150A4000068C2 /* SindromeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SindromeContentView.swift; sourceTree = "<group>"; };
@@ -150,16 +150,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				151CCE09204F2773007FAFE3 /* SVGKit.framework in Frameworks */,
+				151CCE0D204F40B8007FAFE3 /* CocoaLumberjack.framework in Frameworks */,
+				151CCE0E204F5699007FAFE3 /* CocoaLumberjack.framework in Frameworks */,
 				151CCDC5204E1810007FAFE3 /* libxml2.tbd in Frameworks */,
-				151CCDD0204E190D007FAFE3 /* CocoaLumberjack.framework in Frameworks */,
-				151CCDD3204E192F007FAFE3 /* SVGKit.framework in Frameworks */,
+				151CCE0A204F2780007FAFE3 /* SVGKit.framework in Frameworks */,
 				151CCDC3204E17FE007FAFE3 /* CoreGraphics.framework in Frameworks */,
-				151CCDCF204E1905007FAFE3 /* CocoaLumberjack.framework in Frameworks */,
 				151CCDC1204E17ED007FAFE3 /* QuartzCore.framework in Frameworks */,
 				151CCDBF204E17E4007FAFE3 /* UIKit.framework in Frameworks */,
 				151CCDBD204E17D4007FAFE3 /* CoreImage.framework in Frameworks */,
 				151CCDBB204E17CF007FAFE3 /* CoreText.framework in Frameworks */,
-				151CCDB9204E1687007FAFE3 /* SVGKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,14 +204,14 @@
 		151CCDB2204E13DF007FAFE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				151CCDCE204E1904007FAFE3 /* CocoaLumberjack.framework */,
+				151CCE0C204F40B8007FAFE3 /* CocoaLumberjack.framework */,
+				151CCE08204F2772007FAFE3 /* SVGKit.framework */,
 				151CCDC4204E1810007FAFE3 /* libxml2.tbd */,
 				151CCDC2204E17FE007FAFE3 /* CoreGraphics.framework */,
 				151CCDC0204E17EC007FAFE3 /* QuartzCore.framework */,
 				151CCDBE204E17E4007FAFE3 /* UIKit.framework */,
 				151CCDBC204E17D4007FAFE3 /* CoreImage.framework */,
 				151CCDBA204E17CF007FAFE3 /* CoreText.framework */,
-				151CCDB8204E1687007FAFE3 /* SVGKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -565,6 +565,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9ELKQQ9ETT;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -587,6 +588,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 9ELKQQ9ETT;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
