@@ -107,8 +107,9 @@ class DatabaseUpdate {
             if let recursos = palabra.recursos as? Set<RecursoAudioVisual> {
                 for recurso in recursos {
                     if let fichero = recurso.getFichero(for: resolution) {
-                        if (!resourceStore.fileExists(withHash: fichero.hashvalue!)) {
-                            wsPalabra.getResource(hash: fichero.hashvalue!, toFile: resourceStore.getFileResource(for: fichero.hashvalue!))
+                        let tipo = TipoRecurso(rawValue: recurso.tipo!)!
+                        if (!resourceStore.fileExists(withHash: fichero.hashvalue!, type: tipo)) {
+                            wsPalabra.getResource(hash: fichero.hashvalue!, toFile: resourceStore.getFileResource(for: fichero.hashvalue!, type: tipo))
                         }
                     }
                 }

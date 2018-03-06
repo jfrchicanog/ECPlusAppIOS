@@ -12,6 +12,19 @@
 		1507DBE01F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1507DBDE1F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld */; };
 		1507DBE21F2AB2AC0056A72F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1507DBE11F2AB2AC0056A72F /* Assets.xcassets */; };
 		1507DBE51F2AB2AC0056A72F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1507DBE31F2AB2AC0056A72F /* LaunchScreen.storyboard */; };
+		151CCDB9204E1687007FAFE3 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDB8204E1687007FAFE3 /* SVGKit.framework */; };
+		151CCDBB204E17CF007FAFE3 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDBA204E17CF007FAFE3 /* CoreText.framework */; };
+		151CCDBD204E17D4007FAFE3 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDBC204E17D4007FAFE3 /* CoreImage.framework */; };
+		151CCDBF204E17E4007FAFE3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDBE204E17E4007FAFE3 /* UIKit.framework */; };
+		151CCDC1204E17ED007FAFE3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDC0204E17EC007FAFE3 /* QuartzCore.framework */; };
+		151CCDC3204E17FE007FAFE3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDC2204E17FE007FAFE3 /* CoreGraphics.framework */; };
+		151CCDC5204E1810007FAFE3 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDC4204E1810007FAFE3 /* libxml2.tbd */; };
+		151CCDCF204E1905007FAFE3 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDCE204E1904007FAFE3 /* CocoaLumberjack.framework */; };
+		151CCDD0204E190D007FAFE3 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDCE204E1904007FAFE3 /* CocoaLumberjack.framework */; };
+		151CCDD1204E190D007FAFE3 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDCE204E1904007FAFE3 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		151CCDD3204E192F007FAFE3 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDB8204E1687007FAFE3 /* SVGKit.framework */; };
+		151CCDD4204E192F007FAFE3 /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDB8204E1687007FAFE3 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		151CCDF9204F1728007FAFE3 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151CCDF8204F1728007FAFE3 /* PlayerView.swift */; };
 		1526827920302E5F00CDEEA5 /* ResourceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526827820302E5F00CDEEA5 /* ResourceStore.swift */; };
 		1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557FE2B1FA156E300B652E2 /* Sindrome.swift */; };
 		157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157EACEE1FA150A4000068C2 /* SindromeContentView.swift */; };
@@ -55,6 +68,21 @@
 		15F1D6E920116D1100C7C041 /* DAOPalabraImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1D6E820116D1100C7C041 /* DAOPalabraImpl.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		151CCDD2204E190D007FAFE3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				151CCDD4204E192F007FAFE3 /* SVGKit.framework in Embed Frameworks */,
+				151CCDD1204E190D007FAFE3 /* CocoaLumberjack.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1507DBD41F2AB2AC0056A72F /* ECPlusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ECPlusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1507DBD71F2AB2AC0056A72F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +91,15 @@
 		1507DBE11F2AB2AC0056A72F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1507DBE41F2AB2AC0056A72F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1507DBE61F2AB2AC0056A72F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		151CCDB8204E1687007FAFE3 /* SVGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVGKit.framework; sourceTree = "<group>"; };
+		151CCDBA204E17CF007FAFE3 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		151CCDBC204E17D4007FAFE3 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		151CCDBE204E17E4007FAFE3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		151CCDC0204E17EC007FAFE3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		151CCDC2204E17FE007FAFE3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		151CCDC4204E1810007FAFE3 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		151CCDCE204E1904007FAFE3 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = "<group>"; };
+		151CCDF8204F1728007FAFE3 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		1526827820302E5F00CDEEA5 /* ResourceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceStore.swift; sourceTree = "<group>"; };
 		1557FE2B1FA156E300B652E2 /* Sindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sindrome.swift; sourceTree = "<group>"; };
 		157EACEE1FA150A4000068C2 /* SindromeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SindromeContentView.swift; sourceTree = "<group>"; };
@@ -79,7 +116,6 @@
 		15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagedViewController.swift; sourceTree = "<group>"; };
 		15DF1FDD200A14270091B530 /* WSSindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindrome.swift; sourceTree = "<group>"; };
 		15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindromeImpl.swift; sourceTree = "<group>"; };
-		15EB76142043EF67000DF187 /* SVGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVGKit.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/SVGKit-iOS-gjkobztuqkdrgvflbejmilzqcppk/Build/Products/Debug-iphoneos/SVGKit.framework"; sourceTree = "<group>"; };
 		15EB76162043EF9E000DF187 /* bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridging-header.h"; sourceTree = "<group>"; };
 		15F1D654200DF20A00C7C041 /* DAOFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOFactory.swift; sourceTree = "<group>"; };
 		15F1D656200DF2A400C7C041 /* DAOSindromeDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOSindromeDatabase.swift; sourceTree = "<group>"; };
@@ -114,6 +150,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				151CCDC5204E1810007FAFE3 /* libxml2.tbd in Frameworks */,
+				151CCDD0204E190D007FAFE3 /* CocoaLumberjack.framework in Frameworks */,
+				151CCDD3204E192F007FAFE3 /* SVGKit.framework in Frameworks */,
+				151CCDC3204E17FE007FAFE3 /* CoreGraphics.framework in Frameworks */,
+				151CCDCF204E1905007FAFE3 /* CocoaLumberjack.framework in Frameworks */,
+				151CCDC1204E17ED007FAFE3 /* QuartzCore.framework in Frameworks */,
+				151CCDBF204E17E4007FAFE3 /* UIKit.framework in Frameworks */,
+				151CCDBD204E17D4007FAFE3 /* CoreImage.framework in Frameworks */,
+				151CCDBB204E17CF007FAFE3 /* CoreText.framework in Frameworks */,
+				151CCDB9204E1687007FAFE3 /* SVGKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +171,7 @@
 			children = (
 				1507DBD61F2AB2AC0056A72F /* ECPlusApp */,
 				1507DBD51F2AB2AC0056A72F /* Products */,
-				15EB76142043EF67000DF187 /* SVGKit.framework */,
+				151CCDB2204E13DF007FAFE3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +199,21 @@
 				15EB76162043EF9E000DF187 /* bridging-header.h */,
 			);
 			path = ECPlusApp;
+			sourceTree = "<group>";
+		};
+		151CCDB2204E13DF007FAFE3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				151CCDCE204E1904007FAFE3 /* CocoaLumberjack.framework */,
+				151CCDC4204E1810007FAFE3 /* libxml2.tbd */,
+				151CCDC2204E17FE007FAFE3 /* CoreGraphics.framework */,
+				151CCDC0204E17EC007FAFE3 /* QuartzCore.framework */,
+				151CCDBE204E17E4007FAFE3 /* UIKit.framework */,
+				151CCDBC204E17D4007FAFE3 /* CoreImage.framework */,
+				151CCDBA204E17CF007FAFE3 /* CoreText.framework */,
+				151CCDB8204E1687007FAFE3 /* SVGKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		158224E820097E5400DD12BA /* WebService */ = {
@@ -198,6 +259,7 @@
 				15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */,
 				15C5CC2E2030FBCC000F689E /* PalabraViewController.swift */,
 				15C5CC3020310497000F689E /* PalabraContentView.swift */,
+				151CCDF8204F1728007FAFE3 /* PlayerView.swift */,
 			);
 			path = Controladores;
 			sourceTree = "<group>";
@@ -250,6 +312,7 @@
 				1507DBD01F2AB2AC0056A72F /* Sources */,
 				1507DBD11F2AB2AC0056A72F /* Frameworks */,
 				1507DBD21F2AB2AC0056A72F /* Resources */,
+				151CCDD2204E190D007FAFE3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -272,7 +335,7 @@
 				TargetAttributes = {
 					1507DBD31F2AB2AC0056A72F = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5S6AD554GY;
+						DevelopmentTeam = 9ELKQQ9ETT;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -322,6 +385,7 @@
 				1526827920302E5F00CDEEA5 /* ResourceStore.swift in Sources */,
 				1507DBD81F2AB2AC0056A72F /* AppDelegate.swift in Sources */,
 				15AB8252200D79CF001ECC70 /* SindromeEntity+CoreDataClass.swift in Sources */,
+				151CCDF9204F1728007FAFE3 /* PlayerView.swift in Sources */,
 				157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */,
 				15C5CC3120310497000F689E /* PalabraContentView.swift in Sources */,
 				15F1D683200EC92C00C7C041 /* WSPalabra.swift in Sources */,
@@ -500,7 +564,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5S6AD554GY;
+				DEVELOPMENT_TEAM = 9ELKQQ9ETT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -511,7 +575,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ECPlusApp",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = es.uma.ecplusproject.ECPlusApp;
+				PRODUCT_BUNDLE_IDENTIFIER = es.franciscochicano.ecplusproject.ECPlusApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -522,7 +586,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5S6AD554GY;
+				DEVELOPMENT_TEAM = 9ELKQQ9ETT;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -533,7 +597,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/ECPlusApp",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = es.uma.ecplusproject.ECPlusApp;
+				PRODUCT_BUNDLE_IDENTIFIER = es.franciscochicano.ecplusproject.ECPlusApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;

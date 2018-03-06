@@ -28,12 +28,17 @@ class ResourceStore {
         }
     }
     
-    func getFileResource(for hash: String) -> URL {
-        return dirURL.appendingPathComponent(hash.lowercased())
+    func getFileResource(for hash: String, type: TipoRecurso) -> URL {
+        let url = dirURL.appendingPathComponent(hash.lowercased())
+        if type == TipoRecurso.video {
+            return url.appendingPathExtension("mp4")
+        } else {
+            return url
+        }
     }
     
-    func fileExists(withHash: String) -> Bool {
-        return fm.fileExists(atPath: getFileResource(for: withHash).absoluteString)
+    func fileExists(withHash: String, type: TipoRecurso) -> Bool {
+        return fm.fileExists(atPath: getFileResource(for: withHash, type: type).absoluteString)
     }
     
     func getAllFileResourcesInStore() -> [URL] {

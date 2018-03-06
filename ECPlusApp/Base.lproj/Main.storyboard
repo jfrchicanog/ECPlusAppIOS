@@ -253,16 +253,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="367" height="161"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="movie" translatesAutoresizingMaskIntoConstraints="NO" id="cRa-Ss-j0g">
+                                                <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sMa-8a-SsM" customClass="PlayerView" customModule="ECPlusApp" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="367" height="161"/>
-                                                </imageView>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="cRa-Ss-j0g" secondAttribute="bottom" id="9vG-mu-Ypd"/>
-                                            <constraint firstAttribute="trailing" secondItem="cRa-Ss-j0g" secondAttribute="trailing" id="GKe-cX-fTe"/>
-                                            <constraint firstItem="cRa-Ss-j0g" firstAttribute="leading" secondItem="TQe-we-cLl" secondAttribute="leading" id="l9G-EQ-VBW"/>
-                                            <constraint firstItem="cRa-Ss-j0g" firstAttribute="top" secondItem="TQe-we-cLl" secondAttribute="top" id="q2Q-Oy-q5S"/>
+                                            <constraint firstItem="sMa-8a-SsM" firstAttribute="top" secondItem="TQe-we-cLl" secondAttribute="top" id="Mnw-Ts-1Bz"/>
+                                            <constraint firstAttribute="bottom" secondItem="sMa-8a-SsM" secondAttribute="bottom" id="g2W-8o-6zc"/>
+                                            <constraint firstItem="sMa-8a-SsM" firstAttribute="leading" secondItem="TQe-we-cLl" secondAttribute="leading" id="o7n-al-U1O"/>
+                                            <constraint firstAttribute="trailing" secondItem="sMa-8a-SsM" secondAttribute="trailing" id="vXP-ta-UPW"/>
                                         </constraints>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" reuseIdentifier="picture" id="0xL-YF-2jR">
@@ -310,6 +311,5 @@
     </scenes>
     <resources>
         <image name="logo" width="512" height="512"/>
-        <image name="movie" width="643" height="720"/>
     </resources>
 </document>

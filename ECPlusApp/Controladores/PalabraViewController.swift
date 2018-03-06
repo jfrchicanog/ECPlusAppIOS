@@ -16,7 +16,10 @@ class PalabraViewController : UIViewController, UITableViewDataSource, UpdateSer
     @IBOutlet weak var tabla: UITableView!
     
     func onUpdateEvent(event: UpdateEvent) {
-        // TODO
+        if event.action! == UpdateEventAction.stopDatabase && event.somethingChanged! {
+            NSLog("Here I am")
+            OperationQueue.main.addOperation({self.refrescarDatos()})
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -9,13 +9,16 @@
 import Foundation
 import UIKit
 import AVFoundation
-//import SVGKit
+import SVGKit
+import AVKit
+import AVFoundation
 
 class PalabraContentView : UIViewController, UICollectionViewDataSource {
     var palabra : PalabraEntity?
     @IBOutlet weak var collectionView: UICollectionView!
     var recursos : [RecursoAudioVisual] = []
     let resourceStore = ResourceStore()
+    var players : [UIGestureRecognizer:AVPlayer] = [:]
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return recursos.count
@@ -26,17 +29,24 @@ class PalabraContentView : UIViewController, UICollectionViewDataSource {
         var cell : UICollectionViewCell?
         if recurso.tipo == TipoRecurso.video.rawValue {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "video", for: indexPath)
+            let url = resourceStore.getFileResource(for: recurso.getFichero(for: Resolution.baja)!.hashvalue!, type: TipoRecurso.video)
+            let player = AVPlayer(url: url)
+            (cell?.viewWithTag(1) as! PlayerView).player = player
+            player.seek(to: CMTime(seconds: 30, preferredTimescale: 60))
             
+            let tapGR = UITapGestureRecognizer(target: self, action: #selector(playVideo(_:)))
+            players[tapGR] = player
+            cell?.addGestureRecognizer(tapGR)
             
         } else if recurso.tipo == TipoRecurso.foto.rawValue{
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "picture", for: indexPath)
-            let url = resourceStore.getFileResource(for: recurso.getFichero(for: Resolution.baja)!.hashvalue!)
+            let url = resourceStore.getFileResource(for: recurso.getFichero(for: Resolution.baja)!.hashvalue!, type: TipoRecurso.foto)
             (cell?.viewWithTag(1) as! UIImageView).image = UIImage(contentsOfFile: url.path)
         } else if recurso.tipo == TipoRecurso.pictograma.rawValue {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "picture", for: indexPath)
-            let url = resourceStore.getFileResource(for: recurso.getFichero(for: Resolution.baja)!.hashvalue!)
-            /*let anSVGImage: SVGKImage = SVGKImage(contentsOf: url)
-            (cell?.viewWithTag(1) as! UIImageView).image = anSVGImage.uiImage*/
+            let url = resourceStore.getFileResource(for: recurso.getFichero(for: Resolution.baja)!.hashvalue!, type: TipoRecurso.pictograma)
+            let anSVGImage: SVGKImage = SVGKImage(contentsOf: url)
+            (cell?.viewWithTag(1) as! UIImageView).image = anSVGImage.uiImage
             /*let url = resourceStore.getFileResource(for: recurso.getFichero(for: Resolution.baja)!.hashvalue!)
             (cell?.viewWithTag(1) as! UIImageView).image = UIImage(contentsOfFile: url.path)*/
         } else {
@@ -44,7 +54,13 @@ class PalabraContentView : UIViewController, UICollectionViewDataSource {
         }
         return cell!
     }
-
+    
+    @objc func playVideo(_ sender: UITapGestureRecognizer) {
+        let player = players[sender]!
+        player.seek(to: CMTime(seconds: 0, preferredTimescale: 60))
+        player.play()
+    }
+    
     override func viewDidLoad() {
         recursos = Array((palabra?.recursos as! Set<RecursoAudioVisual>)).sorted(by: {(r1, r2) in
             if r1.tipo! == r2.tipo! {

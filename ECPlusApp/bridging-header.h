@@ -9,7 +9,7 @@
 #ifndef bridging_header_h
 #define bridging_header_h
 
-//#import <SVGKit/SVGKit.h>
-//#import <SVGKit/SVGKImage.h>
+#import <SVGKit/SVGKit.h>
+#import <SVGKit/SVGKImage.h>
 
 #endif /* bridging_header_h */
