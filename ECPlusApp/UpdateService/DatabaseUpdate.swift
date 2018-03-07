@@ -47,7 +47,7 @@ class DatabaseUpdate {
                     self.daoPalabra.createListOfWords(language: language)
                 }
                 self.updateLocalWordList(language: language, resolution: resolution, remoteHash: hashRemote!,completion: {
-                    //self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateWordsEvent(databaseChanged: true))
+                    self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateWordsEvent(databaseChanged: true))
                     
                     self.removeUnusedFiles();
                     self.updateFiles(language: language, resolution: resolution);
@@ -108,9 +108,7 @@ class DatabaseUpdate {
                 for recurso in recursos {
                     if let fichero = recurso.getFichero(for: resolution) {
                         let tipo = TipoRecurso(rawValue: recurso.tipo!)!
-                        if (!resourceStore.fileExists(withHash: fichero.hashvalue!, type: tipo)) {
-                            wsPalabra.getResource(hash: fichero.hashvalue!, toFile: resourceStore.getFileResource(for: fichero.hashvalue!, type: tipo))
-                        }
+                        wsPalabra.getResource(hash: fichero.hashvalue!, toFile: resourceStore.getFileResource(for: fichero.hashvalue!, type: tipo))
                     }
                 }
             }

@@ -29,26 +29,36 @@ class PalabraContentView : UIViewController, UICollectionViewDataSource {
         var cell : UICollectionViewCell?
         if recurso.tipo == TipoRecurso.video.rawValue {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "video", for: indexPath)
-            let url = resourceStore.getFileResource(for: recurso.getFichero(for: Resolution.baja)!.hashvalue!, type: TipoRecurso.video)
-            let player = AVPlayer(url: url)
-            (cell?.viewWithTag(1) as! PlayerView).player = player
-            player.seek(to: CMTime(seconds: 30, preferredTimescale: 60))
-            
-            let tapGR = UITapGestureRecognizer(target: self, action: #selector(playVideo(_:)))
-            players[tapGR] = player
-            cell?.addGestureRecognizer(tapGR)
+            let hash = recurso.getFichero(for: Resolution.baja)!.hashvalue!
+            if resourceStore.fileExists(withHash: hash, type: TipoRecurso.video) {
+                let url = resourceStore.getFileResource(for: hash, type: TipoRecurso.video)
+                
+                let player = AVPlayer(url: url)
+                (cell?.viewWithTag(1) as! PlayerView).player = player
+                player.seek(to: CMTime(seconds: 30, preferredTimescale: 60))
+                
+                let tapGR = UITapGestureRecognizer(target: self, action: #selector(playVideo(_:)))
+                players[tapGR] = player
+                cell?.addGestureRecognizer(tapGR)
+            } else {
+                NSLog("El fichero: \(hash) no existe")
+            }
             
         } else if recurso.tipo == TipoRecurso.foto.rawValue{
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "picture", for: indexPath)
-            let url = resourceStore.getFileResource(for: recurso.getFichero(for: Resolution.baja)!.hashvalue!, type: TipoRecurso.foto)
-            (cell?.viewWithTag(1) as! UIImageView).image = UIImage(contentsOfFile: url.path)
+            let hash = recurso.getFichero(for: Resolution.baja)!.hashvalue!
+            if resourceStore.fileExists(withHash: hash, type: TipoRecurso.foto) {
+                let url = resourceStore.getFileResource(for: hash, type: TipoRecurso.foto)
+                (cell?.viewWithTag(1) as! UIImageView).image = UIImage(contentsOfFile: url.path)
+            }
         } else if recurso.tipo == TipoRecurso.pictograma.rawValue {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "picture", for: indexPath)
-            let url = resourceStore.getFileResource(for: recurso.getFichero(for: Resolution.baja)!.hashvalue!, type: TipoRecurso.pictograma)
-            let anSVGImage: SVGKImage = SVGKImage(contentsOf: url)
-            (cell?.viewWithTag(1) as! UIImageView).image = anSVGImage.uiImage
-            /*let url = resourceStore.getFileResource(for: recurso.getFichero(for: Resolution.baja)!.hashvalue!)
-            (cell?.viewWithTag(1) as! UIImageView).image = UIImage(contentsOfFile: url.path)*/
+            let hash = recurso.getFichero(for: Resolution.baja)!.hashvalue!
+            if resourceStore.fileExists(withHash: hash, type: TipoRecurso.pictograma) {
+                let url = resourceStore.getFileResource(for: hash, type: TipoRecurso.pictograma)
+                let anSVGImage: SVGKImage = SVGKImage(contentsOf: url)
+                (cell?.viewWithTag(1) as! UIImageView).image = anSVGImage.uiImage
+            }
         } else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "picture", for: indexPath)
         }

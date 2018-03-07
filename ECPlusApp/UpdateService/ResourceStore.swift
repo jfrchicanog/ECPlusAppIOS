@@ -20,11 +20,8 @@ class ResourceStore {
         }
         do {
             dirURL = urls[0].appendingPathComponent(subpathName)
-            if !fm.fileExists(atPath: dirURL.absoluteString) {
-                try fm.createDirectory(at: dirURL, withIntermediateDirectories: false, attributes:nil)
-            }
+            try fm.createDirectory(at: dirURL, withIntermediateDirectories: false, attributes:nil)
         } catch {
-            NSLog("Error creating directory \(error)")
         }
     }
     
@@ -38,7 +35,13 @@ class ResourceStore {
     }
     
     func fileExists(withHash: String, type: TipoRecurso) -> Bool {
-        return fm.fileExists(atPath: getFileResource(for: withHash, type: type).absoluteString)
+        do {
+            let file = try FileHandle(forReadingFrom: getFileResource(for: withHash, type: type))
+            file.closeFile()
+            return true
+        } catch {
+            return false;
+        }
     }
     
     func getAllFileResourcesInStore() -> [URL] {
