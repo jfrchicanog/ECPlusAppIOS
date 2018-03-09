@@ -11,6 +11,7 @@ import UIKit
 
 class SindromeContentView: UIViewController {
     @IBOutlet weak var webView: UIWebView!;
+    
     var sindrome: SindromeEntity?;
     
     override func viewDidLoad() {
@@ -20,5 +21,6 @@ class SindromeContentView: UIViewController {
         if (sindrome != nil) {
             webView.loadHTMLString((sindrome?.contenido!)!, baseURL: nil);
         }
+        self.navigationItem.title = sindrome?.nombre
     }
 }

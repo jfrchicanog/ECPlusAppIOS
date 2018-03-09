@@ -9,10 +9,11 @@
 import Foundation
 import UIKit
 
-class SindromeViewController: UIViewController, UITableViewDataSource, UpdateServiceListener {
+class SindromeViewController: UIViewController, UITableViewDataSource, UpdateServiceListener, UINavigationControllerDelegate {
     @IBOutlet weak var tabla: UITableView!
     let daoSindrome: DAOSindrome = DAOFactory.getDAOSindrome();
     
+    var pageViewController : MainPagedViewController? = nil
     var elementos: [SindromeEntity] = []
     var tipoDocumento: TipoDocumento? = .GENERALIDAD
     
@@ -47,6 +48,8 @@ class SindromeViewController: UIViewController, UITableViewDataSource, UpdateSer
     }
     
     override func viewDidLoad() {
+        self.navigationController?.delegate = self
+        
         if let tipo = self.tipoDocumento {
             switch (tipo) {
             case .GENERALIDAD:
@@ -73,6 +76,16 @@ class SindromeViewController: UIViewController, UITableViewDataSource, UpdateSer
         tabla.deselectRow(at: indexPath!, animated: false);
         
         contentView.sindrome = elementos[(indexPath?.item)!];
+    }
+    
+    func navigationController(_: UINavigationController, willShow: UIViewController, animated: Bool) {
+        if (willShow == self) {
+            pageViewController!.transit = true
+            NSLog("main")
+        } else {
+            pageViewController!.transit = false
+            NSLog("content")
+        }
     }
     
 }

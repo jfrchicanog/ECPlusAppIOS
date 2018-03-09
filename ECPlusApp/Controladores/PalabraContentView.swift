@@ -13,7 +13,8 @@ import SVGKit
 import AVKit
 import AVFoundation
 
-class PalabraContentView : UIViewController, UICollectionViewDataSource {
+class PalabraContentView : UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     var palabra : PalabraEntity?
     @IBOutlet weak var collectionView: UICollectionView!
     var recursos : [RecursoAudioVisual] = []
@@ -72,6 +73,9 @@ class PalabraContentView : UIViewController, UICollectionViewDataSource {
     }
     
     override func viewDidLoad() {
+        self.navigationItem.title = palabra?.nombre
+        //collectionView.delegate = self
+        
         recursos = Array((palabra?.recursos as! Set<RecursoAudioVisual>)).sorted(by: {(r1, r2) in
             if r1.tipo! == r2.tipo! {
                 return r1.id < r2.id;
@@ -87,4 +91,31 @@ class PalabraContentView : UIViewController, UICollectionViewDataSource {
         })
         collectionView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        (segue.destination as! LargeImageViewController).image = ((sender as! UICollectionViewCell).viewWithTag(1) as! UIImageView).image
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let tipo = recursos[indexPath.item].tipo
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        
+        if (tipo == TipoRecurso.video.rawValue) {
+            let totalSpace = flowLayout.sectionInset.left + flowLayout.sectionInset.right
+            let width = collectionView.bounds.width - totalSpace
+            return CGSize(width: width, height: width/16.0*9.0)
+        } else {
+            let totalSpace = flowLayout.sectionInset.left + flowLayout.sectionInset.right
+            + flowLayout.minimumInteritemSpacing
+            let width = (collectionView.bounds.width - totalSpace)/2
+            return CGSize(width: width, height: width)
+        }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.invalidateLayout()
+    }
+    
 }

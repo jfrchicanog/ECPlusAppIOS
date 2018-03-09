@@ -20,10 +20,8 @@
 		151CCDC5204E1810007FAFE3 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDC4204E1810007FAFE3 /* libxml2.tbd */; };
 		151CCDF9204F1728007FAFE3 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151CCDF8204F1728007FAFE3 /* PlayerView.swift */; };
 		151CCE09204F2773007FAFE3 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE08204F2772007FAFE3 /* SVGKit.framework */; };
-		151CCE0A204F2780007FAFE3 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE08204F2772007FAFE3 /* SVGKit.framework */; };
 		151CCE0B204F2780007FAFE3 /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE08204F2772007FAFE3 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		151CCE0D204F40B8007FAFE3 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE0C204F40B8007FAFE3 /* CocoaLumberjack.framework */; };
-		151CCE0E204F5699007FAFE3 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE0C204F40B8007FAFE3 /* CocoaLumberjack.framework */; };
 		151CCE0F204F5699007FAFE3 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE0C204F40B8007FAFE3 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1526827920302E5F00CDEEA5 /* ResourceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526827820302E5F00CDEEA5 /* ResourceStore.swift */; };
 		1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557FE2B1FA156E300B652E2 /* Sindrome.swift */; };
@@ -35,6 +33,7 @@
 		15AB8254200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8250200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift */; };
 		15AB8255200D79CF001ECC70 /* ListaSindromes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8251200D79CF001ECC70 /* ListaSindromes+CoreDataProperties.swift */; };
 		15AB8257200D7C51001ECC70 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB8256200D7C51001ECC70 /* DataController.swift */; };
+		15ABCE782051FDE500497E7A /* LargeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ABCE772051FDE500497E7A /* LargeImageViewController.swift */; };
 		15C5CC2F2030FBCC000F689E /* PalabraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5CC2E2030FBCC000F689E /* PalabraViewController.swift */; };
 		15C5CC3120310497000F689E /* PalabraContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5CC3020310497000F689E /* PalabraContentView.swift */; };
 		15DF1FB7200999CC0091B530 /* MainPagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */; };
@@ -111,6 +110,7 @@
 		15AB8250200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListaSindromes+CoreDataClass.swift"; sourceTree = "<group>"; };
 		15AB8251200D79CF001ECC70 /* ListaSindromes+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListaSindromes+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		15AB8256200D7C51001ECC70 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		15ABCE772051FDE500497E7A /* LargeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeImageViewController.swift; sourceTree = "<group>"; };
 		15C5CC2E2030FBCC000F689E /* PalabraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalabraViewController.swift; sourceTree = "<group>"; };
 		15C5CC3020310497000F689E /* PalabraContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalabraContentView.swift; sourceTree = "<group>"; };
 		15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagedViewController.swift; sourceTree = "<group>"; };
@@ -152,9 +152,7 @@
 			files = (
 				151CCE09204F2773007FAFE3 /* SVGKit.framework in Frameworks */,
 				151CCE0D204F40B8007FAFE3 /* CocoaLumberjack.framework in Frameworks */,
-				151CCE0E204F5699007FAFE3 /* CocoaLumberjack.framework in Frameworks */,
 				151CCDC5204E1810007FAFE3 /* libxml2.tbd in Frameworks */,
-				151CCE0A204F2780007FAFE3 /* SVGKit.framework in Frameworks */,
 				151CCDC3204E17FE007FAFE3 /* CoreGraphics.framework in Frameworks */,
 				151CCDC1204E17ED007FAFE3 /* QuartzCore.framework in Frameworks */,
 				151CCDBF204E17E4007FAFE3 /* UIKit.framework in Frameworks */,
@@ -260,6 +258,7 @@
 				15C5CC2E2030FBCC000F689E /* PalabraViewController.swift */,
 				15C5CC3020310497000F689E /* PalabraContentView.swift */,
 				151CCDF8204F1728007FAFE3 /* PlayerView.swift */,
+				15ABCE772051FDE500497E7A /* LargeImageViewController.swift */,
 			);
 			path = Controladores;
 			sourceTree = "<group>";
@@ -330,7 +329,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "José Francisco Chicano García";
 				TargetAttributes = {
 					1507DBD31F2AB2AC0056A72F = {
@@ -411,6 +410,7 @@
 				15F1D67F200EB16E00C7C041 /* UpdateCoordinator.swift in Sources */,
 				1507DBE01F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld in Sources */,
 				1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */,
+				15ABCE782051FDE500497E7A /* LargeImageViewController.swift in Sources */,
 				15F1D657200DF2A400C7C041 /* DAOSindromeDatabase.swift in Sources */,
 				15AB8254200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift in Sources */,
 				15F1D685200EC9B600C7C041 /* WSPalabraImpl.swift in Sources */,

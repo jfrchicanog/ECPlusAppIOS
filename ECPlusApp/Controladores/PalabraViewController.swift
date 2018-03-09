@@ -10,9 +10,11 @@ import Foundation
 import UIKit
 
 class PalabraViewController : UIViewController, UITableViewDataSource, UpdateServiceListener {
+    let daoPalabra: DAOPalabra = DAOFactory.getDAOPalabra()
+    
     var elementos : [PalabraEntity] = []
     var avanzadas : Bool = false
-    let daoPalabra: DAOPalabra = DAOFactory.getDAOPalabra()
+    var gestureRecognizers: [UIGestureRecognizer] = []
     @IBOutlet weak var tabla: UITableView!
     
     func onUpdateEvent(event: UpdateEvent) {

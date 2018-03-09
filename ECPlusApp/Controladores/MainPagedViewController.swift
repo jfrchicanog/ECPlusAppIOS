@@ -9,20 +9,34 @@
 import Foundation
 import UIKit
 
-class MainPagedViewController: UIPageViewController, UIPageViewControllerDataSource {
+class MainPagedViewController: UIPageViewController, UIPageViewControllerDataSource, UIGestureRecognizerDelegate {
     var paneles: [UIViewController] =  [];
+    var transit: Bool = true
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
     
     override func viewDidLoad() {
         self.dataSource = self;
         
+        gestureRecognizers.forEach({(gr) in
+            gr.delegate = self
+        })
+        NSLog("GRs \(gestureRecognizers.count)")
+        
         let sindromes = UIStoryboard(name: "Main", bundle: nil) .
             instantiateViewController(withIdentifier: "DocumentosViewController") as! UINavigationController;
-        // Seguramente el topViewController no exista aún y por eso falla esta parte.
-        (sindromes.topViewController as! SindromeViewController).tipoDocumento = .SINDROME;
+        let sindViewController: (SindromeViewController) =
+            (sindromes.topViewController as! SindromeViewController)
+        sindViewController.tipoDocumento = .SINDROME;
+        sindViewController.pageViewController = self
         
         let comunicacion = UIStoryboard(name: "Main", bundle: nil) .
             instantiateViewController(withIdentifier: "DocumentosViewController") as! UINavigationController;
-        (comunicacion.topViewController as! SindromeViewController).tipoDocumento = .GENERALIDAD;
+        let comViewController: SindromeViewController = (comunicacion.topViewController as! SindromeViewController)
+        comViewController.tipoDocumento = .GENERALIDAD;
+        comViewController.pageViewController = self
         
         let palabras = UIStoryboard(name: "Main", bundle: nil) .
             instantiateViewController(withIdentifier: "PalabrasViewController") as! UINavigationController;
@@ -38,6 +52,7 @@ class MainPagedViewController: UIPageViewController, UIPageViewControllerDataSou
                            direction: .forward,
                            animated: true,
                            completion: nil)
+        
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
