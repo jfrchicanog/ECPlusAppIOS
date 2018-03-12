@@ -18,7 +18,7 @@ class PalabraContentView : UIViewController, UICollectionViewDataSource, UIColle
     var palabra : PalabraEntity?
     @IBOutlet weak var collectionView: UICollectionView!
     var recursos : [RecursoAudioVisual] = []
-    let resourceStore = ResourceStore()
+    let resourceStore = ResourceStore.resourceStore
     var players : [UIGestureRecognizer:AVPlayer] = [:]
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

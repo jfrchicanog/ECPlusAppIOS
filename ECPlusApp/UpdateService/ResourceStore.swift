@@ -13,7 +13,9 @@ class ResourceStore {
     let fm : FileManager = FileManager.default
     var dirURL: URL
     
-    init () {
+    static var resourceStore: ResourceStore = ResourceStore()
+    
+    private init () {
         let urls = fm.urls(for: FileManager.SearchPathDirectory.documentDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
         guard urls.count != 0 else {
             fatalError("No document directory in local domain")

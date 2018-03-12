@@ -46,9 +46,12 @@ class MainPagedViewController: UIPageViewController, UIPageViewControllerDataSou
             instantiateViewController(withIdentifier: "PalabrasViewController") as! UINavigationController;
         (avanzadas.topViewController as! PalabraViewController).avanzadas = true;
         
-        paneles = [palabras, avanzadas, sindromes, comunicacion];
+        let pictogramas = UIStoryboard(name: "Main", bundle: nil) .
+            instantiateViewController(withIdentifier: "PictogramaViewController") as! UINavigationController;
         
-        setViewControllers([palabras],
+        paneles = [pictogramas, palabras, avanzadas, sindromes, comunicacion];
+        
+        setViewControllers([pictogramas],
                            direction: .forward,
                            animated: true,
                            completion: nil)

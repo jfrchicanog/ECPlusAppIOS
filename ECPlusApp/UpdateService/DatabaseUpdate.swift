@@ -14,7 +14,7 @@ class DatabaseUpdate {
     let wsSindrome : WSSindrome = WSSindromeImpl()
     let wsPalabra : WSPalabra = WSPalabraImpl()
     let updateServiceCoordinator = UpdateCoordinator.coordinator;
-    let resourceStore : ResourceStore = ResourceStore()
+    let resourceStore : ResourceStore = ResourceStore.resourceStore
     
     static var _databaseUpdate : DatabaseUpdate?
     

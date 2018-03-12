@@ -25,6 +25,9 @@
 		151CCE0F204F5699007FAFE3 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE0C204F40B8007FAFE3 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1526827920302E5F00CDEEA5 /* ResourceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526827820302E5F00CDEEA5 /* ResourceStore.swift */; };
 		1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557FE2B1FA156E300B652E2 /* Sindrome.swift */; };
+		156ED36120560A5900A3AFB9 /* PictogramVewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156ED36020560A5900A3AFB9 /* PictogramVewController.swift */; };
+		1571FC7D20558C3C0042704A /* CeldaTabla.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571FC7C20558C3C0042704A /* CeldaTabla.swift */; };
+		1571FC7F2055FBA20042704A /* PictogramCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571FC7E2055FBA20042704A /* PictogramCache.swift */; };
 		157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157EACEE1FA150A4000068C2 /* SindromeContentView.swift */; };
 		158081151F9FFED800AFEF3E /* SindromeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158081141F9FFED800AFEF3E /* SindromeViewController.swift */; };
 		158224EB2009861600DD12BA /* DAOSindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158224EA2009861600DD12BA /* DAOSindrome.swift */; };
@@ -101,6 +104,9 @@
 		151CCE0C204F40B8007FAFE3 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/Lumberjack-cimpayxlkxdrulbfcpidmgseokwp/Build/Products/Debug-iphoneos/CocoaLumberjack.framework"; sourceTree = "<group>"; };
 		1526827820302E5F00CDEEA5 /* ResourceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceStore.swift; sourceTree = "<group>"; };
 		1557FE2B1FA156E300B652E2 /* Sindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sindrome.swift; sourceTree = "<group>"; };
+		156ED36020560A5900A3AFB9 /* PictogramVewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramVewController.swift; sourceTree = "<group>"; };
+		1571FC7C20558C3C0042704A /* CeldaTabla.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeldaTabla.swift; sourceTree = "<group>"; };
+		1571FC7E2055FBA20042704A /* PictogramCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramCache.swift; sourceTree = "<group>"; };
 		157EACEE1FA150A4000068C2 /* SindromeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SindromeContentView.swift; sourceTree = "<group>"; };
 		158081141F9FFED800AFEF3E /* SindromeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SindromeViewController.swift; sourceTree = "<group>"; };
 		158224EA2009861600DD12BA /* DAOSindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOSindrome.swift; sourceTree = "<group>"; };
@@ -259,6 +265,8 @@
 				15C5CC3020310497000F689E /* PalabraContentView.swift */,
 				151CCDF8204F1728007FAFE3 /* PlayerView.swift */,
 				15ABCE772051FDE500497E7A /* LargeImageViewController.swift */,
+				1571FC7C20558C3C0042704A /* CeldaTabla.swift */,
+				156ED36020560A5900A3AFB9 /* PictogramVewController.swift */,
 			);
 			path = Controladores;
 			sourceTree = "<group>";
@@ -297,6 +305,7 @@
 				15F1D67C200E77BF00C7C041 /* UpdateEvent.swift */,
 				15F1D67E200EB16E00C7C041 /* UpdateCoordinator.swift */,
 				1526827820302E5F00CDEEA5 /* ResourceStore.swift */,
+				1571FC7E2055FBA20042704A /* PictogramCache.swift */,
 			);
 			path = UpdateService;
 			sourceTree = "<group>";
@@ -384,6 +393,7 @@
 				1526827920302E5F00CDEEA5 /* ResourceStore.swift in Sources */,
 				1507DBD81F2AB2AC0056A72F /* AppDelegate.swift in Sources */,
 				15AB8252200D79CF001ECC70 /* SindromeEntity+CoreDataClass.swift in Sources */,
+				156ED36120560A5900A3AFB9 /* PictogramVewController.swift in Sources */,
 				151CCDF9204F1728007FAFE3 /* PlayerView.swift in Sources */,
 				157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */,
 				15C5CC3120310497000F689E /* PalabraContentView.swift in Sources */,
@@ -395,6 +405,7 @@
 				15F1D6E220116B4100C7C041 /* UsoPalabra+CoreDataClass.swift in Sources */,
 				15F1D681200EC1BF00C7C041 /* Palabra.swift in Sources */,
 				15F1D67D200E77BF00C7C041 /* UpdateEvent.swift in Sources */,
+				1571FC7F2055FBA20042704A /* PictogramCache.swift in Sources */,
 				15F1D6D820116B4100C7C041 /* PalabraEntity+CoreDataClass.swift in Sources */,
 				15F1D6E320116B4100C7C041 /* UsoPalabra+CoreDataProperties.swift in Sources */,
 				15F1D6E420116B4100C7C041 /* ListaPalabras+CoreDataClass.swift in Sources */,
@@ -413,6 +424,7 @@
 				15ABCE782051FDE500497E7A /* LargeImageViewController.swift in Sources */,
 				15F1D657200DF2A400C7C041 /* DAOSindromeDatabase.swift in Sources */,
 				15AB8254200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift in Sources */,
+				1571FC7D20558C3C0042704A /* CeldaTabla.swift in Sources */,
 				15F1D685200EC9B600C7C041 /* WSPalabraImpl.swift in Sources */,
 				15AB8257200D7C51001ECC70 /* DataController.swift in Sources */,
 				15F1D65A200DFF7700C7C041 /* DatabaseUpdate.swift in Sources */,
