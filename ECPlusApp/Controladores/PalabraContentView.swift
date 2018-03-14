@@ -100,21 +100,41 @@ class PalabraContentView : UIViewController, UICollectionViewDataSource, UIColle
         let tipo = recursos[indexPath.item].tipo
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         
-        if (tipo == TipoRecurso.video.rawValue) {
-            let totalSpace = flowLayout.sectionInset.left + flowLayout.sectionInset.right
-            let width = collectionView.bounds.width - totalSpace
-            return CGSize(width: width, height: width/16.0*9.0)
+        if landscape() {
+            let totalSpace = flowLayout.sectionInset.top + flowLayout.sectionInset.bottom
+                + flowLayout.minimumLineSpacing
+            let height = (collectionView.bounds.height - totalSpace)/2
+            if (tipo == TipoRecurso.video.rawValue) {
+                return CGSize(width: height/9.0*16.0, height: height)
+            } else {
+                return CGSize(width: height, height: height)
+            }
         } else {
-            let totalSpace = flowLayout.sectionInset.left + flowLayout.sectionInset.right
-            + flowLayout.minimumInteritemSpacing
-            let width = (collectionView.bounds.width - totalSpace)/2
-            return CGSize(width: width, height: width)
+            if (tipo == TipoRecurso.video.rawValue) {
+                let totalSpace = flowLayout.sectionInset.left + flowLayout.sectionInset.right
+                let width = collectionView.bounds.width - totalSpace
+                return CGSize(width: width, height: width/16.0*9.0)
+            } else {
+                let totalSpace = flowLayout.sectionInset.left + flowLayout.sectionInset.right
+                    + flowLayout.minimumInteritemSpacing
+                let width = (collectionView.bounds.width - totalSpace)/2
+                return CGSize(width: width, height: width)
+            }
         }
+    }
+    
+    fileprivate func landscape() -> Bool {
+        return view.bounds.width > view.bounds.height
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        if landscape() {
+            flowLayout.scrollDirection = UICollectionViewScrollDirection.horizontal
+        } else {
+            flowLayout.scrollDirection = UICollectionViewScrollDirection.vertical
+        }
         flowLayout.invalidateLayout()
     }
     

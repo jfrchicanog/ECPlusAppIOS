@@ -60,7 +60,23 @@ class PictogramViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func refrescarDatos() {
         let listaPalabras = daoPalabra.getWords(language: "es", resolution: Resolution.baja)
-        elementos=listaPalabras.sorted(by: {$0.nombre! < $1.nombre!});
+        elementos=listaPalabras
+            .filter({palabra in
+                if let icono = palabra.icono {
+                    if icono.tipo == TipoRecurso.pictograma.rawValue {
+                        return true
+                    }
+                }
+                for recurso in palabra.recursos! {
+                    if let r = recurso as? RecursoAudioVisual {
+                        if r.tipo == TipoRecurso.pictograma.rawValue {
+                            return true
+                        }
+                    }
+                }
+                return false;
+            })
+            .sorted(by: {$0.nombre! < $1.nombre!});
         collectionView.reloadData();
         NSLog("refresco")
     }
