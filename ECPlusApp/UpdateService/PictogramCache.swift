@@ -11,12 +11,13 @@ import UIKit
 
 class PictogramCache {
     static var pictogramCache : PictogramCache = PictogramCache()
-    var map : [String:SVGKImage] = [:]
+    var map : [String:UIImage] = [:]
+    let size = CGSize(width: 75, height: 75)
     
     private init () {
     }
     
-    func getFileResource(for hash: String, type: TipoRecurso) -> SVGKImage? {
+    func getFileResource(for hash: String, type: TipoRecurso) -> UIImage? {
         if let imagen = map[hash] {
             return imagen
         } else {
@@ -24,8 +25,15 @@ class PictogramCache {
                 let url = ResourceStore.resourceStore.getFileResource(for: hash, type: type)
                 if type == TipoRecurso.pictograma {
                     let anSVGImage: SVGKImage = SVGKImage(contentsOf: url)
-                    //map[hash] = anSVGImage
-                    return anSVGImage
+                    let uiImage = SVGKExporterUIImage.export(asUIImage: anSVGImage)
+                    
+                    UIGraphicsBeginImageContext(size)
+                    uiImage?.draw(in: CGRect(origin: CGPoint.zero, size: size))
+                    let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+                    UIGraphicsEndImageContext()
+                    
+                    map[hash] = scaledImage
+                    return scaledImage
                 }
             }
             return nil

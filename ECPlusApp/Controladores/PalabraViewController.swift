@@ -33,53 +33,14 @@ class PalabraViewController : UIViewController, UITableViewDataSource, UpdateSer
         let cell = tableView.dequeueReusableCell(withIdentifier: "palabra", for: indexPath);
         let palabra = elementos[indexPath.item]
         cell.textLabel?.text = palabra.nombre;
-        if let logo = getLogoFromWord(palabra: palabra) {
+        if let logo = WordsUtility.getLogoFromWord(palabra: palabra) {
             cell.imageView?.image = logo
         } else {
             cell.imageView?.image = UIImage(named: "logo")
         }
         return cell;
     }
-    
-    func getLogoFromWord(palabra: PalabraEntity) -> UIImage? {
-        if let recurso = palabra.icono {
-            if (recurso.tipo == TipoRecurso.pictograma.rawValue) {
-                let hash = recurso.getFichero(for: Resolution.baja)!.hashvalue!
-                /*
-                let url = ResourceStore.resourceStore.getFileResource(for: hash, type: TipoRecurso.pictograma)
-                if ResourceStore.resourceStore.fileExists(withHash: hash, type: TipoRecurso.pictograma) {
-                    let anSVGImage: SVGKImage = SVGKImage(contentsOf: url)
-                    if let imagen = anSVGImage.uiImage {
-                        return imagen
-                    }
-                }*/
-                if let imagen = resourceCache.getFileResource(for: hash, type: TipoRecurso.pictograma) {
-                    return imagen.uiImage
-                }
-            }
-        }
-        for elemento in palabra.recursos! {
-            if let recurso = (elemento as? RecursoAudioVisual) {
-                if (recurso.tipo == TipoRecurso.pictograma.rawValue) {
-                    let hash = recurso.getFichero(for: Resolution.baja)!.hashvalue!
-                    /*
-                    let url = ResourceStore.resourceStore.getFileResource(for: hash, type: TipoRecurso.pictograma)
-                    if ResourceStore.resourceStore.fileExists(withHash: hash, type: TipoRecurso.pictograma) {
-                    let anSVGImage: SVGKImage = SVGKImage(contentsOf: url)
-                    if let imagen = anSVGImage.uiImage {
-                        return imagen
-                    }
-                    }*/
-                    
-                    if let imagen = resourceCache.getFileResource(for: hash, type: TipoRecurso.pictograma) {
-                        return imagen.uiImage
-                    }
-                }
-            }
-        }
-        return nil
-    }
-    
+
     func refrescarDatos() {
         let listaPalabras = daoPalabra.getWords(language: "es", resolution: Resolution.baja)
         elementos=listaPalabras.filter({$0.avanzada == self.avanzadas}).sorted(by: {$0.nombre! < $1.nombre!});

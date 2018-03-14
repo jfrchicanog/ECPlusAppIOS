@@ -31,31 +31,9 @@ class PictogramViewController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictograma", for: indexPath);
         let palabra = elementos[indexPath.item]
-        let imageView = (cell.viewWithTag(1) as? SVGKImageView)
-        imageView?.image = getLogoFromWord(palabra: palabra)
+        let imageView = (cell.viewWithTag(1) as? UIImageView)
+        imageView?.image = WordsUtility.getLogoFromWord(palabra: palabra)
         return cell;
-    }
-    
-    func getLogoFromWord(palabra: PalabraEntity) -> SVGKImage? {
-        if let recurso = palabra.icono {
-            if (recurso.tipo == TipoRecurso.pictograma.rawValue) {
-                let hash = recurso.getFichero(for: Resolution.baja)!.hashvalue!
-                if let imagen = resourceCache.getFileResource(for: hash, type: TipoRecurso.pictograma) {
-                    return imagen
-                }
-            }
-        }
-        for elemento in palabra.recursos! {
-            if let recurso = (elemento as? RecursoAudioVisual) {
-                if (recurso.tipo == TipoRecurso.pictograma.rawValue) {
-                    let hash = recurso.getFichero(for: Resolution.baja)!.hashvalue!
-                    if let imagen = resourceCache.getFileResource(for: hash, type: TipoRecurso.pictograma) {
-                        return imagen
-                    }
-                }
-            }
-        }
-        return nil
     }
     
     func refrescarDatos() {

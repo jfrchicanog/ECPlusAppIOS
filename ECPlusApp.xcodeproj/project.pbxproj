@@ -39,6 +39,7 @@
 		15ABCE782051FDE500497E7A /* LargeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ABCE772051FDE500497E7A /* LargeImageViewController.swift */; };
 		15C5CC2F2030FBCC000F689E /* PalabraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5CC2E2030FBCC000F689E /* PalabraViewController.swift */; };
 		15C5CC3120310497000F689E /* PalabraContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5CC3020310497000F689E /* PalabraContentView.swift */; };
+		15DA90692059E6B900FF1AB4 /* WordsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA90682059E6B900FF1AB4 /* WordsUtility.swift */; };
 		15DF1FB7200999CC0091B530 /* MainPagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */; };
 		15DF1FDE200A14270091B530 /* WSSindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDD200A14270091B530 /* WSSindrome.swift */; };
 		15DF1FE0200A14680091B530 /* WSSindromeImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */; };
@@ -119,6 +120,7 @@
 		15ABCE772051FDE500497E7A /* LargeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeImageViewController.swift; sourceTree = "<group>"; };
 		15C5CC2E2030FBCC000F689E /* PalabraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalabraViewController.swift; sourceTree = "<group>"; };
 		15C5CC3020310497000F689E /* PalabraContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalabraContentView.swift; sourceTree = "<group>"; };
+		15DA90682059E6B900FF1AB4 /* WordsUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsUtility.swift; sourceTree = "<group>"; };
 		15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagedViewController.swift; sourceTree = "<group>"; };
 		15DF1FDD200A14270091B530 /* WSSindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindrome.swift; sourceTree = "<group>"; };
 		15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindromeImpl.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 		1507DBD61F2AB2AC0056A72F /* ECPlusApp */ = {
 			isa = PBXGroup;
 			children = (
+				15DA90672059E69700FF1AB4 /* Util */,
 				15F1D658200DFF5F00C7C041 /* UpdateService */,
 				15DF1FB82009FE640091B530 /* Controladores */,
 				15AB8245200D774F001ECC70 /* Database */,
@@ -253,6 +256,14 @@
 				15F1D653200DF1A000C7C041 /* Domain */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		15DA90672059E69700FF1AB4 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				15DA90682059E6B900FF1AB4 /* WordsUtility.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		15DF1FB82009FE640091B530 /* Controladores */ = {
@@ -431,6 +442,7 @@
 				15F1D6DD20116B4100C7C041 /* Categoria+CoreDataProperties.swift in Sources */,
 				15DF1FDE200A14270091B530 /* WSSindrome.swift in Sources */,
 				15F1D6E920116D1100C7C041 /* DAOPalabraImpl.swift in Sources */,
+				15DA90692059E6B900FF1AB4 /* WordsUtility.swift in Sources */,
 				15DF1FB7200999CC0091B530 /* MainPagedViewController.swift in Sources */,
 				158081151F9FFED800AFEF3E /* SindromeViewController.swift in Sources */,
 				15F1D6E120116B4100C7C041 /* HashPalabra+CoreDataProperties.swift in Sources */,
