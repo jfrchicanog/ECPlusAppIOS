@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let LANGUAGE = "language"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        UserDefaults.standard.register(defaults: ["language":"cat", "resolution":Resolution.baja.rawValue])
+        UserDefaults.standard.register(defaults: ["language":"es", "resolution":Resolution.baja.rawValue])
         
         // Override point for customization after application launch.
         let audioSession = AVAudioSession.sharedInstance()

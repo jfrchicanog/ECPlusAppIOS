@@ -40,6 +40,7 @@
 		15C5CC2F2030FBCC000F689E /* PalabraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5CC2E2030FBCC000F689E /* PalabraViewController.swift */; };
 		15C5CC3120310497000F689E /* PalabraContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5CC3020310497000F689E /* PalabraContentView.swift */; };
 		15DA90692059E6B900FF1AB4 /* WordsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DA90682059E6B900FF1AB4 /* WordsUtility.swift */; };
+		15DA906B2059F8CD00FF1AB4 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 15DA906A2059F8CD00FF1AB4 /* Settings.bundle */; };
 		15DF1FB7200999CC0091B530 /* MainPagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */; };
 		15DF1FDE200A14270091B530 /* WSSindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDD200A14270091B530 /* WSSindrome.swift */; };
 		15DF1FE0200A14680091B530 /* WSSindromeImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */; };
@@ -121,6 +122,7 @@
 		15C5CC2E2030FBCC000F689E /* PalabraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalabraViewController.swift; sourceTree = "<group>"; };
 		15C5CC3020310497000F689E /* PalabraContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalabraContentView.swift; sourceTree = "<group>"; };
 		15DA90682059E6B900FF1AB4 /* WordsUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsUtility.swift; sourceTree = "<group>"; };
+		15DA906A2059F8CD00FF1AB4 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagedViewController.swift; sourceTree = "<group>"; };
 		15DF1FDD200A14270091B530 /* WSSindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindrome.swift; sourceTree = "<group>"; };
 		15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindromeImpl.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 				1507DBE61F2AB2AC0056A72F /* Info.plist */,
 				1507DBDE1F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld */,
 				15EB76162043EF9E000DF187 /* bridging-header.h */,
+				15DA906A2059F8CD00FF1AB4 /* Settings.bundle */,
 			);
 			path = ECPlusApp;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15DA906B2059F8CD00FF1AB4 /* Settings.bundle in Resources */,
 				1507DBE51F2AB2AC0056A72F /* LaunchScreen.storyboard in Resources */,
 				1507DBE21F2AB2AC0056A72F /* Assets.xcassets in Resources */,
 				1507DBDD1F2AB2AC0056A72F /* Main.storyboard in Resources */,
