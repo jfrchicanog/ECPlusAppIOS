@@ -37,7 +37,7 @@ class SindromeViewController: UIViewController, UITableViewDataSource, UpdateSer
     }
     
     func refrescarDatos() {
-        let listaSindromes = daoSindrome.getSyndromes(language: "es")
+        let listaSindromes = daoSindrome.getSyndromes(language: UserDefaults.standard.string(forKey: AppDelegate.LANGUAGE)!)
         elementos=listaSindromes.filter({$0.tipo == self.tipoDocumento!.rawValue});
         tabla.reloadData();
         NSLog("refresco")

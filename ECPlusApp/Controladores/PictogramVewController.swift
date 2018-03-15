@@ -32,12 +32,13 @@ class PictogramViewController: UIViewController, UICollectionViewDelegate, UICol
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pictograma", for: indexPath);
         let palabra = elementos[indexPath.item]
         let imageView = (cell.viewWithTag(1) as? UIImageView)
+        imageView?.contentMode = .scaleAspectFit
         imageView?.image = WordsUtility.getLogoFromWord(palabra: palabra)
         return cell;
     }
     
     func refrescarDatos() {
-        let listaPalabras = daoPalabra.getWords(language: "es", resolution: Resolution.baja)
+        let listaPalabras = daoPalabra.getWords(language: UserDefaults.standard.string(forKey: AppDelegate.LANGUAGE)!, resolution: Resolution.baja)
         elementos=listaPalabras
             .filter({palabra in
                 if let icono = palabra.icono {
@@ -70,23 +71,7 @@ class PictogramViewController: UIViewController, UICollectionViewDelegate, UICol
         
         contentView.palabra = elementos[(indexPath.item)];
     }
-    
-    /*
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
 
-        let totalSpace = flowLayout.sectionInset.left + flowLayout.sectionInset.right
-            + flowLayout.minimumInteritemSpacing
-        let width = (collectionView.bounds.width - totalSpace)/2
-        return CGSize(width: 100, height: 100)
-        
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        flowLayout.invalidateLayout()
-    }*/
     
     
 }

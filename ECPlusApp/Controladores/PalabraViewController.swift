@@ -42,7 +42,7 @@ class PalabraViewController : UIViewController, UITableViewDataSource, UpdateSer
     }
 
     func refrescarDatos() {
-        let listaPalabras = daoPalabra.getWords(language: "es", resolution: Resolution.baja)
+        let listaPalabras = daoPalabra.getWords(language: UserDefaults.standard.string(forKey: AppDelegate.LANGUAGE)!, resolution: Resolution.baja)
         elementos=listaPalabras.filter({$0.avanzada == self.avanzadas}).sorted(by: {$0.nombre! < $1.nombre!});
         tabla.reloadData();
         NSLog("refresco")

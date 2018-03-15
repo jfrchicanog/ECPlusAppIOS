@@ -15,9 +15,6 @@ class SindromeContentView: UIViewController {
     var sindrome: SindromeEntity?;
     
     override func viewDidLoad() {
-        /*let url = NSURL (string: "https://www.uma.es");
-        let request = URLRequest(url: url! as URL);
-        webView.loadRequest(request);*/
         if (sindrome != nil) {
             webView.loadHTMLString((sindrome?.contenido!)!, baseURL: nil);
         }

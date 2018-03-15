@@ -16,8 +16,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var dataController = DataController.dataController
     let daoPalabra: DAOPalabra = DAOFactory.getDAOPalabra()
+    let preferences = UserDefaults.standard
+    static let LANGUAGE = "language"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        UserDefaults.standard.register(defaults: ["language":"cat", "resolution":Resolution.baja.rawValue])
+        
         // Override point for customization after application launch.
         let audioSession = AVAudioSession.sharedInstance()
         do {
@@ -28,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         let databaseUpdate = DatabaseUpdate.getDatabaseUpdate()
-        databaseUpdate.updateSindromes(language: "es")
-        databaseUpdate.updatePalabras(language: "es", resolution: Resolution.baja)
+        databaseUpdate.updateSindromes(language: preferences.string(forKey: AppDelegate.LANGUAGE)!)
+        databaseUpdate.updatePalabras(language: preferences.string(forKey: AppDelegate.LANGUAGE)!, resolution: Resolution.baja)
         
         return true
     }

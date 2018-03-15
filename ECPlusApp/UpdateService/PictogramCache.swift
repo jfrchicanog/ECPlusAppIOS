@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AVFoundation
 import UIKit
 
 class PictogramCache {
@@ -25,10 +26,12 @@ class PictogramCache {
                 let url = ResourceStore.resourceStore.getFileResource(for: hash, type: type)
                 if type == TipoRecurso.pictograma {
                     let anSVGImage: SVGKImage = SVGKImage(contentsOf: url)
+                    
                     let uiImage = SVGKExporterUIImage.export(asUIImage: anSVGImage)
                     
                     UIGraphicsBeginImageContext(size)
-                    uiImage?.draw(in: CGRect(origin: CGPoint.zero, size: size))
+                    let rect = AVMakeRect(aspectRatio: uiImage!.size, insideRect: CGRect(origin: CGPoint.zero, size: size))
+                    uiImage?.draw(in: rect)
                     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
                     UIGraphicsEndImageContext()
                     
@@ -38,6 +41,10 @@ class PictogramCache {
             }
             return nil
         }
+    }
+    
+    func clearCache() {
+        map.removeAll()
     }
     
     func fileExists(withHash: String, type: TipoRecurso) -> Bool {
