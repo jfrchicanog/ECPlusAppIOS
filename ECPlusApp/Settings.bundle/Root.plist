@@ -17,10 +17,10 @@
 			<integer>0</integer>
 			<key>Titles</key>
 			<array>
-				<string>Español</string>
-				<string>Català</string>
-				<string>Deutsch</string>
-				<string>Nerladen</string>
+				<string>Spanish</string>
+				<string>Catalan</string>
+				<string>German</string>
+				<string>Dutch</string>
 				<string>English</string>
 			</array>
 			<key>Values</key>

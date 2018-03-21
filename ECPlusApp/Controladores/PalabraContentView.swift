@@ -60,6 +60,18 @@ class PalabraContentView : UIViewController, UICollectionViewDataSource, UIColle
                 let anSVGImage: SVGKImage = SVGKImage(contentsOf: url)
                 (cell?.viewWithTag(1) as! UIImageView).image = anSVGImage.uiImage
             }
+        } else if recurso.tipo == TipoRecurso.audio.rawValue {
+            cell = collectionView.dequeueReusableCell(withReuseIdentifier: "audio", for: indexPath)
+            let hash = recurso.getFichero(for: Resolution.baja)!.hashvalue!
+            if resourceStore.fileExists(withHash: hash, type: TipoRecurso.audio) {
+                let url = resourceStore.getFileResource(for: hash, type: TipoRecurso.audio)
+                let player = AVPlayer(url: url)
+                let tapGR = UITapGestureRecognizer(target: self, action: #selector(playAudio(_:)))
+                players[tapGR] = player
+                cell?.addGestureRecognizer(tapGR)
+            } else {
+                NSLog("File does not exist")
+            }
         } else {
             cell = collectionView.dequeueReusableCell(withReuseIdentifier: "picture", for: indexPath)
         }
@@ -70,6 +82,13 @@ class PalabraContentView : UIViewController, UICollectionViewDataSource, UIColle
         let player = players[sender]!
         player.seek(to: CMTime(seconds: 0, preferredTimescale: 60))
         player.play()
+    }
+    
+    @objc func playAudio(_ sender: UITapGestureRecognizer) {
+        let player = players[sender]!
+        player.seek(to: CMTime(seconds: 0, preferredTimescale: 60))
+        player.play()
+        NSLog("Play audio")
     }
     
     override func viewDidLoad() {

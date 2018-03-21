@@ -18,9 +18,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let daoPalabra: DAOPalabra = DAOFactory.getDAOPalabra()
     let preferences = UserDefaults.standard
     static let LANGUAGE = "language"
+    static let RESOLUTION = "resolution"
+    static let DEFAULT_LANGUAGE = "es"
+    static let DEFAULT_RESOLUTION = Resolution.baja.rawValue
+    static let SUPPORTED_LANGAUGES = ["es", "en", "nl", "de", "cat"]
 
+    fileprivate func updateDatabase() {
+        let databaseUpdate = DatabaseUpdate.getDatabaseUpdate()
+        NSLog("Updating \(String(describing: preferences.string(forKey: AppDelegate.LANGUAGE)))")
+        databaseUpdate.updateSindromes(language: preferences.string(forKey: AppDelegate.LANGUAGE)!)
+        databaseUpdate.updatePalabras(language: preferences.string(forKey: AppDelegate.LANGUAGE)!, resolution: Resolution.baja)
+    }
+    
+    fileprivate func computeDefaultLanguage() -> String {
+        let preferred  = NSLocale.preferredLanguages.filter({AppDelegate.SUPPORTED_LANGAUGES.contains($0)})
+        if preferred.isEmpty {
+            return AppDelegate.DEFAULT_LANGUAGE
+        } else {
+            return preferred.first!
+        }
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        UserDefaults.standard.register(defaults: ["language":"es", "resolution":Resolution.baja.rawValue])
+        
+        if preferences.string(forKey: AppDelegate.LANGUAGE) == nil {
+            preferences.set(computeDefaultLanguage(), forKey: AppDelegate.LANGUAGE)
+            preferences.set(AppDelegate.DEFAULT_RESOLUTION, forKey: AppDelegate.RESOLUTION)
+            
+        }
         
         // Override point for customization after application launch.
         let audioSession = AVAudioSession.sharedInstance()
@@ -30,10 +55,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         catch {
             print("Setting category to AVAudioSessionCategoryPlayback failed.")
         }
+        NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification, object: nil, queue: OperationQueue.main, using: {_ in
+            NSLog("Updating")
+            self.updateDatabase()
+        })
         
-        let databaseUpdate = DatabaseUpdate.getDatabaseUpdate()
-        databaseUpdate.updateSindromes(language: preferences.string(forKey: AppDelegate.LANGUAGE)!)
-        databaseUpdate.updatePalabras(language: preferences.string(forKey: AppDelegate.LANGUAGE)!, resolution: Resolution.baja)
+        updateDatabase()
         
         return true
     }
@@ -60,6 +87,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         dataController.saveMainContext()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
 }

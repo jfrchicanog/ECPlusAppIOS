@@ -31,6 +31,8 @@ class ResourceStore {
         let url = dirURL.appendingPathComponent(hash.lowercased())
         if type == TipoRecurso.video {
             return url.appendingPathExtension("mp4")
+        } else if type == TipoRecurso.audio {
+            return url.appendingPathExtension("mp3")
         } else {
             return url
         }

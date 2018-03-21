@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "2AZ-HB-R8I"; */
+"2AZ-HB-R8I.text" = "Título";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "TvR-HL-eKE"; */
+"TvR-HL-eKE.text" = "Título";
+
+/* Class = "UINavigationItem"; title = "Contenido"; ObjectID = "XQS-Bt-baw"; */
+"XQS-Bt-baw.title" = "Contenido";
+
+/* Class = "UINavigationItem"; title = "Palabras"; ObjectID = "mjg-7d-arM"; */
+"mjg-7d-arM.title" = "Palabras";
+
+/* Class = "UINavigationItem"; title = "Pictogramas"; ObjectID = "pbj-Y0-AgE"; */
+"pbj-Y0-AgE.title" = "Pictogramas";
+
+/* Class = "UINavigationItem"; title = "Síndromes"; ObjectID = "x3H-BI-yDb"; */
+"x3H-BI-yDb.title" = "Síndromes";

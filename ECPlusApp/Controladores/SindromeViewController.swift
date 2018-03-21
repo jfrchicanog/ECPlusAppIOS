@@ -53,12 +53,16 @@ class SindromeViewController: UIViewController, UITableViewDataSource, UpdateSer
         if let tipo = self.tipoDocumento {
             switch (tipo) {
             case .GENERALIDAD:
-                self.navigationItem.title = "Comunicación"
+                self.navigationItem.title = NSLocalizedString("CommunicationKind", comment: "Communication document")
             case .SINDROME:
-                self.navigationItem.title = "Síndromes"
+                self.navigationItem.title = NSLocalizedString("SyndromeKind", comment: "Syndrome document")
             }
         }
         UpdateCoordinator.coordinator.addListener(listener: self)
+        NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification, object: nil, queue: OperationQueue.main, using: {notification in
+            NSLog("Recibida actualización")
+            self.refrescarDatos();
+        })
         refrescarDatos();
     }
     
@@ -86,6 +90,10 @@ class SindromeViewController: UIViewController, UITableViewDataSource, UpdateSer
             pageViewController!.transit = false
             NSLog("content")
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
 }

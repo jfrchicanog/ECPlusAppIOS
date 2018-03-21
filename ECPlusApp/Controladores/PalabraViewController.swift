@@ -50,12 +50,20 @@ class PalabraViewController : UIViewController, UITableViewDataSource, UpdateSer
     
     override func viewDidLoad() {
         if avanzadas {
-            self.navigationItem.title = "Avanzadas"
+            self.navigationItem.title = NSLocalizedString("AdvancedWords", comment: "Advances words title")
         } else {
-            self.navigationItem.title = "Palabras"
+            self.navigationItem.title = NSLocalizedString("RegularWords", comment: "Regular Words title")
         }
         UpdateCoordinator.coordinator.addListener(listener: self)
+        NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification, object: nil, queue: OperationQueue.main, using: {notification in
+            self.refrescarDatos();
+        })
         refrescarDatos();
+        
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

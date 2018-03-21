@@ -24,15 +24,20 @@ class WSSindromeImpl: WSSindrome {
         var listaSindromes:[Sindrome] = [];
         let dataTask = session.dataTask(with: peticion, completionHandler:
         {(datos: Data?, respuesta: URLResponse?, error: Error?) in
-            
-            let object = try! JSONSerialization.jsonObject(with: datos!)
-            
-            let lista = object as! NSArray;
-            for elemento in lista {
-                let diccionario = elemento as! NSDictionary;
-                listaSindromes.append(Sindrome(jsonDictionary: diccionario));
+            do {    
+                if datos != nil {
+                    let object = try JSONSerialization.jsonObject(with: datos!)
+                    
+                    let lista = object as! NSArray;
+                    for elemento in lista {
+                        let diccionario = elemento as! NSDictionary;
+                        listaSindromes.append(Sindrome(jsonDictionary: diccionario));
+                    }
+                    completion(listaSindromes);
+                }
+            } catch {
+                
             }
-            completion(listaSindromes);
         })
         dataTask.resume();
     }
@@ -46,10 +51,15 @@ class WSSindromeImpl: WSSindrome {
         let session = URLSession.shared;
         let dataTask = session.dataTask(with: peticion, completionHandler:
         {(datos: Data?, respuesta: URLResponse?, error: Error?) in
-            
-            let object = try! JSONSerialization.jsonObject(with: datos!)
-            let hashContainer = object as! NSDictionary;
-            completion(hashContainer.object(forKey: "hash") as! String?);
+            do {
+                if datos != nil {
+                    let object = try JSONSerialization.jsonObject(with: datos!)
+                    let hashContainer = object as! NSDictionary;
+                    completion(hashContainer.object(forKey: "hash") as! String?);
+                }
+            } catch {
+                
+            }
         })
         dataTask.resume();
     }

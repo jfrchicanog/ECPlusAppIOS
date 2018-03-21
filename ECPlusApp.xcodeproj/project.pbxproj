@@ -25,6 +25,7 @@
 		151CCE0F204F5699007FAFE3 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE0C204F40B8007FAFE3 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1526827920302E5F00CDEEA5 /* ResourceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526827820302E5F00CDEEA5 /* ResourceStore.swift */; };
 		1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557FE2B1FA156E300B652E2 /* Sindrome.swift */; };
+		155F7B252062F04D00C8741B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 155F7B272062F04D00C8741B /* Localizable.strings */; };
 		156ED36120560A5900A3AFB9 /* PictogramVewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156ED36020560A5900A3AFB9 /* PictogramVewController.swift */; };
 		1571FC7D20558C3C0042704A /* CeldaTabla.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571FC7C20558C3C0042704A /* CeldaTabla.swift */; };
 		1571FC7F2055FBA20042704A /* PictogramCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571FC7E2055FBA20042704A /* PictogramCache.swift */; };
@@ -106,6 +107,10 @@
 		151CCE0C204F40B8007FAFE3 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "../../../../../../../Library/Developer/Xcode/DerivedData/Lumberjack-cimpayxlkxdrulbfcpidmgseokwp/Build/Products/Debug-iphoneos/CocoaLumberjack.framework"; sourceTree = "<group>"; };
 		1526827820302E5F00CDEEA5 /* ResourceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceStore.swift; sourceTree = "<group>"; };
 		1557FE2B1FA156E300B652E2 /* Sindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sindrome.swift; sourceTree = "<group>"; };
+		155F7B212062E8DB00C8741B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		155F7B222062E8DC00C8741B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		155F7B262062F04D00C8741B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		155F7B282062F05400C8741B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		156ED36020560A5900A3AFB9 /* PictogramVewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramVewController.swift; sourceTree = "<group>"; };
 		1571FC7C20558C3C0042704A /* CeldaTabla.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeldaTabla.swift; sourceTree = "<group>"; };
 		1571FC7E2055FBA20042704A /* PictogramCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramCache.swift; sourceTree = "<group>"; };
@@ -206,6 +211,7 @@
 				1507DBE61F2AB2AC0056A72F /* Info.plist */,
 				1507DBDE1F2AB2AC0056A72F /* ECPlusApp.xcdatamodeld */,
 				15EB76162043EF9E000DF187 /* bridging-header.h */,
+				155F7B272062F04D00C8741B /* Localizable.strings */,
 				15DA906A2059F8CD00FF1AB4 /* Settings.bundle */,
 			);
 			path = ECPlusApp;
@@ -391,6 +397,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				155F7B252062F04D00C8741B /* Localizable.strings in Resources */,
 				15DA906B2059F8CD00FF1AB4 /* Settings.bundle in Resources */,
 				1507DBE51F2AB2AC0056A72F /* LaunchScreen.storyboard in Resources */,
 				1507DBE21F2AB2AC0056A72F /* Assets.xcassets in Resources */,
@@ -464,6 +471,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1507DBDC1F2AB2AC0056A72F /* Base */,
+				155F7B212062E8DB00C8741B /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -472,8 +480,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				1507DBE41F2AB2AC0056A72F /* Base */,
+				155F7B222062E8DC00C8741B /* es */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		155F7B272062F04D00C8741B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				155F7B262062F04D00C8741B /* es */,
+				155F7B282062F05400C8741B /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -483,6 +501,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -541,6 +560,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

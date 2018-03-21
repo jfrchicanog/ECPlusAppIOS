@@ -25,10 +25,14 @@ class WSPalabraImpl: WSPalabra {
         let session = URLSession.shared;
         let dataTask = session.dataTask(with: peticion, completionHandler:
         {(datos: Data?, respuesta: URLResponse?, error: Error?) in
-            
-            let object = try! JSONSerialization.jsonObject(with: datos!)
-            let hashContainer = object as! NSDictionary;
-            completion(hashContainer.object(forKey: "hash") as! String?);
+            do {
+                if datos != nil {
+                    let object = try JSONSerialization.jsonObject(with: datos!)
+                    let hashContainer = object as! NSDictionary;
+                    completion(hashContainer.object(forKey: "hash") as! String?);
+                }
+            } catch {
+            }
         })
         dataTask.resume();
     }
@@ -43,15 +47,19 @@ class WSPalabraImpl: WSPalabra {
         var listaPalabras:[Palabra] = [];
         let dataTask = session.dataTask(with: peticion, completionHandler:
         {(datos: Data?, respuesta: URLResponse?, error: Error?) in
-            
-            let object = try! JSONSerialization.jsonObject(with: datos!)
-            
-            let lista = object as! NSArray;
-            for elemento in lista {
-                let diccionario = elemento as! NSDictionary;
-                listaPalabras.append(Palabra(jsonDictionary: diccionario));
+            do {
+                if datos != nil {
+                    let object = try JSONSerialization.jsonObject(with: datos!)
+                    
+                    let lista = object as! NSArray;
+                    for elemento in lista {
+                        let diccionario = elemento as! NSDictionary;
+                        listaPalabras.append(Palabra(jsonDictionary: diccionario));
+                    }
+                    completion(listaPalabras);
+                }
+            } catch {
             }
-            completion(listaPalabras);
         })
         dataTask.resume();
     }

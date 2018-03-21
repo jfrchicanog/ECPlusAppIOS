@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Síndromes-->
+        <!--Syndromes-->
         <scene sceneID="gae-Gi-ssN">
             <objects>
                 <viewController id="IE9-xV-Lud" customClass="SindromeViewController" customModule="ECPlusApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -60,7 +60,7 @@
                             <constraint firstAttribute="trailing" secondItem="RYd-Ea-J7C" secondAttribute="trailing" id="udQ-JW-NVl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Síndromes" id="x3H-BI-yDb"/>
+                    <navigationItem key="navigationItem" title="Syndromes" id="x3H-BI-yDb"/>
                     <connections>
                         <outlet property="tabla" destination="RYd-Ea-J7C" id="PHr-3q-mKn"/>
                     </connections>
@@ -69,7 +69,7 @@
             </objects>
             <point key="canvasLocation" x="-783" y="235"/>
         </scene>
-        <!--Palabras-->
+        <!--Words-->
         <scene sceneID="hkA-hQ-yIl">
             <objects>
                 <viewController id="fkI-EC-EMD" customClass="PalabraViewController" customModule="ECPlusApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -124,7 +124,7 @@
                             <constraint firstItem="391-hD-E2k" firstAttribute="leading" secondItem="pgz-lI-ZOA" secondAttribute="leading" id="zbr-A0-OYv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Palabras" id="mjg-7d-arM"/>
+                    <navigationItem key="navigationItem" title="Words" id="mjg-7d-arM"/>
                     <connections>
                         <outlet property="tabla" destination="391-hD-E2k" id="cDh-Az-dWR"/>
                     </connections>
@@ -149,7 +149,7 @@
             </objects>
             <point key="canvasLocation" x="-1575" y="1603"/>
         </scene>
-        <!--Pictogramas-->
+        <!--Pictograms-->
         <scene sceneID="UdI-9X-AXT">
             <objects>
                 <viewController id="dJ7-sw-05L" customClass="PictogramViewController" customModule="ECPlusApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -209,7 +209,7 @@
                             <constraint firstItem="IyE-ZZ-pm2" firstAttribute="bottom" secondItem="2Mj-if-TI2" secondAttribute="top" id="wJd-J4-Aaq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Pictogramas" id="pbj-Y0-AgE"/>
+                    <navigationItem key="navigationItem" title="Pictograms" id="pbj-Y0-AgE"/>
                     <connections>
                         <outlet property="collectionView" destination="IyE-ZZ-pm2" id="Fbu-NN-r43"/>
                     </connections>
@@ -341,7 +341,7 @@
                                         </constraints>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" reuseIdentifier="picture" id="0xL-YF-2jR">
-                                        <rect key="frame" x="101.5" y="171" width="172" height="161"/>
+                                        <rect key="frame" x="0.0" y="171" width="172" height="161"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="172" height="161"/>
@@ -362,6 +362,26 @@
                                         <connections>
                                             <segue destination="y6d-gj-kiL" kind="presentation" modalTransitionStyle="crossDissolve" id="Mxf-Id-o6y"/>
                                         </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" reuseIdentifier="audio" id="GNx-FI-Fd5">
+                                        <rect key="frame" x="182" y="171" width="172" height="161"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="172" height="161"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speaker" translatesAutoresizingMaskIntoConstraints="NO" id="F16-kX-uxv">
+                                                    <rect key="frame" x="0.0" y="0.0" width="172" height="161"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="F16-kX-uxv" firstAttribute="top" secondItem="GNx-FI-Fd5" secondAttribute="top" id="9Gg-du-DR3"/>
+                                            <constraint firstAttribute="trailing" secondItem="F16-kX-uxv" secondAttribute="trailing" id="Dcj-ac-uMe"/>
+                                            <constraint firstAttribute="bottom" secondItem="F16-kX-uxv" secondAttribute="bottom" id="Gx2-bg-dd6"/>
+                                            <constraint firstItem="F16-kX-uxv" firstAttribute="leading" secondItem="GNx-FI-Fd5" secondAttribute="leading" id="qUe-4a-1JJ"/>
+                                        </constraints>
+                                        <size key="customSize" width="172" height="161"/>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -429,6 +449,7 @@
     </scenes>
     <resources>
         <image name="logo" width="512" height="512"/>
+        <image name="speaker" width="480" height="480"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rtj-eX-wvW"/>

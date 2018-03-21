@@ -62,6 +62,9 @@ class PictogramViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         UpdateCoordinator.coordinator.addListener(listener: self)
+        NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification, object: nil, queue: OperationQueue.main, using: {notification in
+            self.refrescarDatos();
+        })
         refrescarDatos();
     }
     
@@ -72,6 +75,8 @@ class PictogramViewController: UIViewController, UICollectionViewDelegate, UICol
         contentView.palabra = elementos[(indexPath.item)];
     }
 
-    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
 }
