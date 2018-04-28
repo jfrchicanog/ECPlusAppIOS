@@ -19,7 +19,8 @@ class DataController {
     }()
     
     func getPrivateQueueContext() -> NSManagedObjectContext {
-        return persistentContainer.newBackgroundContext();
+        let extractedExpr: NSManagedObjectContext = persistentContainer.newBackgroundContext()
+        return extractedExpr
     }
     
     // MARK: - Core Data stack

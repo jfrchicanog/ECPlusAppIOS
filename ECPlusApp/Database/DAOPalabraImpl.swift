@@ -10,6 +10,20 @@ import Foundation
 import CoreData
 
 class DAOPalabraImpl: DAOPalabra {
+    
+    func getCategorias(language: String, context: NSManagedObjectContext) -> [Categoria] {
+        do {
+            if let lista = try getListOfWords(context: context, language: language) {
+                if let categorias = lista.categorias as? Set<Categoria>{
+                    return Array(categorias)
+                }
+            }
+            return []
+        } catch {
+            fatalError("Failed to get Categorias: \(error)")
+        }
+    }
+    
     func save() {
             let context: NSManagedObjectContext = DataController.dataController.getPrivateQueueContext()
             context.performAndWait {
@@ -21,7 +35,7 @@ class DAOPalabraImpl: DAOPalabra {
             }
     }
     
-    private func getListOfWords(context: NSManagedObjectContext, language: String) throws -> ListaPalabras? {
+    public func getListOfWords(context: NSManagedObjectContext, language: String) throws -> ListaPalabras? {
         let listaFetch: NSFetchRequest<ListaPalabras> = ListaPalabras.fetchRequest()
         listaFetch.predicate = NSPredicate(format: "idioma = '\(language)'")
         return try context.fetch(listaFetch).last
@@ -45,6 +59,7 @@ class DAOPalabraImpl: DAOPalabra {
     }
     
     func removeAllResourcesForWordsList(language: String, resolution: Resolution) {
+        
         // TODO
     }
     
@@ -65,6 +80,19 @@ class DAOPalabraImpl: DAOPalabra {
         }
     }
     
+    func getWords(language: String, context: NSManagedObjectContext) -> [PalabraEntity] {
+        do {
+            if let lista = try getListOfWords(context: context, language: language) {
+                if let palabras = lista.palabras as? Set<PalabraEntity>{
+                    return Array(palabras)
+                }
+            }
+            return []
+        } catch {
+            fatalError("Failed to get Words: \(error)")
+        }
+    }
+    
     func getWords(language: String, resolution: Resolution) -> [PalabraEntity] {
         do {
             if let lista = try getListOfWords(context: DataController.dataController.mainQueueContext, language: language) {
@@ -78,8 +106,8 @@ class DAOPalabraImpl: DAOPalabra {
         }
     }
     
-    func addWord(word: Palabra, language: String, resolution: Resolution) {
-        let context = DataController.dataController.getPrivateQueueContext()
+    
+    func addWord(context: NSManagedObjectContext, word: Palabra, categoria: Categoria?, language: String, resolution: Resolution) {
         context.performAndWait {
             do {
                 let listaPalabras = try getListOfWords(context: context, language: language)
@@ -101,6 +129,7 @@ class DAOPalabraImpl: DAOPalabra {
                 }
                 
                 palabra.lista = listaPalabras!
+                palabra.categoria = categoria
                 
                 for rav in word.audiovisuales {
                     let recurso = createResource(context: context, rav: rav, resolution: resolution)
@@ -141,16 +170,108 @@ class DAOPalabraImpl: DAOPalabra {
 
     }
     
-    func updateWord(remote: Palabra) {
-        // TODO
+    fileprivate func updateRecursos(context: NSManagedObjectContext, local: PalabraEntity, remote: Palabra, resolution: Resolution) {
+        let localRecursos = (local.recursos! as! Set<RecursoAudioVisual>).sorted(by: {$0.id < $1.id})
+        let remoteRecursos = remote.audiovisuales.sorted(by: {$0.id < $1.id})
+        
+        var localIterator : Int = 0
+        var remoteIterator : Int = 0
+        
+        while (localIterator < localRecursos.count || remoteIterator  < remoteRecursos.count) {
+            if (localIterator >= localRecursos.count) {
+                let recurso = createResource(context: context, rav: remoteRecursos[remoteIterator], resolution: resolution)
+                local.addToRecursos(recurso)
+                if let icono = remote.icono {
+                    if (recurso.id == icono) {
+                        local.icono = recurso;
+                    }
+                }
+                remoteIterator = remoteIterator + 1
+            } else if (remoteIterator >= remoteRecursos.count) {
+                context.delete(localRecursos[localIterator])
+                localIterator = localIterator + 1
+            } else if (localRecursos[localIterator].id > remoteRecursos[remoteIterator].id) {
+                let recurso = createResource(context: context, rav: remoteRecursos[remoteIterator], resolution: resolution)
+                local.addToRecursos(recurso)
+                if let icono = remote.icono {
+                    if (recurso.id == icono) {
+                        local.icono = recurso;
+                    }
+                }
+                remoteIterator = remoteIterator + 1
+            } else if (localRecursos[localIterator].id < remoteRecursos[remoteIterator].id) {
+                context.delete(localRecursos[localIterator])
+                localIterator = localIterator + 1
+            } else {
+                localRecursos[localIterator].tipo = remoteRecursos[remoteIterator].type?.rawValue
+                let recurso = localRecursos[localIterator]
+                
+                if let icono = remote.icono {
+                    if (recurso.id == icono) {
+                        local.icono = recurso;
+                    }
+                }
+  
+                if let fichero = localRecursos[localIterator].getFichero(for: resolution) {
+                    fichero.hashvalue = remoteRecursos[remoteIterator].hash
+                } else {
+                    let fichero = NSEntityDescription.insertNewObject(forEntityName: "Fichero", into: context) as! Fichero
+                    fichero.resolucion = resolution.rawValue
+                    fichero.hashvalue = remoteRecursos[remoteIterator].hash
+                    localRecursos[localIterator].addToFicheros(fichero)
+                }
+                localIterator = localIterator + 1
+                remoteIterator = remoteIterator + 1
+            }
+            
+        }
+    }
+    
+    func updateWord(context: NSManagedObjectContext, local: PalabraEntity, remote: Palabra, categoria: Categoria?, resolution: Resolution) {
+        context.performAndWait {
+            do {
+                local.nombre = remote.nombre;
+                
+                if let avanzada = remote.avanzada {
+                    local.avanzada = avanzada
+                } else {
+                    local.avanzada = false
+                }
+                
+                if let iconoReemplazable = remote.iconoReemplazable {
+                    local.iconoReemplazable = iconoReemplazable
+                } else {
+                    local.iconoReemplazable = false
+                }
+                
+                local.categoria = categoria
+                
+                updateRecursos(context: context, local: local, remote: remote, resolution: resolution)
+
+                if let hashPalabra = local.getHash(for: resolution) {
+                    hashPalabra.hashvalue = remote.hash
+                } else {
+                    let hash = NSEntityDescription.insertNewObject(forEntityName: "HashPalabra", into: context) as! HashPalabra;
+                    
+                    hash.resolucion = resolution.rawValue
+                    hash.hashvalue = remote.hash
+                    
+                    local.addToHashes(hash)
+                }
+
+                try context.save()
+                
+            } catch {
+                fatalError("Failed to add word: \(error)")
+            }
+        }
     }
     
     func updateUso(palabra: PalabraEntity) {
         // TODO
     }
     
-    func setHashForListOfWords(language: String, resolution: Resolution, hash: String) {
-        let context = DataController.dataController.getPrivateQueueContext()
+    func setHashForListOfWords(context: NSManagedObjectContext, language: String, resolution: Resolution, hash: String) {
         context.performAndWait {
             do {
                 let lista = try getListOfWords(context: context, language: language)
@@ -169,8 +290,7 @@ class DAOPalabraImpl: DAOPalabra {
         }
     }
     
-    func removeWord(word: PalabraEntity) {
-        let context = DataController.dataController.getPrivateQueueContext()
+    func removeWord(context: NSManagedObjectContext, word: PalabraEntity) {
         context.performAndWait {
             do {
                 context.delete(word)

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class DatabaseUpdate {
     let daoSindrome : DAOSindrome = DAOFactory.getDAOSindrome()
@@ -15,6 +16,12 @@ class DatabaseUpdate {
     let wsPalabra : WSPalabra = WSPalabraImpl()
     let updateServiceCoordinator = UpdateCoordinator.coordinator;
     let resourceStore : ResourceStore = ResourceStore.resourceStore
+    
+    var categories: [CategoriaREST]? = nil
+    var words : [Palabra]? = nil
+    var categoryMap : [Int: Categoria] = [:]
+    
+    let cola = OperationQueue()
     
     static var _databaseUpdate : DatabaseUpdate?
     
@@ -31,9 +38,9 @@ class DatabaseUpdate {
     func updatePalabras(language: String, resolution: Resolution) {
         self.updateServiceCoordinator.fireEvent(event: UpdateEvent.startUpdateWordsEvent())
         
-        let hashLocal = daoPalabra.getHashForListOfWords(language: language, resolucion: resolution)
         wsPalabra.getHashForListOfWords(language: language, resolution: resolution, completion: {(hashRemote) in
             NSLog("Hash words: \(hashRemote!)")
+            let hashLocal = self.daoPalabra.getHashForListOfWords(language: language, resolucion: resolution)
             
             if hashRemote == nil {
                 self.daoPalabra.removeAllResourcesForWordsList(language: language, resolution: resolution)
@@ -48,54 +55,138 @@ class DatabaseUpdate {
                 }
                 self.updateLocalWordList(language: language, resolution: resolution, remoteHash: hashRemote!,completion: {
                     self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateWordsEvent(databaseChanged: true))
-                    
                     self.removeUnusedFiles();
                     self.updateFiles(language: language, resolution: resolution);
                 })
-            } else {
+            }  else {
                 self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateWordsEvent(databaseChanged: false))
             }
         })
     }
     
     func updateLocalWordList(language: String, resolution: Resolution, remoteHash: String, completion: @escaping () -> Void) {
-        let localPalabras = daoPalabra.getWords(language: language, resolution: resolution)
-            .sorted(by: {$0.id < $1.id})
-        wsPalabra.getWords(language: language, resolution: resolution, completion: {(rPalabras) in
-            let remotePalabras = rPalabras.sorted(by: {$0.id < $1.id})
-            
-            var localIterator : Int = 0
-            var remoteIterator : Int = 0
-            
-            while (localIterator < localPalabras.count || remoteIterator  < remotePalabras.count) {
-                if (localIterator >= localPalabras.count) {
-                    NSLog("Adding \(remotePalabras[remoteIterator].id)")
-                    self.daoPalabra.addWord(word: remotePalabras[remoteIterator], language: language, resolution: resolution)
-                    remoteIterator = remoteIterator + 1
-                } else if (remoteIterator >= remotePalabras.count) {
-                    NSLog("Removing \(localPalabras[localIterator].id)")
-                    self.daoPalabra.removeWord(word: localPalabras[localIterator])
-                    localIterator = localIterator + 1
-                } else if (localPalabras[localIterator].id > remotePalabras[remoteIterator].id) {
-                    NSLog("Adding \(remotePalabras[remoteIterator].id)")
-                    self.daoPalabra.addWord(word: remotePalabras[remoteIterator], language: language, resolution: resolution)
-                    remoteIterator = remoteIterator + 1
-                } else if (localPalabras[localIterator].id < remotePalabras[remoteIterator].id) {
-                    NSLog("Removing \(localPalabras[localIterator].id)")
-                    self.daoPalabra.removeWord(word: localPalabras[localIterator])
-                    localIterator = localIterator + 1
-                } else {
-                    //if (localPalabras[localIterator].getHash(for: resolution)// TODO)
-                    // TODO
-                    
-                    localIterator = localIterator + 1
-                    remoteIterator = remoteIterator + 1
+        self.categories = nil
+        self.words = nil
+        wsPalabra.getCategories(language: language, completion: {remoteCategories in
+            self.categories = remoteCategories;
+            self.cola.addOperation {
+                if self.words != nil {
+                    self.updateWordsAndCategories(language: language, resolution: resolution, remoteHash: remoteHash, completion: completion)
                 }
             }
-            self.daoPalabra.setHashForListOfWords(language: language, resolution: resolution, hash: remoteHash)
-            completion();
+        })
+        wsPalabra.getWords(language: language, resolution: resolution, completion: {(rPalabras) in
+            self.words = rPalabras
+            self.cola.addOperation {
+                if self.categories != nil {
+                    self.updateWordsAndCategories(language: language, resolution: resolution, remoteHash: remoteHash, completion: completion)
+                }
+            }
+        
         })
     }
+    
+    private func updateWordsAndCategories(language: String, resolution: Resolution, remoteHash: String, completion: @escaping () -> Void) {
+        let context = DataController.dataController.getPrivateQueueContext()
+        context.performAndWait {
+            do {
+                try self.updateCategoria(language: language, context: context)
+                self.updateWords(language: language, resolution: resolution, context: context)
+                self.daoPalabra.setHashForListOfWords(context: context, language: language, resolution: resolution, hash: remoteHash)
+            } catch {
+                NSLog("Error updating categories and words")
+            }
+        }
+        completion();
+    }
+    
+    private func updateCategoria(language: String, context: NSManagedObjectContext) throws {
+        self.categoryMap.removeAll()
+        
+        let localCategorias = self.daoPalabra.getCategorias(language: language, context: context).sorted(by: {$0.id < $1.id})
+        let remoteCategorias = categories!.sorted(by: {$0.id < $1.id})
+        
+        let listaPalabras = try self.daoPalabra.getListOfWords(context: context, language: language)
+        
+        var localIterator : Int = 0
+        var remoteIterator : Int = 0
+        
+        while (localIterator < localCategorias.count || remoteIterator  < remoteCategorias.count) {
+            if (localIterator >= localCategorias.count) {
+                NSLog("Adding \(remoteCategorias[remoteIterator].nombre!)")
+                let categoria = NSEntityDescription.insertNewObject(forEntityName: "Categoria", into: context) as! Categoria;
+                categoria.id = remoteCategorias[remoteIterator].id
+                categoria.nombre = remoteCategorias[remoteIterator].nombre
+                listaPalabras?.addToCategorias(categoria)
+                self.categoryMap[Int(categoria.id)] = categoria
+                remoteIterator = remoteIterator + 1
+            } else if (remoteIterator >= remoteCategorias.count) {
+                NSLog("Removing \(localCategorias[localIterator].nombre!)")
+                context.delete(localCategorias[localIterator])
+                localIterator = localIterator + 1
+            } else if (localCategorias[localIterator].id > remoteCategorias[remoteIterator].id) {
+                NSLog("Adding \(remoteCategorias[remoteIterator].nombre!)")
+                let categoria = NSEntityDescription.insertNewObject(forEntityName: "Categoria", into: context) as! Categoria;
+                categoria.id = remoteCategorias[remoteIterator].id
+                categoria.nombre = remoteCategorias[remoteIterator].nombre
+                listaPalabras?.addToCategorias(categoria)
+                self.categoryMap[Int(categoria.id)] = categoria
+                remoteIterator = remoteIterator + 1
+            } else if (localCategorias[localIterator].id < remoteCategorias[remoteIterator].id) {
+                NSLog("Removing \(localCategorias[localIterator].nombre!)")
+                context.delete(localCategorias[localIterator])
+                localIterator = localIterator + 1
+            } else {
+                localCategorias[localIterator].nombre = remoteCategorias[remoteIterator].nombre
+                self.categoryMap[Int(localCategorias[localIterator].id)] = localCategorias[localIterator]
+                localIterator = localIterator + 1
+                remoteIterator = remoteIterator + 1
+            }
+        }
+    }
+    
+    private func updateWords(language: String, resolution: Resolution, context: NSManagedObjectContext) {
+        let localPalabras = daoPalabra.getWords(language: language, context: context)
+            .sorted(by: {$0.id < $1.id})
+        let remotePalabras = words!.sorted(by: {$0.id < $1.id})
+        
+        var localIterator : Int = 0
+        var remoteIterator : Int = 0
+        
+        while (localIterator < localPalabras.count || remoteIterator  < remotePalabras.count) {
+            if (localIterator >= localPalabras.count) {
+                let catForWord = (remotePalabras[remoteIterator].categoria==nil) ? nil : self.categoryMap[Int(remotePalabras[remoteIterator].categoria!)]
+                
+                NSLog("Adding \(remotePalabras[remoteIterator].id)")
+                self.daoPalabra.addWord(context: context, word: remotePalabras[remoteIterator], categoria: catForWord, language: language, resolution: resolution)
+                remoteIterator = remoteIterator + 1
+            } else if (remoteIterator >= remotePalabras.count) {
+                NSLog("Removing \(localPalabras[localIterator].id)")
+                self.daoPalabra.removeWord(context: context, word: localPalabras[localIterator])
+                localIterator = localIterator + 1
+            } else if (localPalabras[localIterator].id > remotePalabras[remoteIterator].id) {
+                let catForWord = (remotePalabras[remoteIterator].categoria==nil) ? nil : self.categoryMap[Int(remotePalabras[remoteIterator].categoria!)]
+                
+                NSLog("Adding \(remotePalabras[remoteIterator].id)")
+                self.daoPalabra.addWord(context: context, word: remotePalabras[remoteIterator], categoria: catForWord, language: language, resolution: resolution)
+                remoteIterator = remoteIterator + 1
+            } else if (localPalabras[localIterator].id < remotePalabras[remoteIterator].id) {
+                NSLog("Removing \(localPalabras[localIterator].id)")
+                self.daoPalabra.removeWord(context: context, word: localPalabras[localIterator])
+                localIterator = localIterator + 1
+            } else {
+                if localPalabras[localIterator].getHash(for: resolution)!.hashvalue!.caseInsensitiveCompare(remotePalabras[remoteIterator].hash!) != ComparisonResult.orderedSame {
+                    let catForWord = (remotePalabras[remoteIterator].categoria==nil) ? nil : self.categoryMap[Int(remotePalabras[remoteIterator].categoria!)]
+                    
+                    self.daoPalabra.updateWord(context: context, local: localPalabras[localIterator], remote: remotePalabras[remoteIterator], categoria: catForWord, resolution: resolution)
+                }
+                
+                localIterator = localIterator + 1
+                remoteIterator = remoteIterator + 1
+            }
+        }
+    }
+    
     
     private func removeUnusedFiles() {
         // TODO
@@ -119,15 +210,17 @@ class DatabaseUpdate {
     
     func updateSindromes(language: String) {
         self.updateServiceCoordinator.fireEvent(event: UpdateEvent.startUpdateSyndromesEvent())
-        let hashLocal = daoSindrome.getHashForListOfSyndromes(language: language)
         wsSindrome.getHashForListOfSyndromes(language: language, completion: {(hashRemote) in
+            let hashLocal = self.daoSindrome.getHashForListOfSyndromes(language: language)
             if hashRemote == nil {
                 self.daoSindrome.removeSyndromeList(language: language)
                 self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: true))
-            } else if hashLocal == nil || hashLocal!.caseInsensitiveCompare(hashRemote!) != ComparisonResult.orderedSame {
-                if hashLocal == nil {
-                    self.daoSindrome.createListOfSyndromes(language: language)
-                }
+            } else if hashLocal == nil {
+                self.daoSindrome.createListOfSyndromes(language: language)
+                self.updateLocalSyndromeList(language: language, hashRemote: hashRemote!,completion: {
+                    self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: true))
+                })
+            } else if hashLocal!.caseInsensitiveCompare(hashRemote!) != ComparisonResult.orderedSame {
                 self.updateLocalSyndromeList(language: language, hashRemote: hashRemote!,completion: {
                     self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: true))
                 })

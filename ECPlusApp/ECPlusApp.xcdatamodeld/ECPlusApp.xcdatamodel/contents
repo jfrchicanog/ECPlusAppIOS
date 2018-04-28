@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1114" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1314" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Categoria" representedClassName=".Categoria" syncable="YES">
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="nombre" optional="YES" attributeType="String" syncable="YES"/>
@@ -51,7 +51,7 @@
     <entity name="RecursoAudioVisual" representedClassName=".RecursoAudioVisual" syncable="YES">
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="tipo" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="ficheros" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Fichero" inverseName="recursoAV" inverseEntity="Fichero" syncable="YES"/>
+        <relationship name="ficheros" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Fichero" inverseName="recursoAV" inverseEntity="Fichero" syncable="YES"/>
         <relationship name="palabra" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PalabraEntity" inverseName="recursos" inverseEntity="PalabraEntity" syncable="YES"/>
         <relationship name="palabraIconada" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PalabraEntity" inverseName="icono" inverseEntity="PalabraEntity" syncable="YES"/>
     </entity>
@@ -69,15 +69,15 @@
         <relationship name="palabra" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PalabraEntity" inverseName="uso" inverseEntity="PalabraEntity" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ListaSindromes" positionX="-317" positionY="41" width="128" height="103"/>
-        <element name="SindromeEntity" positionX="-54" positionY="9" width="128" height="133"/>
-        <element name="ListaPalabras" positionX="-369" positionY="-619" width="110" height="118"/>
-        <element name="HashListaPalabras" positionX="-191" positionY="-612" width="128" height="88"/>
         <element name="Categoria" positionX="-380" positionY="-448" width="128" height="103"/>
-        <element name="PalabraEntity" positionX="-189" positionY="-468" width="128" height="223"/>
-        <element name="RecursoAudioVisual" positionX="-396" positionY="-232" width="128" height="118"/>
         <element name="Fichero" positionX="-378" positionY="-90" width="128" height="88"/>
+        <element name="HashListaPalabras" positionX="-191" positionY="-612" width="128" height="88"/>
         <element name="HashPalabra" positionX="-20" positionY="-153" width="128" height="88"/>
+        <element name="ListaPalabras" positionX="-369" positionY="-619" width="110" height="118"/>
+        <element name="ListaSindromes" positionX="-317" positionY="41" width="128" height="103"/>
+        <element name="PalabraEntity" positionX="-189" positionY="-468" width="128" height="223"/>
+        <element name="RecursoAudioVisual" positionX="-396" positionY="-232" width="128" height="120"/>
+        <element name="SindromeEntity" positionX="-54" positionY="9" width="128" height="133"/>
         <element name="UsoPalabra" positionX="-2" positionY="-414" width="128" height="88"/>
     </elements>
 </model>

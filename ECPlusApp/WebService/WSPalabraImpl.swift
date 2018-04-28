@@ -9,10 +9,13 @@
 import Foundation
 
 class WSPalabraImpl: WSPalabra {
+
+    
     let host = "https://ecplusproject.uma.es"
     let apiEndPoint = "/academicPortal/ecplus/api/v1"
     let resourcePath = "/resource"
     let palabrasPath = "/words"
+    let categoriasPath = "/categories"
     let hashSuffix = "/hash"
     
     
@@ -76,6 +79,32 @@ class WSPalabraImpl: WSPalabra {
                 try datos?.write(to: toFile)
             } catch {
                 NSLog("Error downloading file \(error)")
+            }
+        })
+        dataTask.resume();
+    }
+    
+    func getCategories(language: String, completion: @escaping ([CategoriaREST]) -> Void) {
+        var peticion = URLRequest(url: NSURL(string: host + apiEndPoint + categoriasPath + "/" + language)! as URL)
+        
+        peticion.addValue("application/json", forHTTPHeaderField: "Accept");
+        peticion.httpMethod="GET"
+        
+        let session = URLSession.shared;
+        var listaCategorias:[CategoriaREST] = [];
+        let dataTask = session.dataTask(with: peticion, completionHandler:
+        {(datos: Data?, respuesta: URLResponse?, error: Error?) in
+            do {
+                if datos != nil {
+                    let object = try JSONSerialization.jsonObject(with: datos!)
+                    let lista = object as! NSArray;
+                    for elemento in lista {
+                        let diccionario = elemento as! NSDictionary;
+                        listaCategorias.append(CategoriaREST(jsonDictionary: diccionario));
+                    }
+                    completion(listaCategorias);
+                }
+            } catch {
             }
         })
         dataTask.resume();

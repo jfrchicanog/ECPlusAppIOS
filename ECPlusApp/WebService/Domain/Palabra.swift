@@ -64,6 +64,7 @@ class Palabra {
     var icono : Int32?
     var iconoReemplazado : String?
     var avanzada : Bool?
+    var categoria: Int32?
     
     init(id: Int32) {
         self.id = id;
@@ -73,6 +74,7 @@ class Palabra {
     init (jsonDictionary: NSDictionary) {
         id = jsonDictionary.object(forKey: "id") as! Int32;
         nombre = jsonDictionary.object(forKey: "nombre") as? String;
+        categoria = jsonDictionary.object(forKey: "categoria") as? Int32;
         iconoReemplazable = jsonDictionary.object(forKey: "iconoReemplazable") as? Bool;
         hash = jsonDictionary.object(forKey: "hash") as? String;
         icono = jsonDictionary.object(forKey: "icono") as? Int32
