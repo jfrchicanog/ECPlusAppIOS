@@ -15,8 +15,6 @@ class PictogramViewController: UIViewController, UICollectionViewDelegate, UICol
     let daoPalabra: DAOPalabra = DAOFactory.getDAOPalabra()
     let resourceCache = PictogramCache.pictogramCache
     let resourceStore = ResourceStore.resourceStore
-    var elementos : [PalabraEntity] = []
-    let elementsInSection = 10
     
     var elementosCategorias : [[PalabraEntity]] = []
     var secciones : [String] = []
@@ -56,8 +54,10 @@ class PictogramViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func refrescarDatos() {
+        self.elementosCategorias.removeAll();
+        self.secciones.removeAll();
         let listaPalabras = daoPalabra.getWords(language: UserDefaults.standard.string(forKey: AppDelegate.LANGUAGE)!, resolution: Resolution.baja)
-        elementos=listaPalabras
+        let elementos=listaPalabras
             .filter({palabra in
                 if let icono = palabra.icono {
                     if icono.tipo == TipoRecurso.pictograma.rawValue {

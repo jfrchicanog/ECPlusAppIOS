@@ -19,8 +19,6 @@
 		151CCDC3204E17FE007FAFE3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDC2204E17FE007FAFE3 /* CoreGraphics.framework */; };
 		151CCDC5204E1810007FAFE3 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCDC4204E1810007FAFE3 /* libxml2.tbd */; };
 		151CCDF9204F1728007FAFE3 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151CCDF8204F1728007FAFE3 /* PlayerView.swift */; };
-		151CCE09204F2773007FAFE3 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE08204F2772007FAFE3 /* SVGKit.framework */; };
-		151CCE0B204F2780007FAFE3 /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 151CCE08204F2772007FAFE3 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1526827920302E5F00CDEEA5 /* ResourceStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1526827820302E5F00CDEEA5 /* ResourceStore.swift */; };
 		1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557FE2B1FA156E300B652E2 /* Sindrome.swift */; };
 		155B39022064735F00868108 /* CategoriaREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B39012064735F00868108 /* CategoriaREST.swift */; };
@@ -29,9 +27,6 @@
 		1571FC7D20558C3C0042704A /* CeldaTabla.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571FC7C20558C3C0042704A /* CeldaTabla.swift */; };
 		1571FC7F2055FBA20042704A /* PictogramCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571FC7E2055FBA20042704A /* PictogramCache.swift */; };
 		157EACEF1FA150A4000068C2 /* SindromeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157EACEE1FA150A4000068C2 /* SindromeContentView.swift */; };
-		157EAF1F206332CA008C9DE9 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 157EAF1E206332CA008C9DE9 /* CocoaLumberjack.framework */; };
-		157EAF20206332D4008C9DE9 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 157EAF1E206332CA008C9DE9 /* CocoaLumberjack.framework */; };
-		157EAF21206332D4008C9DE9 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 157EAF1E206332CA008C9DE9 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		158081151F9FFED800AFEF3E /* SindromeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158081141F9FFED800AFEF3E /* SindromeViewController.swift */; };
 		158224EB2009861600DD12BA /* DAOSindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158224EA2009861600DD12BA /* DAOSindrome.swift */; };
 		15AB8252200D79CF001ECC70 /* SindromeEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB824E200D79CF001ECC70 /* SindromeEntity+CoreDataClass.swift */; };
@@ -47,6 +42,10 @@
 		15DF1FB7200999CC0091B530 /* MainPagedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */; };
 		15DF1FDE200A14270091B530 /* WSSindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDD200A14270091B530 /* WSSindrome.swift */; };
 		15DF1FE0200A14680091B530 /* WSSindromeImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */; };
+		15E5FCFB20C5F8D100049345 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E5FCFA20C5F8D100049345 /* CocoaLumberjack.framework */; };
+		15E5FCFE20C5F8E700049345 /* SVGKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E5FCFC20C5F8E000049345 /* SVGKit.framework */; };
+		15E5FCFF20C5F8E700049345 /* SVGKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 15E5FCFC20C5F8E000049345 /* SVGKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		15E5FD0120C5F8EC00049345 /* CocoaLumberjack.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 15E5FCFA20C5F8D100049345 /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		15F1D655200DF20A00C7C041 /* DAOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1D654200DF20A00C7C041 /* DAOFactory.swift */; };
 		15F1D657200DF2A400C7C041 /* DAOSindromeDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1D656200DF2A400C7C041 /* DAOSindromeDatabase.swift */; };
 		15F1D65A200DFF7700C7C041 /* DatabaseUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F1D659200DFF7700C7C041 /* DatabaseUpdate.swift */; };
@@ -76,14 +75,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		151CCDD2204E190D007FAFE3 /* Embed Frameworks */ = {
+		1555E2F7209548390048B432 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				157EAF21206332D4008C9DE9 /* CocoaLumberjack.framework in Embed Frameworks */,
-				151CCE0B204F2780007FAFE3 /* SVGKit.framework in Embed Frameworks */,
+				15E5FD0120C5F8EC00049345 /* CocoaLumberjack.framework in Embed Frameworks */,
+				15E5FCFF20C5F8E700049345 /* SVGKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,7 +104,6 @@
 		151CCDC2204E17FE007FAFE3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		151CCDC4204E1810007FAFE3 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		151CCDF8204F1728007FAFE3 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
-		151CCE08204F2772007FAFE3 /* SVGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVGKit.framework; sourceTree = "<group>"; };
 		1526827820302E5F00CDEEA5 /* ResourceStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceStore.swift; sourceTree = "<group>"; };
 		1557FE2B1FA156E300B652E2 /* Sindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sindrome.swift; sourceTree = "<group>"; };
 		155B39012064735F00868108 /* CategoriaREST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriaREST.swift; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 		1571FC7C20558C3C0042704A /* CeldaTabla.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeldaTabla.swift; sourceTree = "<group>"; };
 		1571FC7E2055FBA20042704A /* PictogramCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramCache.swift; sourceTree = "<group>"; };
 		157EACEE1FA150A4000068C2 /* SindromeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SindromeContentView.swift; sourceTree = "<group>"; };
-		157EAF1E206332CA008C9DE9 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = "<group>"; };
 		158081141F9FFED800AFEF3E /* SindromeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SindromeViewController.swift; sourceTree = "<group>"; };
 		158224EA2009861600DD12BA /* DAOSindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOSindrome.swift; sourceTree = "<group>"; };
 		15AB823C200D76BC001ECC70 /* ECPlusDataModel1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ECPlusDataModel1.xcdatamodel; sourceTree = "<group>"; };
@@ -134,6 +131,8 @@
 		15DF1FB6200999CC0091B530 /* MainPagedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPagedViewController.swift; sourceTree = "<group>"; };
 		15DF1FDD200A14270091B530 /* WSSindrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindrome.swift; sourceTree = "<group>"; };
 		15DF1FDF200A14680091B530 /* WSSindromeImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSSindromeImpl.swift; sourceTree = "<group>"; };
+		15E5FCFA20C5F8D100049345 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = "<group>"; };
+		15E5FCFC20C5F8E000049345 /* SVGKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SVGKit.framework; sourceTree = "<group>"; };
 		15EB76162043EF9E000DF187 /* bridging-header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bridging-header.h"; sourceTree = "<group>"; };
 		15F1D654200DF20A00C7C041 /* DAOFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOFactory.swift; sourceTree = "<group>"; };
 		15F1D656200DF2A400C7C041 /* DAOSindromeDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAOSindromeDatabase.swift; sourceTree = "<group>"; };
@@ -168,14 +167,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				151CCE09204F2773007FAFE3 /* SVGKit.framework in Frameworks */,
-				157EAF20206332D4008C9DE9 /* CocoaLumberjack.framework in Frameworks */,
+				15E5FCFE20C5F8E700049345 /* SVGKit.framework in Frameworks */,
 				151CCDC5204E1810007FAFE3 /* libxml2.tbd in Frameworks */,
-				157EAF1F206332CA008C9DE9 /* CocoaLumberjack.framework in Frameworks */,
 				151CCDC3204E17FE007FAFE3 /* CoreGraphics.framework in Frameworks */,
 				151CCDC1204E17ED007FAFE3 /* QuartzCore.framework in Frameworks */,
 				151CCDBF204E17E4007FAFE3 /* UIKit.framework in Frameworks */,
 				151CCDBD204E17D4007FAFE3 /* CoreImage.framework in Frameworks */,
+				15E5FCFB20C5F8D100049345 /* CocoaLumberjack.framework in Frameworks */,
 				151CCDBB204E17CF007FAFE3 /* CoreText.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,9 +222,9 @@
 		151CCDB2204E13DF007FAFE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				157EAF1E206332CA008C9DE9 /* CocoaLumberjack.framework */,
-				151CCE08204F2772007FAFE3 /* SVGKit.framework */,
 				151CCDC4204E1810007FAFE3 /* libxml2.tbd */,
+				15E5FCFC20C5F8E000049345 /* SVGKit.framework */,
+				15E5FCFA20C5F8D100049345 /* CocoaLumberjack.framework */,
 				151CCDC2204E17FE007FAFE3 /* CoreGraphics.framework */,
 				151CCDC0204E17EC007FAFE3 /* QuartzCore.framework */,
 				151CCDBE204E17E4007FAFE3 /* UIKit.framework */,
@@ -345,7 +343,7 @@
 				1507DBD01F2AB2AC0056A72F /* Sources */,
 				1507DBD11F2AB2AC0056A72F /* Frameworks */,
 				1507DBD21F2AB2AC0056A72F /* Resources */,
-				151CCDD2204E190D007FAFE3 /* Embed Frameworks */,
+				1555E2F7209548390048B432 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
