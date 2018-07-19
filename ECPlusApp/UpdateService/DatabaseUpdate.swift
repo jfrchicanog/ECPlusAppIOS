@@ -37,7 +37,6 @@ class DatabaseUpdate {
     
     func updatePalabras(language: String, resolution: Resolution) {
         self.updateServiceCoordinator.fireEvent(event: UpdateEvent.startUpdateWordsEvent())
-        
         wsPalabra.getHashForListOfWords(language: language, resolution: resolution, completion: {(hashRemote) in
             NSLog("Hash words: \(hashRemote!)")
             let hashLocal = self.daoPalabra.getHashForListOfWords(language: language, resolucion: resolution)

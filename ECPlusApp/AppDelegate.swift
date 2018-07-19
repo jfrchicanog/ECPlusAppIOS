@@ -41,8 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true;
-        
         if preferences.string(forKey: AppDelegate.LANGUAGE) == nil {
             preferences.set(computeDefaultLanguage(), forKey: AppDelegate.LANGUAGE)
             preferences.set(AppDelegate.DEFAULT_RESOLUTION, forKey: AppDelegate.RESOLUTION)

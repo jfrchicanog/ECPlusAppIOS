@@ -1,0 +1,9 @@
+//
+//  NetworkActivity.swift
+//  ECPlusApp
+//
+//  Created by José Francisco Chicano García on 19/7/18.
+//  Copyright © 2018 José Francisco Chicano García. All rights reserved.
+//
+
+import Foundation

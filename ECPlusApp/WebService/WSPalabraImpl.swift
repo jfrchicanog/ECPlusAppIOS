@@ -25,9 +25,12 @@ class WSPalabraImpl: WSPalabra {
         peticion.addValue("application/json", forHTTPHeaderField: "Accept");
         peticion.httpMethod="GET"
         
+        UpdateCoordinator.coordinator.increaseNetworkActivity()
+        
         let session = URLSession.shared;
         let dataTask = session.dataTask(with: peticion, completionHandler:
         {(datos: Data?, respuesta: URLResponse?, error: Error?) in
+            UpdateCoordinator.coordinator.decreaseNetworkActivity()
             do {
                 if datos != nil {
                     let object = try JSONSerialization.jsonObject(with: datos!)
@@ -46,10 +49,12 @@ class WSPalabraImpl: WSPalabra {
         peticion.addValue("application/json", forHTTPHeaderField: "Accept");
         peticion.httpMethod="GET"
         
+        UpdateCoordinator.coordinator.increaseNetworkActivity()
         let session = URLSession.shared;
         var listaPalabras:[Palabra] = [];
         let dataTask = session.dataTask(with: peticion, completionHandler:
         {(datos: Data?, respuesta: URLResponse?, error: Error?) in
+            UpdateCoordinator.coordinator.decreaseNetworkActivity()
             do {
                 if datos != nil {
                     let object = try JSONSerialization.jsonObject(with: datos!)
@@ -72,9 +77,11 @@ class WSPalabraImpl: WSPalabra {
         peticion.addValue("*/*", forHTTPHeaderField: "Accept");
         peticion.httpMethod="GET"
         
+        UpdateCoordinator.coordinator.increaseNetworkActivity()
         let session = URLSession.shared;
         let dataTask = session.dataTask(with: peticion, completionHandler:
         {(datos: Data?, respuesta: URLResponse?, error: Error?) in
+            UpdateCoordinator.coordinator.decreaseNetworkActivity()
             do {
                 try datos?.write(to: toFile)
             } catch {
@@ -90,10 +97,12 @@ class WSPalabraImpl: WSPalabra {
         peticion.addValue("application/json", forHTTPHeaderField: "Accept");
         peticion.httpMethod="GET"
         
+        UpdateCoordinator.coordinator.increaseNetworkActivity()
         let session = URLSession.shared;
         var listaCategorias:[CategoriaREST] = [];
         let dataTask = session.dataTask(with: peticion, completionHandler:
         {(datos: Data?, respuesta: URLResponse?, error: Error?) in
+            UpdateCoordinator.coordinator.decreaseNetworkActivity()
             do {
                 if datos != nil {
                     let object = try JSONSerialization.jsonObject(with: datos!)

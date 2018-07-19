@@ -23,6 +23,7 @@
 		1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1557FE2B1FA156E300B652E2 /* Sindrome.swift */; };
 		155B39022064735F00868108 /* CategoriaREST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B39012064735F00868108 /* CategoriaREST.swift */; };
 		155F7B252062F04D00C8741B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 155F7B272062F04D00C8741B /* Localizable.strings */; };
+		1569F1822100186100E550B2 /* NetworkActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1569F1812100186100E550B2 /* NetworkActivity.swift */; };
 		156ED36120560A5900A3AFB9 /* PictogramVewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156ED36020560A5900A3AFB9 /* PictogramVewController.swift */; };
 		1571FC7D20558C3C0042704A /* CeldaTabla.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571FC7C20558C3C0042704A /* CeldaTabla.swift */; };
 		1571FC7F2055FBA20042704A /* PictogramCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1571FC7E2055FBA20042704A /* PictogramCache.swift */; };
@@ -111,6 +112,7 @@
 		155F7B222062E8DC00C8741B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		155F7B262062F04D00C8741B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		155F7B282062F05400C8741B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1569F1812100186100E550B2 /* NetworkActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkActivity.swift; sourceTree = "<group>"; };
 		156ED36020560A5900A3AFB9 /* PictogramVewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramVewController.swift; sourceTree = "<group>"; };
 		1571FC7C20558C3C0042704A /* CeldaTabla.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CeldaTabla.swift; sourceTree = "<group>"; };
 		1571FC7E2055FBA20042704A /* PictogramCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictogramCache.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				15F1D67E200EB16E00C7C041 /* UpdateCoordinator.swift */,
 				1526827820302E5F00CDEEA5 /* ResourceStore.swift */,
 				1571FC7E2055FBA20042704A /* PictogramCache.swift */,
+				1569F1812100186100E550B2 /* NetworkActivity.swift */,
 			);
 			path = UpdateService;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				1557FE2C1FA156E300B652E2 /* Sindrome.swift in Sources */,
 				15ABCE782051FDE500497E7A /* LargeImageViewController.swift in Sources */,
 				15F1D657200DF2A400C7C041 /* DAOSindromeDatabase.swift in Sources */,
+				1569F1822100186100E550B2 /* NetworkActivity.swift in Sources */,
 				15AB8254200D79CF001ECC70 /* ListaSindromes+CoreDataClass.swift in Sources */,
 				1571FC7D20558C3C0042704A /* CeldaTabla.swift in Sources */,
 				15F1D685200EC9B600C7C041 /* WSPalabraImpl.swift in Sources */,

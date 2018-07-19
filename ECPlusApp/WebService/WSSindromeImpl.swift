@@ -20,10 +20,12 @@ class WSSindromeImpl: WSSindrome {
         peticion.addValue("application/json", forHTTPHeaderField: "Accept");
         peticion.httpMethod="GET"
         
+        UpdateCoordinator.coordinator.increaseNetworkActivity()
         let session = URLSession.shared;
         var listaSindromes:[Sindrome] = [];
         let dataTask = session.dataTask(with: peticion, completionHandler:
         {(datos: Data?, respuesta: URLResponse?, error: Error?) in
+            UpdateCoordinator.coordinator.decreaseNetworkActivity()
             do {    
                 if datos != nil {
                     let object = try JSONSerialization.jsonObject(with: datos!)
@@ -48,9 +50,11 @@ class WSSindromeImpl: WSSindrome {
         peticion.addValue("application/json", forHTTPHeaderField: "Accept");
         peticion.httpMethod="GET"
         
+        UpdateCoordinator.coordinator.increaseNetworkActivity()
         let session = URLSession.shared;
         let dataTask = session.dataTask(with: peticion, completionHandler:
         {(datos: Data?, respuesta: URLResponse?, error: Error?) in
+            UpdateCoordinator.coordinator.decreaseNetworkActivity()
             do {
                 if datos != nil {
                     let object = try JSONSerialization.jsonObject(with: datos!)
