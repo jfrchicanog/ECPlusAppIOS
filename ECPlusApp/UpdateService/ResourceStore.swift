@@ -12,6 +12,7 @@ class ResourceStore {
     let subpathName = "resources"
     let fm : FileManager = FileManager.default
     var dirURL: URL
+    var cacheURL : URL
     
     static var resourceStore: ResourceStore = ResourceStore()
     
@@ -20,7 +21,15 @@ class ResourceStore {
         guard urls.count != 0 else {
             fatalError("No document directory in local domain")
         }
+        
+        let cacheURLs = fm.urls(for: FileManager.SearchPathDirectory.cachesDirectory, in: FileManager.SearchPathDomainMask.userDomainMask)
+        
+        guard cacheURLs.count != 0 else {
+            fatalError("No cache directory in local domain")
+        }
+        
         do {
+            cacheURL = cacheURLs[0]
             dirURL = urls[0].appendingPathComponent(subpathName)
             try fm.createDirectory(at: dirURL, withIntermediateDirectories: false, attributes:nil)
         } catch {
@@ -36,6 +45,10 @@ class ResourceStore {
         } else {
             return url
         }
+    }
+    
+    func getCachedBitmap(for hash: String) -> URL {
+        return cacheURL.appendingPathComponent(hash.lowercased()).appendingPathExtension(".png")
     }
     
     func fileExists(withHash: String, type: TipoRecurso) -> Bool {

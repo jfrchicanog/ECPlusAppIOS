@@ -60,6 +60,8 @@ class WSSindromeImpl: WSSindrome {
                     let object = try JSONSerialization.jsonObject(with: datos!)
                     let hashContainer = object as! NSDictionary;
                     completion(hashContainer.object(forKey: "hash") as! String?);
+                } else {
+                    completion (nil)
                 }
             } catch {
                 

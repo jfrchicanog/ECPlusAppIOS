@@ -32,10 +32,13 @@ class WSPalabraImpl: WSPalabra {
         {(datos: Data?, respuesta: URLResponse?, error: Error?) in
             UpdateCoordinator.coordinator.decreaseNetworkActivity()
             do {
-                if datos != nil {
+                if (respuesta as? HTTPURLResponse)?.statusCode == 200 && datos != nil {
                     let object = try JSONSerialization.jsonObject(with: datos!)
                     let hashContainer = object as! NSDictionary;
                     completion(hashContainer.object(forKey: "hash") as! String?);
+                } else {
+                    NSLog("datos nil")
+                    completion(nil)
                 }
             } catch {
             }

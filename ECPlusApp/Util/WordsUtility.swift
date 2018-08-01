@@ -31,4 +31,17 @@ class WordsUtility {
         }
         return nil
     }
+    
+    static func clearCache() {
+        self.resourceCache.clearCache()
+    }
+    
+    static func preloadPictograms(palabras: [PalabraEntity]) {
+        /*
+        OperationQueue().addOperation {
+            for palabra in palabras {
+                let image = getLogoFromWord(palabra: palabra)
+            }
+        }*/
+    }
 }

@@ -36,22 +36,27 @@ class UpdateCoordinator {
     
     func increaseNetworkActivity() {
         networkActivity += 1;
-        if (networkActivity > 0) {
+        if (networkActivity == 1) {
+            fireEvent(event: UpdateEvent.startNetworkEvent())
             OperationQueue.main.addOperation {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = true;
             }
-            
         }
     }
     
     func decreaseNetworkActivity() {
         networkActivity -= 1;
         if (networkActivity <= 0) {
+            fireEvent(event: UpdateEvent.stopNetworkEvent())
             OperationQueue.main.addOperation {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false;
             }
             
         }
+    }
+    
+    func isThereNetworkActivity() -> Bool {
+        return networkActivity > 0;
     }
 
 }

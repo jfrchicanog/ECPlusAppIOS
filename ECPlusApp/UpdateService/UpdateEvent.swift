@@ -10,9 +10,11 @@ import Foundation
 
 enum UpdateEventAction : String {
     case start = "start"
+    case startNetwork = "startNetwork"
     case stopDatabase = "stopDatabase"
     case stopFile = "stopFile"
     case stopError = "stopError"
+    case stopNetwork = "stopNetwork"
 }
 
 enum UpdateEventElement : String {
@@ -53,6 +55,14 @@ class UpdateEvent: NSObject {
     
     static func stopUpdateWordsFileEvent(filesChanged: Bool) -> UpdateEvent {
         return UpdateEvent(action: UpdateEventAction.stopFile, element: UpdateEventElement.words, somethingChanged: filesChanged)
+    }
+    
+    static func startNetworkEvent() -> UpdateEvent {
+        return UpdateEvent(action: UpdateEventAction.startNetwork, element: nil, somethingChanged: false)
+    }
+    
+    static func stopNetworkEvent() -> UpdateEvent {
+        return UpdateEvent(action: UpdateEventAction.stopNetwork, element: nil, somethingChanged: false)
     }
     
     func description() -> String {

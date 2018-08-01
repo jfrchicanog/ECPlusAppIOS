@@ -11,21 +11,37 @@ import UIKit
 
 class PalabraViewController : UIViewController, UITableViewDataSource, UpdateServiceListener {
     let daoPalabra: DAOPalabra = DAOFactory.getDAOPalabra()
-    let resourceCache = PictogramCache.pictogramCache
-    let resourceStore = ResourceStore.resourceStore
     var elementos : [PalabraEntity] = []
     var avanzadas : Bool = false
     var gestureRecognizers: [UIGestureRecognizer] = []
     @IBOutlet weak var tabla: UITableView!
     
     func onUpdateEvent(event: UpdateEvent) {
-        if event.action! == UpdateEventAction.stopDatabase && event.somethingChanged! {
-            NSLog("Here I am")
+        if event.action! == UpdateEventAction.stopFile || event.action! == UpdateEventAction.stopNetwork {
             OperationQueue.main.addOperation({self.refrescarDatos()})
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        self.tabla.separatorStyle = .singleLine
+        
+        if elementos.count  == 0 {
+            let label = UILabel(frame:
+                CGRect(x: 0, y: 0, width: self.tabla.bounds.size.width * 0.8, height: self.tabla.bounds.size.height))
+            label.text = UpdateCoordinator.coordinator.isThereNetworkActivity() ?
+                NSLocalizedString("Downloading", comment: "Message for tables when data is downloading"):
+                NSLocalizedString("NoItemsForLanguage", comment: "Message for tables when there are no items to show");
+            
+            label.textAlignment = .center
+            label.sizeToFit()
+            label.lineBreakMode = .byWordWrapping
+            label.numberOfLines = 0
+            self.tabla.backgroundView = label
+            self.tabla.separatorStyle = .none
+        } else {
+            self.tabla.backgroundView = nil
+        }
+        
         return elementos.count
     }
     
@@ -44,8 +60,8 @@ class PalabraViewController : UIViewController, UITableViewDataSource, UpdateSer
     func refrescarDatos() {
         let listaPalabras = daoPalabra.getWords(language: UserDefaults.standard.string(forKey: AppDelegate.LANGUAGE)!, resolution: Resolution.baja)
         elementos=listaPalabras.filter({$0.avanzada == self.avanzadas}).sorted(by: {$0.nombre! < $1.nombre!});
+        WordsUtility.preloadPictograms(palabras: elementos)
         tabla.reloadData();
-        NSLog("refresco")
     }
     
     override func viewDidLoad() {
@@ -56,6 +72,7 @@ class PalabraViewController : UIViewController, UITableViewDataSource, UpdateSer
         }
         UpdateCoordinator.coordinator.addListener(listener: self)
         NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification, object: nil, queue: OperationQueue.main, using: {notification in
+            WordsUtility.clearCache()
             self.refrescarDatos();
         })
         refrescarDatos();

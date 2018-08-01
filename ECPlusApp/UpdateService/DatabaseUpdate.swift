@@ -38,6 +38,13 @@ class DatabaseUpdate {
     func updatePalabras(language: String, resolution: Resolution) {
         self.updateServiceCoordinator.fireEvent(event: UpdateEvent.startUpdateWordsEvent())
         wsPalabra.getHashForListOfWords(language: language, resolution: resolution, completion: {(hashRemote) in
+            guard hashRemote != nil else {
+                NSLog("Nil remote hash")
+                self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateWordsEvent(databaseChanged: false))
+                self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateWordsFileEvent(filesChanged: false));
+                return
+            }
+            
             NSLog("Hash words: \(hashRemote!)")
             let hashLocal = self.daoPalabra.getHashForListOfWords(language: language, resolucion: resolution)
             
@@ -59,6 +66,7 @@ class DatabaseUpdate {
                 })
             }  else {
                 self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateWordsEvent(databaseChanged: false))
+                self.updateFiles(language: language, resolution: resolution)
             }
         })
     }
@@ -198,7 +206,9 @@ class DatabaseUpdate {
                 for recurso in recursos {
                     if let fichero = recurso.getFichero(for: resolution) {
                         let tipo = TipoRecurso(rawValue: recurso.tipo!)!
-                        wsPalabra.getResource(hash: fichero.hashvalue!, toFile: resourceStore.getFileResource(for: fichero.hashvalue!, type: tipo))
+                        if !resourceStore.fileExists(withHash: fichero.hashvalue!, type: tipo) {
+                            wsPalabra.getResource(hash: fichero.hashvalue!, toFile: resourceStore.getFileResource(for: fichero.hashvalue!, type: tipo))
+                        }
                     }
                 }
             }
@@ -210,6 +220,11 @@ class DatabaseUpdate {
     func updateSindromes(language: String) {
         self.updateServiceCoordinator.fireEvent(event: UpdateEvent.startUpdateSyndromesEvent())
         wsSindrome.getHashForListOfSyndromes(language: language, completion: {(hashRemote) in
+            guard hashRemote != nil  else {
+                self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: false))
+                return;
+            }
+            
             let hashLocal = self.daoSindrome.getHashForListOfSyndromes(language: language)
             if hashRemote == nil {
                 self.daoSindrome.removeSyndromeList(language: language)

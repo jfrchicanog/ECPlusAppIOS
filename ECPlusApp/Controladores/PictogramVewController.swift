@@ -11,10 +11,7 @@ import SVGKit
 
 class PictogramViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UpdateServiceListener {
     
-    
     let daoPalabra: DAOPalabra = DAOFactory.getDAOPalabra()
-    let resourceCache = PictogramCache.pictogramCache
-    let resourceStore = ResourceStore.resourceStore
     
     var elementosCategorias : [[PalabraEntity]] = []
     var secciones : [String] = []
@@ -22,13 +19,28 @@ class PictogramViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet var collectionView: UICollectionView!
     
     func onUpdateEvent(event: UpdateEvent) {
-        if event.action! == UpdateEventAction.stopDatabase && event.somethingChanged! {
-            NSLog("Here I am")
+        if event.action! == UpdateEventAction.stopFile || event.action! == UpdateEventAction.stopNetwork {
             OperationQueue.main.addOperation({self.refrescarDatos()})
         }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
+        if secciones.count  == 0 {
+            let label = UILabel(frame:
+                CGRect(x: 0, y: 0, width: self.collectionView.bounds.size.width * 0.8, height: self.collectionView.bounds.size.height))
+            label.text = UpdateCoordinator.coordinator.isThereNetworkActivity() ?
+                NSLocalizedString("Downloading", comment: "Message for tables when data is downloading"):
+                NSLocalizedString("NoItemsForLanguage", comment: "Message for tables when there are no items to show");
+            label.textAlignment = .center
+            label.sizeToFit()
+            label.lineBreakMode = .byWordWrapping
+            label.numberOfLines = 0
+            self.collectionView.backgroundView = label
+        } else {
+            self.collectionView.backgroundView = nil
+        }
+        
         return secciones.count;
     }
     
@@ -130,6 +142,7 @@ class PictogramViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         UpdateCoordinator.coordinator.addListener(listener: self)
         NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification, object: nil, queue: OperationQueue.main, using: {notification in
+            WordsUtility.clearCache()
             self.refrescarDatos();
         })
         refrescarDatos();

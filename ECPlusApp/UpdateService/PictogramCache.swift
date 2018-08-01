@@ -22,6 +22,12 @@ class PictogramCache {
         if let imagen = map[hash] {
             return imagen
         } else {
+            do {
+                let url = ResourceStore.resourceStore.getCachedBitmap(for: hash)
+                return try UIImage(data: Data(contentsOf: url))
+            } catch {
+            }
+
             if ResourceStore.resourceStore.fileExists(withHash: hash, type: type) {
                 let url = ResourceStore.resourceStore.getFileResource(for: hash, type: type)
                 if type == TipoRecurso.pictograma {
@@ -34,6 +40,13 @@ class PictogramCache {
                     uiImage?.draw(in: rect)
                     let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
                     UIGraphicsEndImageContext()
+                    
+                    do {
+                        let url = ResourceStore.resourceStore.getCachedBitmap(for: hash)
+                        try UIImagePNGRepresentation(scaledImage!)?.write(to: url)
+                    } catch {
+                        
+                    }
                     
                     map[hash] = scaledImage
                     return scaledImage

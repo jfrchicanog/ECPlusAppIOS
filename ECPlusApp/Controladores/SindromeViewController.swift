@@ -23,7 +23,24 @@ class SindromeViewController: UIViewController, UITableViewDataSource, UpdateSer
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        NSLog("cuenta \(elementos.count)")
+        self.tabla.separatorStyle = .singleLine
+        
+        if elementos.count  == 0 {
+            let label = UILabel(frame:
+                CGRect(x: 0, y: 0, width: self.tabla.bounds.size.width, height: self.tabla.bounds.size.height))
+            label.text = UpdateCoordinator.coordinator.isThereNetworkActivity() ?
+                NSLocalizedString("Downloading", comment: "Message for tables when data is downloading"):
+                NSLocalizedString("NoItemsForLanguage", comment: "Message for tables when there are no items to show");
+            label.textAlignment = .center
+            label.sizeToFit()
+            label.lineBreakMode = .byWordWrapping
+            label.numberOfLines = 0
+            self.tabla.backgroundView = label
+            self.tabla.separatorStyle = .none
+        } else {
+            self.tabla.backgroundView = nil
+        }
+
         return elementos.count;
     }
     
@@ -66,10 +83,8 @@ class SindromeViewController: UIViewController, UITableViewDataSource, UpdateSer
         refrescarDatos();
     }
     
-    func onUpdateEvent(event update: UpdateEvent) {
-        NSLog(update.description())
-        if update.action! == UpdateEventAction.stopDatabase && update.somethingChanged! {
-            NSLog("Here I am")
+    func onUpdateEvent(event: UpdateEvent) {
+        if event.action! == UpdateEventAction.stopDatabase || event.action! == UpdateEventAction.stopNetwork {
             OperationQueue.main.addOperation({self.refrescarDatos()})
         }
     }
