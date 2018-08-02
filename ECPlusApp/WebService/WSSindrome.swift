@@ -9,6 +9,6 @@
 import Foundation
 
 protocol WSSindrome {
-    func getSyndromes(language: String, completion: @escaping ([Sindrome]) -> Void);
+    func getSyndromes(language: String, completion: @escaping ([Sindrome]?) -> Void);
     func getHashForListOfSyndromes(language: String, completion: @escaping (String?) -> Void);
 }

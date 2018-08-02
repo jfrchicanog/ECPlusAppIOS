@@ -14,7 +14,7 @@ class WSSindromeImpl: WSSindrome {
     let sindromesPath = "/sindromes"
     let hashSuffix = "/hash"
     
-    func getSyndromes(language: String, completion: @escaping ([Sindrome]) -> Void) {
+    func getSyndromes(language: String, completion: @escaping ([Sindrome]?) -> Void) {
         var peticion = URLRequest(url: NSURL(string: host + apiEndPoint + sindromesPath + "/" + language)! as URL)
         
         peticion.addValue("application/json", forHTTPHeaderField: "Accept");
@@ -27,7 +27,7 @@ class WSSindromeImpl: WSSindrome {
         {(datos: Data?, respuesta: URLResponse?, error: Error?) in
             UpdateCoordinator.coordinator.decreaseNetworkActivity()
             do {    
-                if datos != nil {
+                if (respuesta as? HTTPURLResponse)?.statusCode == 200 && datos != nil {
                     let object = try JSONSerialization.jsonObject(with: datos!)
                     
                     let lista = object as! NSArray;
@@ -36,6 +36,8 @@ class WSSindromeImpl: WSSindrome {
                         listaSindromes.append(Sindrome(jsonDictionary: diccionario));
                     }
                     completion(listaSindromes);
+                } else {
+                    completion(nil)
                 }
             } catch {
                 

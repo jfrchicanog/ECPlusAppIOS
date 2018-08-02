@@ -205,6 +205,7 @@ class DatabaseUpdate {
     private func updateFiles(language: String, resolution: Resolution, completion: @escaping () -> Void) {
         let palabras = daoPalabra.getWords(language: language, resolution: resolution)
         var numFiles : Int = 0;
+        self.cola.addOperation {numFiles = numFiles + 1}
         for palabra in palabras {
             if let recursos = palabra.recursos as? Set<RecursoAudioVisual> {
                 for recurso in recursos {
@@ -226,14 +227,21 @@ class DatabaseUpdate {
             }
         }
         self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateWordsFileEvent(filesChanged: true));
+        self.cola.addOperation {
+            numFiles = numFiles - 1
+            if (numFiles <= 0) {
+                completion()
+            }
+        }
         // TODO
     }
     
-    func updateSindromes(language: String) {
+    func updateSindromes(language: String, completion: @escaping () -> Void) {
         self.updateServiceCoordinator.fireEvent(event: UpdateEvent.startUpdateSyndromesEvent())
         wsSindrome.getHashForListOfSyndromes(language: language, completion: {(hashRemote) in
             guard hashRemote != nil  else {
                 self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: false))
+                completion()
                 return;
             }
             
@@ -241,17 +249,21 @@ class DatabaseUpdate {
             if hashRemote == nil {
                 self.daoSindrome.removeSyndromeList(language: language)
                 self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: true))
+                completion()
             } else if hashLocal == nil {
                 self.daoSindrome.createListOfSyndromes(language: language)
                 self.updateLocalSyndromeList(language: language, hashRemote: hashRemote!,completion: {
                     self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: true))
+                    completion()
                 })
             } else if hashLocal!.caseInsensitiveCompare(hashRemote!) != ComparisonResult.orderedSame {
                 self.updateLocalSyndromeList(language: language, hashRemote: hashRemote!,completion: {
                     self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: true))
+                    completion()
                 })
             } else {
                 self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateSyndromesEvent(databaseChanged: false))
+                completion()
             }
         })
     }
@@ -259,7 +271,12 @@ class DatabaseUpdate {
     private func updateLocalSyndromeList (language: String, hashRemote: String, completion: @escaping () -> Void) {
         let localSindromes = daoSindrome.getSyndromes(language: language).sorted(by: {$0.id < $1.id})
         wsSindrome.getSyndromes(language: language, completion: {(rSindromes) in
-            let remoteSindromes = rSindromes.sorted(by: {$0.id! < $1.id!})
+            guard rSindromes != nil else {
+                completion()
+                return
+            }
+            
+            let remoteSindromes = rSindromes!.sorted(by: {$0.id! < $1.id!})
             var iterator: Int? = -1;
             for remote in remoteSindromes {
                 iterator = self.removeLocalSyndromesUpToNextRemoteSyndrome(starting: iterator, localSindromes: localSindromes, remote: remote)

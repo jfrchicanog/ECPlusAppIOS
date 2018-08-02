@@ -25,12 +25,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let SUPPORTED_LANGAUGES = ["es", "en", "nl", "de", "cat"]
 
     fileprivate func updateDatabase() {
-        UpdateCoordinator.coordinator.fireEvent(event: UpdateEvent.startGlobalUpdateEvent())
+        var numThreads = 0;
+        
+        UpdateCoordinator.coordinator.startGlobalUpdate()
         let databaseUpdate = DatabaseUpdate.getDatabaseUpdate()
         NSLog("Updating \(String(describing: preferences.string(forKey: AppDelegate.LANGUAGE)))")
-        databaseUpdate.updateSindromes(language: preferences.string(forKey: AppDelegate.LANGUAGE)!)
+        
+        self.cola.addOperation {numThreads = numThreads + 2}
+        databaseUpdate.updateSindromes(language: preferences.string(forKey: AppDelegate.LANGUAGE)!, completion: {
+            self.cola.addOperation {
+                numThreads = numThreads - 1
+                if numThreads == 0 {
+                    UpdateCoordinator.coordinator.stopGlobalUpdate()
+                }
+            }
+        })
         databaseUpdate.updatePalabras(language: preferences.string(forKey: AppDelegate.LANGUAGE)!, resolution: Resolution.baja, completion: {
-            UpdateCoordinator.coordinator.fireEvent(event: UpdateEvent.stopGlobalUpdateEvent())
+            self.cola.addOperation {
+                numThreads = numThreads - 1
+                if numThreads == 0 {
+                    UpdateCoordinator.coordinator.stopGlobalUpdate()
+                }
+            }
         })
     }
     

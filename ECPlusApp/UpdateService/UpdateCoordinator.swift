@@ -18,6 +18,7 @@ class UpdateCoordinator {
     }()
     
     private var networkActivity: Int = 0
+    private var globalUpdateInProgress : Bool = false
     
     private init() {
     }
@@ -57,6 +58,20 @@ class UpdateCoordinator {
     
     func isThereNetworkActivity() -> Bool {
         return networkActivity > 0;
+    }
+    
+    func startGlobalUpdate() {
+        globalUpdateInProgress = true
+        UpdateCoordinator.coordinator.fireEvent(event: UpdateEvent.startGlobalUpdateEvent())
+    }
+    
+    func stopGlobalUpdate() {
+        globalUpdateInProgress = false
+        UpdateCoordinator.coordinator.fireEvent(event: UpdateEvent.stopGlobalUpdateEvent())
+    }
+    
+    func thereIsGlobalUpdateInProgress() -> Bool {
+        return globalUpdateInProgress
     }
 
 }

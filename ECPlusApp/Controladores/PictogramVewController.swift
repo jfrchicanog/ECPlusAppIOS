@@ -26,11 +26,12 @@ class PictogramViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        let cuenta = UpdateCoordinator.coordinator.thereIsGlobalUpdateInProgress() ? 0 : secciones.count;
         
-        if secciones.count  == 0 {
+        if cuenta  == 0 {
             let label = UILabel(frame:
                 CGRect(x: 0, y: 0, width: self.collectionView.bounds.size.width * 0.8, height: self.collectionView.bounds.size.height))
-            label.text = UpdateCoordinator.coordinator.isThereNetworkActivity() ?
+            label.text = UpdateCoordinator.coordinator.thereIsGlobalUpdateInProgress() ?
                 NSLocalizedString("Downloading", comment: "Message for tables when data is downloading"):
                 NSLocalizedString("NoItemsForLanguage", comment: "Message for tables when there are no items to show");
             label.textAlignment = .center
@@ -42,7 +43,7 @@ class PictogramViewController: UIViewController, UICollectionViewDelegate, UICol
             self.collectionView.backgroundView = nil
         }
         
-        return secciones.count;
+        return cuenta;
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

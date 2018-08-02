@@ -25,10 +25,14 @@ class SindromeViewController: UIViewController, UITableViewDataSource, UpdateSer
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         self.tabla.separatorStyle = .singleLine
         
-        if elementos.count  == 0 {
+        
+        let cuenta = UpdateCoordinator.coordinator.thereIsGlobalUpdateInProgress() ? 0 : elementos.count;
+        NSLog("Sindromes \(cuenta) Global Update \(UpdateCoordinator.coordinator.thereIsGlobalUpdateInProgress())")
+        
+        if cuenta  == 0 {
             let label = UILabel(frame:
                 CGRect(x: 0, y: 0, width: self.tabla.bounds.size.width, height: self.tabla.bounds.size.height))
-            label.text = UpdateCoordinator.coordinator.isThereNetworkActivity() ?
+            label.text = UpdateCoordinator.coordinator.thereIsGlobalUpdateInProgress() ?
                 NSLocalizedString("Downloading", comment: "Message for tables when data is downloading"):
                 NSLocalizedString("NoItemsForLanguage", comment: "Message for tables when there are no items to show");
             label.textAlignment = .center
@@ -41,7 +45,7 @@ class SindromeViewController: UIViewController, UITableViewDataSource, UpdateSer
             self.tabla.backgroundView = nil
         }
 
-        return elementos.count;
+        return cuenta
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
