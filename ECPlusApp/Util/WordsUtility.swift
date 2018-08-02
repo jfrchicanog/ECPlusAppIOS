@@ -40,7 +40,7 @@ class WordsUtility {
         /*
         OperationQueue().addOperation {
             for palabra in palabras {
-                let image = getLogoFromWord(palabra: palabra)
+                getLogoFromWord(palabra: palabra)
             }
         }*/
     }

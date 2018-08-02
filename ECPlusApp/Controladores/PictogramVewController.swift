@@ -19,7 +19,8 @@ class PictogramViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet var collectionView: UICollectionView!
     
     func onUpdateEvent(event: UpdateEvent) {
-        if event.action! == UpdateEventAction.stopFile || event.action! == UpdateEventAction.stopNetwork {
+        NSLog("Event: \(event.action!.rawValue)")
+        if event.action! == UpdateEventAction.stopGlobalUpdate {
             OperationQueue.main.addOperation({self.refrescarDatos()})
         }
     }

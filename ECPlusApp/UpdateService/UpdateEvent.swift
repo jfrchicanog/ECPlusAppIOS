@@ -11,10 +11,12 @@ import Foundation
 enum UpdateEventAction : String {
     case start = "start"
     case startNetwork = "startNetwork"
+    case startGlobalUpdate = "startGlobalUpdate"
     case stopDatabase = "stopDatabase"
     case stopFile = "stopFile"
     case stopError = "stopError"
     case stopNetwork = "stopNetwork"
+    case stopGlobalUpdate = "stopGlobalUpdate"
 }
 
 enum UpdateEventElement : String {
@@ -63,6 +65,14 @@ class UpdateEvent: NSObject {
     
     static func stopNetworkEvent() -> UpdateEvent {
         return UpdateEvent(action: UpdateEventAction.stopNetwork, element: nil, somethingChanged: false)
+    }
+    
+    static func startGlobalUpdateEvent() -> UpdateEvent {
+        return UpdateEvent(action: UpdateEventAction.startGlobalUpdate, element: nil, somethingChanged: false)
+    }
+    
+    static func stopGlobalUpdateEvent() -> UpdateEvent {
+        return UpdateEvent(action: UpdateEventAction.stopGlobalUpdate, element: nil, somethingChanged: false)
     }
     
     func description() -> String {

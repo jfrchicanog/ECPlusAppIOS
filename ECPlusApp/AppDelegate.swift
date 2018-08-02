@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var dataController = DataController.dataController
     let daoPalabra: DAOPalabra = DAOFactory.getDAOPalabra()
     let preferences = UserDefaults.standard
+    let cola = OperationQueue()
     static let LANGUAGE = "language"
     static let RESOLUTION = "resolution"
     static let DEFAULT_LANGUAGE = "es"
@@ -24,10 +25,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let SUPPORTED_LANGAUGES = ["es", "en", "nl", "de", "cat"]
 
     fileprivate func updateDatabase() {
+        UpdateCoordinator.coordinator.fireEvent(event: UpdateEvent.startGlobalUpdateEvent())
         let databaseUpdate = DatabaseUpdate.getDatabaseUpdate()
         NSLog("Updating \(String(describing: preferences.string(forKey: AppDelegate.LANGUAGE)))")
         databaseUpdate.updateSindromes(language: preferences.string(forKey: AppDelegate.LANGUAGE)!)
-        databaseUpdate.updatePalabras(language: preferences.string(forKey: AppDelegate.LANGUAGE)!, resolution: Resolution.baja)
+        databaseUpdate.updatePalabras(language: preferences.string(forKey: AppDelegate.LANGUAGE)!, resolution: Resolution.baja, completion: {
+            UpdateCoordinator.coordinator.fireEvent(event: UpdateEvent.stopGlobalUpdateEvent())
+        })
     }
     
     fileprivate func computeDefaultLanguage() -> String {
@@ -60,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.updateDatabase()
         })
         
-        updateDatabase()
+        //updateDatabase()
         
         return true
     }

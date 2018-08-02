@@ -17,7 +17,7 @@ enum Resolution: String {
 protocol WSPalabra {
     func getHashForListOfWords(language: String, resolution: Resolution, completion: @escaping (String?)->Void)
     func getWords(language: String, resolution: Resolution, completion: @escaping ([Palabra])->Void)
-    func getResource(hash: String, toFile: URL)
+    func getResource(hash: String, toFile: URL, completion: @escaping () -> Void)
     func getCategories(language: String, completion: @escaping ([CategoriaREST]) -> Void)
 }
 

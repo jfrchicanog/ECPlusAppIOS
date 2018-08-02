@@ -84,7 +84,7 @@ class SindromeViewController: UIViewController, UITableViewDataSource, UpdateSer
     }
     
     func onUpdateEvent(event: UpdateEvent) {
-        if event.action! == UpdateEventAction.stopDatabase || event.action! == UpdateEventAction.stopNetwork {
+        if event.action! == UpdateEventAction.stopGlobalUpdate {
             OperationQueue.main.addOperation({self.refrescarDatos()})
         }
     }

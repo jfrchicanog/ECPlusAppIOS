@@ -108,7 +108,7 @@ class DAOPalabraImpl: DAOPalabra {
     
     
     func addWord(context: NSManagedObjectContext, word: Palabra, categoria: Categoria?, language: String, resolution: Resolution) {
-        context.performAndWait {
+        
             do {
                 let listaPalabras = try getListOfWords(context: context, language: language)
                 let palabra = NSEntityDescription.insertNewObject(forEntityName: "PalabraEntity", into: context) as! PalabraEntity;
@@ -153,7 +153,7 @@ class DAOPalabraImpl: DAOPalabra {
             } catch {
                 fatalError("Failed to add word: \(error)")
             }
-        }
+        
     }
     
     private func createResource(context: NSManagedObjectContext, rav: RecursoAudioVisualWS, resolution: Resolution) -> RecursoAudioVisual {

@@ -35,13 +35,14 @@ class DatabaseUpdate {
     private init () {
     }
     
-    func updatePalabras(language: String, resolution: Resolution) {
+    func updatePalabras(language: String, resolution: Resolution, completion: @escaping ()->Void) {
         self.updateServiceCoordinator.fireEvent(event: UpdateEvent.startUpdateWordsEvent())
         wsPalabra.getHashForListOfWords(language: language, resolution: resolution, completion: {(hashRemote) in
             guard hashRemote != nil else {
                 NSLog("Nil remote hash")
                 self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateWordsEvent(databaseChanged: false))
                 self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateWordsFileEvent(filesChanged: false));
+                completion();
                 return
             }
             
@@ -54,6 +55,7 @@ class DatabaseUpdate {
                 
                 self.removeUnusedFiles();
                 self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateWordsFileEvent(filesChanged: false));
+                completion()
                 
             } else if hashLocal == nil || hashLocal!.caseInsensitiveCompare(hashRemote!) != ComparisonResult.orderedSame {
                 if hashLocal == nil {
@@ -62,11 +64,12 @@ class DatabaseUpdate {
                 self.updateLocalWordList(language: language, resolution: resolution, remoteHash: hashRemote!,completion: {
                     self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateWordsEvent(databaseChanged: true))
                     self.removeUnusedFiles();
-                    self.updateFiles(language: language, resolution: resolution);
+                    self.updateFiles(language: language, resolution: resolution, completion: completion);
+                    
                 })
             }  else {
                 self.updateServiceCoordinator.fireEvent(event: UpdateEvent.stopUpdateWordsEvent(databaseChanged: false))
-                self.updateFiles(language: language, resolution: resolution)
+                self.updateFiles(language: language, resolution: resolution, completion: completion)
             }
         })
     }
@@ -164,7 +167,7 @@ class DatabaseUpdate {
             if (localIterator >= localPalabras.count) {
                 let catForWord = (remotePalabras[remoteIterator].categoria==nil) ? nil : self.categoryMap[Int(remotePalabras[remoteIterator].categoria!)]
                 
-                NSLog("Adding \(remotePalabras[remoteIterator].id)")
+                NSLog("Adding \(remotePalabras[remoteIterator].id) localITerator \(localIterator) local count \(localPalabras.count)")
                 self.daoPalabra.addWord(context: context, word: remotePalabras[remoteIterator], categoria: catForWord, language: language, resolution: resolution)
                 remoteIterator = remoteIterator + 1
             } else if (remoteIterator >= remotePalabras.count) {
@@ -199,15 +202,24 @@ class DatabaseUpdate {
         // TODO
     }
     
-    private func updateFiles(language: String, resolution: Resolution) {
+    private func updateFiles(language: String, resolution: Resolution, completion: @escaping () -> Void) {
         let palabras = daoPalabra.getWords(language: language, resolution: resolution)
+        var numFiles : Int = 0;
         for palabra in palabras {
             if let recursos = palabra.recursos as? Set<RecursoAudioVisual> {
                 for recurso in recursos {
                     if let fichero = recurso.getFichero(for: resolution) {
                         let tipo = TipoRecurso(rawValue: recurso.tipo!)!
                         if !resourceStore.fileExists(withHash: fichero.hashvalue!, type: tipo) {
-                            wsPalabra.getResource(hash: fichero.hashvalue!, toFile: resourceStore.getFileResource(for: fichero.hashvalue!, type: tipo))
+                            self.cola.addOperation {numFiles = numFiles + 1}
+                            wsPalabra.getResource(hash: fichero.hashvalue!, toFile: resourceStore.getFileResource(for: fichero.hashvalue!, type: tipo), completion: {
+                                self.cola.addOperation {
+                                    numFiles = numFiles - 1
+                                    if (numFiles <= 0) {
+                                        completion()
+                                    }
+                                }
+                            })
                         }
                     }
                 }

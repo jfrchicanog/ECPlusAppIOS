@@ -17,7 +17,7 @@ class PalabraViewController : UIViewController, UITableViewDataSource, UpdateSer
     @IBOutlet weak var tabla: UITableView!
     
     func onUpdateEvent(event: UpdateEvent) {
-        if event.action! == UpdateEventAction.stopFile || event.action! == UpdateEventAction.stopNetwork {
+        if event.action! == UpdateEventAction.stopGlobalUpdate {
             OperationQueue.main.addOperation({self.refrescarDatos()})
         }
     }

@@ -75,7 +75,7 @@ class WSPalabraImpl: WSPalabra {
         dataTask.resume();
     }
     
-    func getResource(hash: String, toFile: URL) {
+    func getResource(hash: String, toFile: URL, completion: @escaping () -> Void) {
         var peticion = URLRequest(url: NSURL(string: host + apiEndPoint + resourcePath + "/" + hash)! as URL)
         peticion.addValue("*/*", forHTTPHeaderField: "Accept");
         peticion.httpMethod="GET"
@@ -87,6 +87,7 @@ class WSPalabraImpl: WSPalabra {
             UpdateCoordinator.coordinator.decreaseNetworkActivity()
             do {
                 try datos?.write(to: toFile)
+                completion()
             } catch {
                 NSLog("Error downloading file \(error)")
             }
