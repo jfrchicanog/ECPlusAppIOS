@@ -25,9 +25,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let SUPPORTED_LANGAUGES = ["es", "en", "nl", "de", "cat"]
 
     fileprivate func updateDatabase() {
-        var numThreads = 0;
+        guard !UpdateCoordinator.coordinator.thereIsGlobalUpdateInProgress() else {
+            return
+        }
         
         UpdateCoordinator.coordinator.startGlobalUpdate()
+        var numThreads = 0;
         let databaseUpdate = DatabaseUpdate.getDatabaseUpdate()
         NSLog("Updating \(String(describing: preferences.string(forKey: AppDelegate.LANGUAGE)))")
         
@@ -80,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.updateDatabase()
         })
         
-        //updateDatabase()
+        updateDatabase()
         
         return true
     }
